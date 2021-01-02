@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2017/07/04 20:04:29.000.849,C:\Users\Gerald\OneDrive\Delphi\Delphi 10.1 Projects\!Paint\ABOUT.PAS=</Transaction>
+    <Transaction>2017/07/04 20:06:56.000.949,C:\Users\Gerald\OneDrive\Delphi\Delphi 10.1 Projects\!Paint\MainUnit.dfm=C:\Users\Gerald\OneDrive\Delphi\Delphi 10.1 Projects\!Paint\SDIMAIN.dfm</Transaction>
+    <Transaction>2017/07/04 20:06:56.000.949,C:\Users\Gerald\OneDrive\Delphi\Delphi 10.1 Projects\!Paint\MainUnit.PAS=C:\Users\Gerald\OneDrive\Delphi\Delphi 10.1 Projects\!Paint\SDIMAIN.PAS</Transaction>
+    <Transaction>2017/07/04 21:52:07.000.895,C:\Users\Gerald\OneDrive\Delphi\Delphi 10.1 Projects\!Paint\RISCOSPaint.dproj=C:\Users\Gerald\OneDrive\Delphi\Delphi 10.1 Projects\!Paint\SDIAPP.dproj</Transaction>
+    <Transaction>2017/07/07 11:46:06.000.177,=C:\Users\Gerald\OneDrive\Delphi\Delphi 10.1 Projects\!Paint\Resources\2mono,fed</Transaction>
+    <Transaction>2017/07/07 11:46:06.000.167,=C:\Users\Gerald\OneDrive\Delphi\Delphi 10.1 Projects\!Paint\Resources\256mono,fed</Transaction>
+    <Transaction>2017/07/07 11:46:06.000.187,=C:\Users\Gerald\OneDrive\Delphi\Delphi 10.1 Projects\!Paint\Resources\4mono,fed</Transaction>
+    <Transaction>2017/07/07 11:46:06.000.182,=C:\Users\Gerald\OneDrive\Delphi\Delphi 10.1 Projects\!Paint\Resources\4colour,fed</Transaction>
+    <Transaction>2017/07/07 11:46:06.000.125,=C:\Users\Gerald\OneDrive\Delphi\Delphi 10.1 Projects\!Paint\Resources\16colour,fed</Transaction>
+    <Transaction>2017/07/07 11:46:06.000.173,=C:\Users\Gerald\OneDrive\Delphi\Delphi 10.1 Projects\!Paint\Resources\2colour,fed</Transaction>
+    <Transaction>2017/07/07 11:46:06.000.153,=C:\Users\Gerald\OneDrive\Delphi\Delphi 10.1 Projects\!Paint\Resources\16mono,fed</Transaction>
+    <Transaction>2017/07/07 11:46:06.000.160,=C:\Users\Gerald\OneDrive\Delphi\Delphi 10.1 Projects\!Paint\Resources\256colour,fed</Transaction>
+    <Transaction>2017/07/10 13:19:53.000.147,=C:\Users\Gerald\OneDrive\Delphi\Delphi 10.1 Projects\!Paint\Unit1.pas</Transaction>
+    <Transaction>2017/07/10 13:21:03.000.024,C:\Users\Gerald\OneDrive\Delphi\Delphi 10.1 Projects\!Paint\BigImageUnit.pas=C:\Users\Gerald\OneDrive\Delphi\Delphi 10.1 Projects\!Paint\Unit1.pas</Transaction>
+    <Transaction>2017/07/10 13:21:03.000.024,C:\Users\Gerald\OneDrive\Delphi\Delphi 10.1 Projects\!Paint\BigImageUnit.dfm=C:\Users\Gerald\OneDrive\Delphi\Delphi 10.1 Projects\!Paint\Unit1.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

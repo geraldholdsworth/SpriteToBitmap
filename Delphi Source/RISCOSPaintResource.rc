@@ -1,0 +1,8 @@
+16ColourPalette RCDATA "Resources\\16colour,fed"
+16MonoPalette RCDATA "Resources\\16mono,fed"
+256ColourPalette RCDATA "Resources\\256colour,fed"
+256MonoPalette RCDATA "Resources\\256mono,fed"
+2ColourPalette RCDATA "Resources\\2colour,fed"
+2MonoPalette RCDATA "Resources\\2mono,fed"
+4ColourPalette RCDATA "Resources\\4colour,fed"
+4MonoPalette RCDATA "Resources\\4mono,fed"
