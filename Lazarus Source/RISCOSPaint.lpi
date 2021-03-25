@@ -7,7 +7,6 @@
       <MainUnit Value="0"/>
       <Title Value="SpriteConverter"/>
       <Scaled Value="True"/>
-      <UseAppBundle Value="False"/>
       <ResourceType Value="res"/>
       <UseXPManifest Value="True"/>
       <XPManifest>
@@ -198,7 +197,7 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="4">
+    <Units Count="3">
       <Unit0>
         <Filename Value="RISCOSPaint.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -213,12 +212,10 @@
       <Unit2>
         <Filename Value="BigImageUnit.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="BigImageForm"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit2>
-      <Unit3>
-        <Filename Value="ShBrowseU.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit3>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

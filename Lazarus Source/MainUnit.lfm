@@ -1,14 +1,18 @@
 object MainForm: TMainForm
-  Left = 254
+  Left = 302
   Height = 632
-  Top = 202
-  Width = 891
+  Top = 205
+  Width = 921
+  AllowDropFiles = True
   ClientHeight = 632
-  ClientWidth = 891
+  ClientWidth = 921
+  Color = 15527148
   OnCreate = FormCreate
-  LCLVersion = '2.0.11.0'
+  OnDropFiles = FormDropFiles
+  OnShow = FormShow
+  LCLVersion = '2.0.12.0'
   object Splitter1: TSplitter
-    Left = 546
+    Left = 576
     Height = 632
     Top = 0
     Width = 5
@@ -16,23 +20,19 @@ object MainForm: TMainForm
     ResizeAnchor = akRight
   end
   object Memo1: TMemo
-    Left = 551
+    Left = 581
     Height = 632
     Top = 0
     Width = 340
     Align = alRight
+    Color = 15527148
     Font.Color = clWindowText
     Font.Height = -13
-    Font.Name = 'System'
+    Font.Name = 'Courier New'
     Font.Pitch = fpFixed
     Lines.Strings = (
       'Welcome to Sprite Converter'
       '--------------------------------------'
-      ''
-      'This is version 0.01 (beta release 3).'
-      'This is the first version for macOS and'
-      'Linux, in addition to the original Windows'
-      'version.'
       ''
       'This is intending to be a RISC OS'
       'Sprite convertor for Windows, macOS'
@@ -41,12 +41,14 @@ object MainForm: TMainForm
       ''
       'This is still under development and,'
       'as such, has much to do:'
-      '* Does not deal with masks;'
       '* Does not handle 256 colour partial'
       '  palettes (currently uses default'
       '  palette).'
       '* Does not handle any sprites with a'
-      '  mode flag 7 or above.'
+      '  mode flag 7 or above;'
+      '* Some sprites, which have a mask,'
+      ' do not have the mask shown. This is'
+      ' due to running out of availble colours.'
       ''
       'plus lots more.'
       ''
@@ -58,6 +60,7 @@ object MainForm: TMainForm
       'information.'
     )
     ParentFont = False
+    ReadOnly = True
     ScrollBars = ssBoth
     TabOrder = 0
   end
@@ -65,7 +68,7 @@ object MainForm: TMainForm
     Left = 34
     Height = 632
     Top = 0
-    Width = 512
+    Width = 542
     HorzScrollBar.Page = 1
     VertScrollBar.Page = 1
     Align = alClient
@@ -130,7 +133,7 @@ object MainForm: TMainForm
     end
   end
   object OpenDialog: TOpenDialog
-    Filter = 'All Files (*.*)|*.*'
+    Filter = 'All Files (*.*)|*'
     Left = 104
     Top = 152
   end

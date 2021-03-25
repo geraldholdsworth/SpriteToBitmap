@@ -1,0 +1,10 @@
+Changes
+
+0.01.3
+* Ported to Lazarus and compiled for Windows 32/64 bit, macOS 32/64 bit, and Linux 32/64/ARM.
+
+0.01.4
+* Changed the Open File Dialogue filter from '*.*' to '*' as Linux was not listing all files.
+* Most transparency masks now added.
+* Facilty to save as PNG.
+* Can now drag and drop files onto the application to open them.

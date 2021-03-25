@@ -1,52 +1,49 @@
 object BigImageForm: TBigImageForm
-  Left = 0
-  Top = 0
+  Left = 342
+  Height = 306
+  Top = 205
+  Width = 338
   Caption = 'BigImageForm'
   ClientHeight = 306
   ClientWidth = 338
-  Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
+  Color = 15527148
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
-  Font.Style = []
-  OldCreateOrder = False
   Position = poMainFormCenter
-  PixelsPerInch = 96
-  TextHeight = 13
+  LCLVersion = '2.0.12.0'
   object ZoomedImage: TImage
     Left = 0
+    Height = 265
     Top = 0
     Width = 338
-    Height = 265
     Align = alClient
     Center = True
     Proportional = True
     Stretch = True
-    ExplicitLeft = 160
-    ExplicitTop = 128
-    ExplicitWidth = 105
-    ExplicitHeight = 105
   end
   object Panel1: TPanel
     Left = 0
+    Height = 41
     Top = 265
     Width = 338
-    Height = 41
     Align = alBottom
+    ClientHeight = 41
+    ClientWidth = 338
     TabOrder = 0
     object lb_size: TLabel
       Left = 8
-      Top = 6
-      Width = 32
       Height = 13
+      Top = 6
+      Width = 33
       Caption = 'lb_size'
+      ParentColor = False
     end
     object sb_Save: TSpeedButton
       Left = 8
+      Height = 22
       Top = 19
       Width = 23
-      Height = 22
       Flat = True
       Glyph.Data = {
         76010000424D7601000000000000760000002800000020000000100000000100
@@ -60,15 +57,16 @@ object BigImageForm: TBigImageForm
         00037F7F333333337F7F000FFFFFFFFF00037F7F333333337F7F000FFFFFFFFF
         00037F7F333333337F7F000FFFFFFFFF00037F7F333333337F7F000FFFFFFFFF
         00037F7F333333337F7F000FFFFFFFFF07037F7F33333333777F000FFFFFFFFF
-        0003737FFFFFFFFF7F7330099999999900333777777777777733}
+        0003737FFFFFFFFF7F7330099999999900333777777777777733
+      }
       NumGlyphs = 2
       OnClick = sb_SaveClick
     end
   end
   object SaveDialog1: TSaveDialog
-    DefaultExt = 'bmp'
-    Filter = 'Bitmap|*.bmp'
     Title = 'Save Image'
+    DefaultExt = '.bmp'
+    Filter = 'Bitmap|*.bmp'
     Left = 170
     Top = 152
   end
