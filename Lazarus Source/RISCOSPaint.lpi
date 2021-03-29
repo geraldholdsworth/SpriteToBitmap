@@ -5,7 +5,7 @@
     <General>
       <SessionStorage Value="InProjectDir"/>
       <MainUnit Value="0"/>
-      <Title Value="SpriteConverter"/>
+      <Title Value="Sprite Converter"/>
       <Scaled Value="True"/>
       <ResourceType Value="res"/>
       <UseXPManifest Value="True"/>
@@ -27,7 +27,7 @@
     <VersionInfo>
       <UseVersionInfo Value="True"/>
       <MinorVersionNr Value="1"/>
-      <RevisionNr Value="3"/>
+      <RevisionNr Value="5"/>
       <Language Value="0809"/>
       <StringTable FileDescription="Sprite Converter"/>
     </VersionInfo>

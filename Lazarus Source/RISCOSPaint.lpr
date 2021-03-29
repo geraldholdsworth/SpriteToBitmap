@@ -14,7 +14,7 @@ uses
 begin
  Application.Scaled:=True;
   Application.Initialize;
- Application.Title:='SpriteConverter';
+ Application.Title:='Sprite Converter';
   Application.CreateForm(TMainForm, MainForm);
   Application.CreateForm(TBigImageForm, BigImageForm);
   Application.Run;
