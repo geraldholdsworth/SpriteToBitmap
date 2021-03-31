@@ -8,3 +8,14 @@ Changes
 * Most transparency masks now added.
 * Facilty to save as PNG.
 * Can now drag and drop files onto the application to open them.
+
+0.01.5
+* Code dealing with the sprite files moved to a class module.
+* Now upscales the bpp on bitmaps when there is no room for a transparency colour.
+* Can deal with 32bpp CMYK sprites.
+* Allows for variable transparency colour for bitmaps.
+* Notes the OS compatibility.
+* Correctly calculates the start of row for the resultant bitmap using the calculated bpp, not the original.
+* Progress bar for loading files and displaying them.
+* Added some more sprite types/mode flags.
+* Described the spite type and mode flags in the diagnostic output.

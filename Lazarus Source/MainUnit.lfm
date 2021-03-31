@@ -1,7 +1,7 @@
 object MainForm: TMainForm
-  Left = 302
+  Left = 295
   Height = 632
-  Top = 205
+  Top = 198
   Width = 921
   AllowDropFiles = True
   ClientHeight = 632
@@ -13,7 +13,7 @@ object MainForm: TMainForm
   LCLVersion = '2.0.12.0'
   object Splitter1: TSplitter
     Left = 576
-    Height = 632
+    Height = 608
     Top = 0
     Width = 5
     Align = alRight
@@ -21,7 +21,7 @@ object MainForm: TMainForm
   end
   object Memo1: TMemo
     Left = 581
-    Height = 632
+    Height = 608
     Top = 0
     Width = 340
     Align = alRight
@@ -31,33 +31,20 @@ object MainForm: TMainForm
     Font.Name = 'Courier New'
     Font.Pitch = fpFixed
     Lines.Strings = (
-      'Welcome to Sprite Converter'
-      '--------------------------------------'
+      'Sprite Converter'
+      '----------------'
       ''
-      'This is intending to be a RISC OS'
-      'Sprite convertor for Windows, macOS'
-      'and Linux, which loads a Sprite file and'
-      'outputs bitmaps.'
+      'This is a RISC OS Sprite convertor for Windows, macOS and Linux, which loads a RISC OS Sprite file and outputs bitmaps and PNGs.'
       ''
-      'This is still under development and,'
-      'as such, has much to do:'
-      '* Does not handle 256 colour partial'
-      '  palettes (currently uses default'
-      '  palette).'
-      '* Does not handle any sprites with a'
-      '  mode flag 7 or above;'
-      '* Some sprites, which have a mask,'
-      ' do not have the mask shown. This is'
-      ' due to running out of availble colours.'
+      'This is still under development and, as such, has much to do:'
+      '* Does not handle 256 colour partial palettes (currently uses default palette).'
+      '* Does not handle any sprites with a mode flag 7 or above.'
       ''
       'plus lots more.'
       ''
-      'Contact: gerald@hollypops.co.uk or'
-      'geraldholdsworth on the Stardot.com'
-      'forums.'
+      'Contact: gerald@hollypops.co.uk or geraldholdsworth on the Stardot.com forums.'
       ''
-      'This panel is used to display debugging'
-      'information.'
+      'This panel is used to display debugging information.'
     )
     ParentFont = False
     ReadOnly = True
@@ -66,7 +53,7 @@ object MainForm: TMainForm
   end
   object ScrollBox1: TScrollBox
     Left = 34
-    Height = 632
+    Height = 608
     Top = 0
     Width = 542
     HorzScrollBar.Page = 1
@@ -78,11 +65,11 @@ object MainForm: TMainForm
   end
   object Panel1: TPanel
     Left = 0
-    Height = 632
+    Height = 608
     Top = 0
     Width = 34
     Align = alLeft
-    ClientHeight = 632
+    ClientHeight = 608
     ClientWidth = 34
     TabOrder = 2
     object sb_OpenFile: TSpeedButton
@@ -131,6 +118,26 @@ object MainForm: TMainForm
       NumGlyphs = 2
       OnClick = sb_SaveClick
     end
+    object CheckBox1: TCheckBox
+      Left = 8
+      Height = 18
+      Hint = 'Enable Diagnostics'
+      Top = 56
+      Width = 22
+      TabOrder = 0
+    end
+  end
+  object ProgressBar1: TProgressBar
+    Left = 0
+    Height = 24
+    Top = 608
+    Width = 921
+    Align = alBottom
+    Max = 200
+    Orientation = pbVertical
+    Smooth = True
+    Step = 1
+    TabOrder = 4
   end
   object OpenDialog: TOpenDialog
     Filter = 'All Files (*.*)|*'

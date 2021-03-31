@@ -7,7 +7,7 @@ program RISCOSPaint;
 uses
   Forms, Interfaces,
   MainUnit in 'MainUnit.pas' {MainForm},
-  BigImageUnit in 'BigImageUnit.pas' {BigImageForm};
+  BigImageUnit in 'BigImageUnit.pas', SpriteFile {BigImageForm};
 
 {$R *.res}
 

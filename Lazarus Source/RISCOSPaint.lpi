@@ -13,16 +13,6 @@
         <DpiAware Value="True"/>
       </XPManifest>
       <Icon Value="0"/>
-      <Resources Count="8">
-        <Resource_0 FileName="Resources/2colour,fed" Type="RCDATA" ResourceName="2COLOURPALETTE"/>
-        <Resource_1 FileName="Resources/2mono,fed" Type="RCDATA" ResourceName="2MONOPALETTE"/>
-        <Resource_2 FileName="Resources/4colour,fed" Type="RCDATA" ResourceName="4COLOURPALETTE"/>
-        <Resource_3 FileName="Resources/4mono,fed" Type="RCDATA" ResourceName="4MONOPALETTE"/>
-        <Resource_4 FileName="Resources/16colour,fed" Type="RCDATA" ResourceName="16COLOURPALETTE"/>
-        <Resource_5 FileName="Resources/16mono,fed" Type="RCDATA" ResourceName="16MONOPALETTE"/>
-        <Resource_6 FileName="Resources/256colour,fed" Type="RCDATA" ResourceName="256COLOURPALETTE"/>
-        <Resource_7 FileName="Resources/256mono,fed" Type="RCDATA" ResourceName="256MONOPALETTE"/>
-      </Resources>
     </General>
     <VersionInfo>
       <UseVersionInfo Value="True"/>
@@ -197,7 +187,7 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="3">
+    <Units Count="4">
       <Unit0>
         <Filename Value="RISCOSPaint.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -216,6 +206,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit2>
+      <Unit3>
+        <Filename Value="SpriteFile.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit3>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
