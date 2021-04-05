@@ -5,7 +5,7 @@ unit SpriteFile;
 interface
 
 uses
- Classes, SysUtils,Graphics,Math;
+ Classes, SysUtils,Graphics,Math,Dialogs;
 
 {$M+}
 
@@ -39,7 +39,9 @@ type
    Palette       : array of Byte;            // Palette (if not in file, loaded from resource or built from pixel data)
    PaletteType   : String;                   // What type of palette? Yes, No or Partial
    Image         : TBitmap;                  // Actual bitmap image
-   Mask          : array of array of Boolean // Transparency Mask (converted to true/false)
+   Mask          : array of array of Byte    // Transparency Mask (converted to true/false)
+   //Change the Mask property to a cardinal, so that a full alpha channel value
+   //can be stored, then OR-ed with the pixel value.
   end;
   TSprites = array of TSprite;
   //Provides feedback
@@ -54,222 +56,18 @@ type
   procedure ExpandBPP(var OldBPP: Byte;var buffer:TDynByteArray);
   procedure AddToPalette(r,g,b: Byte;Sprite: TSprite);
   procedure UpdateProgress(Fupdate: Integer);
-  const
-   ColourPalette2: array[0..$B] of Byte=($13,$00,$10,$FF,$FF,$FF,$13,$01,
-                                         $10,$00,$00,$00);
-   ColourPalette4: array[0..$17] of Byte=($13,$00,$10,$FF,$FF,$FF,$13,$01,
-                                          $10,$BB,$BB,$BB,$13,$02,$10,$77,
-                                          $77,$77,$13,$03,$10,$00,$00,$00);
-   ColourPalette16: array[0..$77] of Byte=($13,$00,$10,$FF,$FF,$FF,$13,$01,
-                                           $10,$DD,$DD,$DD,$13,$02,$10,$BB,
-                                           $BB,$BB,$13,$03,$10,$99,$99,$99,
-                                           $13,$04,$10,$77,$77,$77,$13,$05,
-                                           $10,$55,$55,$55,$13,$06,$10,$33,
-                                           $33,$33,$13,$07,$10,$00,$00,$00,
-                                           $13,$08,$10,$00,$44,$99,$13,$09,
-                                           $10,$EE,$EE,$00,$13,$0A,$10,$00,
-                                           $CC,$00,$13,$0B,$10,$DD,$00,$00,
-                                           $13,$0C,$10,$EE,$EE,$BB,$13,$0D,
-                                           $10,$55,$88,$00,$13,$0E,$10,$FF,
-                                           $BB,$00,$13,$0F,$10,$00,$BB,$FF,
-                                           $13,$00,$18,$00,$00,$00,$13,$01,
-                                           $19,$00,$FF,$FF,$13,$02,$19,$00,
-                                           $00,$99,$13,$03,$19,$FF,$00,$00);
-   ColourPalette256: array[0..$5FF] of Byte=($13,$00,$10,$00,$00,$00,$13,$01,
-                                             $10,$11,$11,$11,$13,$02,$10,$22,
-                                             $22,$22,$13,$03,$10,$33,$33,$33,
-                                             $13,$04,$10,$44,$00,$00,$13,$05,
-                                             $10,$55,$11,$11,$13,$06,$10,$66,
-                                             $22,$22,$13,$07,$10,$77,$33,$33,
-                                             $13,$08,$10,$00,$00,$44,$13,$09,
-                                             $10,$11,$11,$55,$13,$0A,$10,$22,
-                                             $22,$66,$13,$0B,$10,$33,$33,$77,
-                                             $13,$0C,$10,$44,$00,$44,$13,$0D,
-                                             $10,$55,$11,$55,$13,$0E,$10,$66,
-                                             $22,$66,$13,$0F,$10,$77,$33,$77,
-                                             $13,$10,$10,$88,$00,$00,$13,$11,
-                                             $10,$99,$11,$11,$13,$12,$10,$AA,
-                                             $22,$22,$13,$13,$10,$BB,$33,$33,
-                                             $13,$14,$10,$CC,$00,$00,$13,$15,
-                                             $10,$DD,$11,$11,$13,$16,$10,$EE,
-                                             $22,$22,$13,$17,$10,$FF,$33,$33,
-                                             $13,$18,$10,$88,$00,$44,$13,$19,
-                                             $10,$99,$11,$55,$13,$1A,$10,$AA,
-                                             $22,$66,$13,$1B,$10,$BB,$33,$77,
-                                             $13,$1C,$10,$CC,$00,$44,$13,$1D,
-                                             $10,$DD,$11,$55,$13,$1E,$10,$EE,
-                                             $22,$66,$13,$1F,$10,$FF,$33,$77,
-                                             $13,$20,$10,$00,$44,$00,$13,$21,
-                                             $10,$11,$55,$11,$13,$22,$10,$22,
-                                             $66,$22,$13,$23,$10,$33,$77,$33,
-                                             $13,$24,$10,$44,$44,$00,$13,$25,
-                                             $10,$55,$55,$11,$13,$26,$10,$66,
-                                             $66,$22,$13,$27,$10,$77,$77,$33,
-                                             $13,$28,$10,$00,$44,$44,$13,$29,
-                                             $10,$11,$55,$55,$13,$2A,$10,$22,
-                                             $66,$66,$13,$2B,$10,$33,$77,$77,
-                                             $13,$2C,$10,$44,$44,$44,$13,$2D,
-                                             $10,$55,$55,$55,$13,$2E,$10,$66,
-                                             $66,$66,$13,$2F,$10,$77,$77,$77,
-                                             $13,$30,$10,$88,$44,$00,$13,$31,
-                                             $10,$99,$55,$11,$13,$32,$10,$AA,
-                                             $66,$22,$13,$33,$10,$BB,$77,$33,
-                                             $13,$34,$10,$CC,$44,$00,$13,$35,
-                                             $10,$DD,$55,$11,$13,$36,$10,$EE,
-                                             $66,$22,$13,$37,$10,$FF,$77,$33,
-                                             $13,$38,$10,$88,$44,$44,$13,$39,
-                                             $10,$99,$55,$55,$13,$3A,$10,$AA,
-                                             $66,$66,$13,$3B,$10,$BB,$77,$77,
-                                             $13,$3C,$10,$CC,$44,$44,$13,$3D,
-                                             $10,$DD,$55,$55,$13,$3E,$10,$EE,
-                                             $66,$66,$13,$3F,$10,$FF,$77,$77,
-                                             $13,$40,$10,$00,$88,$00,$13,$41,
-                                             $10,$11,$99,$11,$13,$42,$10,$22,
-                                             $AA,$22,$13,$43,$10,$33,$BB,$33,
-                                             $13,$44,$10,$44,$88,$00,$13,$45,
-                                             $10,$55,$99,$11,$13,$46,$10,$66,
-                                             $AA,$22,$13,$47,$10,$77,$BB,$33,
-                                             $13,$48,$10,$00,$88,$44,$13,$49,
-                                             $10,$11,$99,$55,$13,$4A,$10,$22,
-                                             $AA,$66,$13,$4B,$10,$33,$BB,$77,
-                                             $13,$4C,$10,$44,$88,$44,$13,$4D,
-                                             $10,$55,$99,$55,$13,$4E,$10,$66,
-                                             $AA,$66,$13,$4F,$10,$77,$BB,$77,
-                                             $13,$50,$10,$88,$88,$00,$13,$51,
-                                             $10,$99,$99,$11,$13,$52,$10,$AA,
-                                             $AA,$22,$13,$53,$10,$BB,$BB,$33,
-                                             $13,$54,$10,$CC,$88,$00,$13,$55,
-                                             $10,$DD,$99,$11,$13,$56,$10,$EE,
-                                             $AA,$22,$13,$57,$10,$FF,$BB,$33,
-                                             $13,$58,$10,$88,$88,$44,$13,$59,
-                                             $10,$99,$99,$55,$13,$5A,$10,$AA,
-                                             $AA,$66,$13,$5B,$10,$BB,$BB,$77,
-                                             $13,$5C,$10,$CC,$88,$44,$13,$5D,
-                                             $10,$DD,$99,$55,$13,$5E,$10,$EE,
-                                             $AA,$66,$13,$5F,$10,$FF,$BB,$77,
-                                             $13,$60,$10,$00,$CC,$00,$13,$61,
-                                             $10,$11,$DD,$11,$13,$62,$10,$22,
-                                             $EE,$22,$13,$63,$10,$33,$FF,$33,
-                                             $13,$64,$10,$44,$CC,$00,$13,$65,
-                                             $10,$55,$DD,$11,$13,$66,$10,$66,
-                                             $EE,$22,$13,$67,$10,$77,$FF,$33,
-                                             $13,$68,$10,$00,$CC,$44,$13,$69,
-                                             $10,$11,$DD,$55,$13,$6A,$10,$22,
-                                             $EE,$66,$13,$6B,$10,$33,$FF,$77,
-                                             $13,$6C,$10,$44,$CC,$44,$13,$6D,
-                                             $10,$55,$DD,$55,$13,$6E,$10,$66,
-                                             $EE,$66,$13,$6F,$10,$77,$FF,$77,
-                                             $13,$70,$10,$88,$CC,$00,$13,$71,
-                                             $10,$99,$DD,$11,$13,$72,$10,$AA,
-                                             $EE,$22,$13,$73,$10,$BB,$FF,$33,
-                                             $13,$74,$10,$CC,$CC,$00,$13,$75,
-                                             $10,$DD,$DD,$11,$13,$76,$10,$EE,
-                                             $EE,$22,$13,$77,$10,$FF,$FF,$33,
-                                             $13,$78,$10,$88,$CC,$44,$13,$79,
-                                             $10,$99,$DD,$55,$13,$7A,$10,$AA,
-                                             $EE,$66,$13,$7B,$10,$BB,$FF,$77,
-                                             $13,$7C,$10,$CC,$CC,$44,$13,$7D,
-                                             $10,$DD,$DD,$55,$13,$7E,$10,$EE,
-                                             $EE,$66,$13,$7F,$10,$FF,$FF,$77,
-                                             $13,$80,$10,$00,$00,$88,$13,$81,
-                                             $10,$11,$11,$99,$13,$82,$10,$22,
-                                             $22,$AA,$13,$83,$10,$33,$33,$BB,
-                                             $13,$84,$10,$44,$00,$88,$13,$85,
-                                             $10,$55,$11,$99,$13,$86,$10,$66,
-                                             $22,$AA,$13,$87,$10,$77,$33,$BB,
-                                             $13,$88,$10,$00,$00,$CC,$13,$89,
-                                             $10,$11,$11,$DD,$13,$8A,$10,$22,
-                                             $22,$EE,$13,$8B,$10,$33,$33,$FF,
-                                             $13,$8C,$10,$44,$00,$CC,$13,$8D,
-                                             $10,$55,$11,$DD,$13,$8E,$10,$66,
-                                             $22,$EE,$13,$8F,$10,$77,$33,$FF,
-                                             $13,$90,$10,$88,$00,$88,$13,$91,
-                                             $10,$99,$11,$99,$13,$92,$10,$AA,
-                                             $22,$AA,$13,$93,$10,$BB,$33,$BB,
-                                             $13,$94,$10,$CC,$00,$88,$13,$95,
-                                             $10,$DD,$11,$99,$13,$96,$10,$EE,
-                                             $22,$AA,$13,$97,$10,$FF,$33,$BB,
-                                             $13,$98,$10,$88,$00,$CC,$13,$99,
-                                             $10,$99,$11,$DD,$13,$9A,$10,$AA,
-                                             $22,$EE,$13,$9B,$10,$BB,$33,$FF,
-                                             $13,$9C,$10,$CC,$00,$CC,$13,$9D,
-                                             $10,$DD,$11,$DD,$13,$9E,$10,$EE,
-                                             $22,$EE,$13,$9F,$10,$FF,$33,$FF,
-                                             $13,$A0,$10,$00,$44,$88,$13,$A1,
-                                             $10,$11,$55,$99,$13,$A2,$10,$22,
-                                             $66,$AA,$13,$A3,$10,$33,$77,$BB,
-                                             $13,$A4,$10,$44,$44,$88,$13,$A5,
-                                             $10,$55,$55,$99,$13,$A6,$10,$66,
-                                             $66,$AA,$13,$A7,$10,$77,$77,$BB,
-                                             $13,$A8,$10,$00,$44,$CC,$13,$A9,
-                                             $10,$11,$55,$DD,$13,$AA,$10,$22,
-                                             $66,$EE,$13,$AB,$10,$33,$77,$FF,
-                                             $13,$AC,$10,$44,$44,$CC,$13,$AD,
-                                             $10,$55,$55,$DD,$13,$AE,$10,$66,
-                                             $66,$EE,$13,$AF,$10,$77,$77,$FF,
-                                             $13,$B0,$10,$88,$44,$88,$13,$B1,
-                                             $10,$99,$55,$99,$13,$B2,$10,$AA,
-                                             $66,$AA,$13,$B3,$10,$BB,$77,$BB,
-                                             $13,$B4,$10,$CC,$44,$88,$13,$B5,
-                                             $10,$DD,$55,$99,$13,$B6,$10,$EE,
-                                             $66,$AA,$13,$B7,$10,$FF,$77,$BB,
-                                             $13,$B8,$10,$88,$44,$CC,$13,$B9,
-                                             $10,$99,$55,$DD,$13,$BA,$10,$AA,
-                                             $66,$EE,$13,$BB,$10,$BB,$77,$FF,
-                                             $13,$BC,$10,$CC,$44,$CC,$13,$BD,
-                                             $10,$DD,$55,$DD,$13,$BE,$10,$EE,
-                                             $66,$EE,$13,$BF,$10,$FF,$77,$FF,
-                                             $13,$C0,$10,$00,$88,$88,$13,$C1,
-                                             $10,$11,$99,$99,$13,$C2,$10,$22,
-                                             $AA,$AA,$13,$C3,$10,$33,$BB,$BB,
-                                             $13,$C4,$10,$44,$88,$88,$13,$C5,
-                                             $10,$55,$99,$99,$13,$C6,$10,$66,
-                                             $AA,$AA,$13,$C7,$10,$77,$BB,$BB,
-                                             $13,$C8,$10,$00,$88,$CC,$13,$C9,
-                                             $10,$11,$99,$DD,$13,$CA,$10,$22,
-                                             $AA,$EE,$13,$CB,$10,$33,$BB,$FF,
-                                             $13,$CC,$10,$44,$88,$CC,$13,$CD,
-                                             $10,$55,$99,$DD,$13,$CE,$10,$66,
-                                             $AA,$EE,$13,$CF,$10,$77,$BB,$FF,
-                                             $13,$D0,$10,$88,$88,$88,$13,$D1,
-                                             $10,$99,$99,$99,$13,$D2,$10,$AA,
-                                             $AA,$AA,$13,$D3,$10,$BB,$BB,$BB,
-                                             $13,$D4,$10,$CC,$88,$88,$13,$D5,
-                                             $10,$DD,$99,$99,$13,$D6,$10,$EE,
-                                             $AA,$AA,$13,$D7,$10,$FF,$BB,$BB,
-                                             $13,$D8,$10,$88,$88,$CC,$13,$D9,
-                                             $10,$99,$99,$DD,$13,$DA,$10,$AA,
-                                             $AA,$EE,$13,$DB,$10,$BB,$BB,$FF,
-                                             $13,$DC,$10,$CC,$88,$CC,$13,$DD,
-                                             $10,$DD,$99,$DD,$13,$DE,$10,$EE,
-                                             $AA,$EE,$13,$DF,$10,$FF,$BB,$FF,
-                                             $13,$E0,$10,$00,$CC,$88,$13,$E1,
-                                             $10,$11,$DD,$99,$13,$E2,$10,$22,
-                                             $EE,$AA,$13,$E3,$10,$33,$FF,$BB,
-                                             $13,$E4,$10,$44,$CC,$88,$13,$E5,
-                                             $10,$55,$DD,$99,$13,$E6,$10,$66,
-                                             $EE,$AA,$13,$E7,$10,$77,$FF,$BB,
-                                             $13,$E8,$10,$00,$CC,$CC,$13,$E9,
-                                             $10,$11,$DD,$DD,$13,$EA,$10,$22,
-                                             $EE,$EE,$13,$EB,$10,$33,$FF,$FF,
-                                             $13,$EC,$10,$44,$CC,$CC,$13,$ED,
-                                             $10,$55,$DD,$DD,$13,$EE,$10,$66,
-                                             $EE,$EE,$13,$EF,$10,$77,$FF,$FF,
-                                             $13,$F0,$10,$88,$CC,$88,$13,$F1,
-                                             $10,$99,$DD,$99,$13,$F2,$10,$AA,
-                                             $EE,$AA,$13,$F3,$10,$BB,$FF,$BB,
-                                             $13,$F4,$10,$CC,$CC,$88,$13,$F5,
-                                             $10,$DD,$DD,$99,$13,$F6,$10,$EE,
-                                             $EE,$AA,$13,$F7,$10,$FF,$FF,$BB,
-                                             $13,$F8,$10,$88,$CC,$CC,$13,$F9,
-                                             $10,$99,$DD,$DD,$13,$FA,$10,$AA,
-                                             $EE,$EE,$13,$FB,$10,$BB,$FF,$FF,
-                                             $13,$FC,$10,$CC,$CC,$CC,$13,$FD,
-                                             $10,$DD,$DD,$DD,$13,$FE,$10,$EE,
-                                             $EE,$EE,$13,$FF,$10,$FF,$FF,$FF);
+  function DecodeModeFlags(modeflag: Byte): String;
+  function DecodeSpriteType(spritetype: Byte): String;
+  function DecodeMaskType(transformat: Byte): String;
+  function DecodeOS(os: Byte): String;
+  {$INCLUDE 'SpriteFilePalettes.pas'}
  published
   constructor Create;
   procedure LoadSpriteFile(Afilename: String);
+  function ModeFlag(spritenumber: Integer): String;
+  function SpriteType(spritenumber: Integer): String;
+  function MaskFormat(spritenumber: Integer): String;
+  function OS(spritenumber: Integer): String;
   property SpriteList: TSprites read FSpriteList;
   property SpriteFile: String   read FSpriteFile;
   property LogFile: TStringList read FDiagnostic;
@@ -311,6 +109,7 @@ end;
 function TSpriteFile.ReadSpriteFile(data: array of Byte): TSprites;
 var
   buffer     : array of Byte;
+  maskbpp    : Byte;
   x,sprites,
   amt,ctr    : Integer;
   ptr,sx,sy,
@@ -327,20 +126,12 @@ const
                                 2,3,4,1,2,3,4,1,2,3,
                                 4,1,2,4,1,2,3,4,3,4,
                                 1,2,3,4);
- //OS Compatibility string
- OSstr  : array[0..2]  of String = ('Arthur','RISC OS 3.5','RISC OS 5.0');
- //Sprite type string
- ModeStr: array[0..18] of String = ('Arthur mode','1bpp','2bpp','4bpp','8bpp',
-                                    '16bpp 1:5:5:5 TBGR','32bpp 8:8:8:8 TBGR',
-                                    '32bpp CMYK','24bpp','JPEG data',
-                                    '16bpp 5:6:5 TBGR','Reserved','Reserved',
-                                    'Reserved','Reserved','RISC OS 5',
-                                    '16bpp 4:4:4:4','4:2:0 YCbCr','4:2:2 YCbCr');
 begin
  //Set up the variables
  Result:=nil;
  SetLength(Result,0);
  FDiagnostic.Clear;
+ maskbpp:=0;
  //Create the memory stream
  ms:=TMemoryStream.Create;
  //Sprite file header ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -490,50 +281,23 @@ begin
     9: ;//JPEG
    10: Result[x].BPP:=16; //16bpp 5:6:5 TBGR
    15: ;//Invalid - used for id RISC OS 5 sprite mode words
-   16: Result[x].BPP:=16; //16bpp 4:4:4
+   16: Result[x].BPP:=16; //16bpp 4:4:4:4
    17: ;//4:2:0 YCbCr
    18: ;//4:2:4 YCbCr
    //11-14 and 19-127 Reserved
   end;
   Result[x].BPPOriginal:=Result[x].BPP;
+  if Result[x].BPP=2 then Result[x].BPP:=4; //Bitmaps don't have 2bpp
   FDiagnostic.Add('Sprite Type              : '+IntToStr(Result[x].SpriteType));
-  if Result[x].SpriteType<=High(ModeStr) then
-   FDiagnostic.Add('Sprite Type meaning      : '+ModeStr[Result[x].SpriteType]);
+  FDiagnostic.Add('Sprite Type meaning      : '+DecodeSpriteType(Result[x].SpriteType));
   //Expand on RISC OS 5 details
   if Result[x].OS=2 then
   begin
    FDiagnostic.Add('Mode Flags               : 0x'+IntToHex(Result[x].ModeFlag,2));
-   if Result[x].ModeFlag AND $1=$1 then
-    FDiagnostic.Add('Mode Flag meaning        : Full res interlace');
-   if Result[x].ModeFlag AND $2=$2 then
-    FDiagnostic.Add('Mode Flag meaning        : Greyscale');
-   case (Result[x].ModeFlag>>4)AND$3 of
-    0: //RGB
-     case Result[x].ModeFlag>>6 of
-      0: FDiagnostic.Add('Mode Flag meaning        : RGB - TBGR');
-      1: FDiagnostic.Add('Mode Flag meaning        : RGB - TRGB');
-      2: FDiagnostic.Add('Mode Flag meaning        : RGB - ABGR');
-      3: FDiagnostic.Add('Mode Flag meaning        : RGB - ARGB');
-     end;
-    1: //Misc
-     case Result[x].ModeFlag>>6 of
-      0: FDiagnostic.Add('Mode Flag meaning        : KYMC');
-      1: FDiagnostic.Add('Mode Flag meaning        : Reserved');
-      2: FDiagnostic.Add('Mode Flag meaning        : Reserved');
-      3: FDiagnostic.Add('Mode Flag meaning        : Reserved');
-     end;
-    2:
-     case Result[x].ModeFlag>>6 of
-      0: FDiagnostic.Add('Mode Flag meaning        : YCbCr - ITU-R BT.601 Full');
-      1: FDiagnostic.Add('Mode Flag meaning        : YCbCr - ITU-R BT.601 Video');
-      2: FDiagnostic.Add('Mode Flag meaning        : YCbCr - ITU-R BT.709 Full');
-      3: FDiagnostic.Add('Mode Flag meaning        : YCbCr - ITU-R BT.709 Video');
-     end;
-    3: FDiagnostic.Add('Mode Flag meaning        : Reserved');
-   end;
+   FDiagnostic.Add('Mode Flags meaning       : '+DecodeModeFlags(Result[x].ModeFlag));
   end;
-  FDiagnostic.Add('Bits per pixel           : '+IntToStr(Result[x].BPP));
-  FDiagnostic.Add('Compatibility            : '+OSStr[Result[x].OS]);
+  FDiagnostic.Add('Bits per pixel           : '+IntToStr(Result[x].BPPOriginal));
+  FDiagnostic.Add('Compatibility            : '+DecodeOS(Result[x].OS));
   //Pixel Width
   if Result[x].BPPOriginal>0 then //BPP of 0 means that we can't handle it, currently
   begin
@@ -634,13 +398,16 @@ begin
      else inc(t,4); //Otherwise, check next colour
     end;
    end;}
+   //Set up the mask array
+   SetLength(Result[x].Mask,Result[x].PixWidth,Result[x].ScanLines+1);
+   for sx:=0 to Length(Result[x].Mask)-1 do
+    for sy:=0 to Length(Result[x].Mask[sx])-1 do
+     Result[x].Mask[sx,sy]:=$00;
    //Is there a transparent mask?
    if Result[x].Transparency<>Result[x].PixelData then
    begin
     FDiagnostic.Add('Transparency             : Yes');
     FDiagnostic.Add('Background Colour        : 0x'+IntToHex(Result[x].BGColour,8));
-    SetLength(Result[x].Mask,Result[x].PixWidth,
-                                 Result[x].ScanLines+1);
     //We do, so read in transparent mask
     if Result[x].Transparency>Result[x].PixelData then
     begin //Transparency data is after pixel data
@@ -654,15 +421,25 @@ begin
     end;
     //Work out if it is old format or new format
     if t<t2 then
-    begin
-     Result[x].TransFormat:=2;
-     FDiagnostic.Add('Format of Transparency   : New');
-    end
+     //Look at bit 31 of the mode data - if set, it is a 'wide mask'.
+     //This means that the mask will be 8bpp, whatever. Therefore, the size of
+     //the pixel data and the mask data will be different.
+     if Result[x].ModeData>>31=0 then
+     begin
+      Result[x].TransFormat:=2;
+      maskbpp:=1; //Mask is 1bpp
+     end
+     else
+     begin
+      Result[x].TransFormat:=3;
+      maskbpp:=8; //Mask is 8bpp Alpha
+     end
     else
     begin
      Result[x].TransFormat:=1;
-     FDiagnostic.Add('Format of Transparency   : Old');
+     maskbpp:=Result[x].BPPOriginal;
     end;
+    FDiagnostic.Add('Format of Transparency   : '+DecodeMaskType(Result[x].TransFormat));
    end
    else
    begin //No mask
@@ -679,12 +456,6 @@ begin
    //
    //Create the bitmap container in the array
    Result[x].Image:=TBitmap.Create;
-   //Set the bitmap to be transparent, if needed
-   if Result[x].TransFormat<>0 then
-   begin
-    Result[x].Image.Transparent:=True;
-    Result[x].Image.TransparentColor:=Result[x].BGColour mod $1000000;
-   end;
    //Setup buffer to create bitmap data in
    SetLength(buffer,$36);
    amt:=bitmapHeader(Result[x].PixWidth,
@@ -693,8 +464,8 @@ begin
                      0,
                      buffer);
    SetLength(buffer,amt);
-   //Copy the palette across
    for t:=$36 to amt-1 do buffer[t]:=0;
+   //Copy the palette across
    if Result[x].BPP<16 then
     for t:=0 to Length(Result[x].Palette)-1 do
      buffer[$36+t]:=Result[x].Palette[t];
@@ -714,165 +485,120 @@ begin
    //Extract the sprite data +++++++++++++++++++++++++++++++++++++++++++++++++++
    for sy:=0 to Result[x].ScanLines do
    begin
-    //X co-ordinate variable to point into some bitmaps, separate from sprites
-    bx:=0;
-    for sx:=0 to ((Result[x].WidthWord+1)*4)-1 do
-    //Change so it reads in 4 bytes at a time, into a 4 element byte array
-    //then we can deal with the tranparancy mask at the same time
+    //Loops through each pixel
+    for sx:=0 to Result[x].PixWidth-1 do
     begin
-     //Pointer to pixel in sprite
-     p:=ptr+Result[x].PixelData+((Result[x].WidthWord+1)*sy*4)+sx;
      //We will read in the mask data first +++++++++++++++++++++++++++++++++++++
-     //Old style mask
-     if Result[x].TransFormat=1 then
-     begin
-      //Pointer to mask pixel in sprite
-      tp:=Result[x].Transparency+ptr+((Result[x].WidthWord+1)*sy*4)+sx;
-      case Result[x].BPPOriginal of
-       4: //4bpp
-       begin
-        //Read in a byte from the transparent data
-        t:=data[tp+(Result[x].LeftBit div 8)];
-        //Allow for left hand wastage
-        t:=t>>(Result[x].LeftBit mod 8);
-        //one byte has information for two pixels
-        if sx*2<Length(Result[x].Mask) then
-         if sy<Length(Result[x].Mask[sx*2]) then
-          Result[x].Mask[sx*2,sy]:=(t AND $0F)=$00;
-        if (sx*2)+1<Length(Result[x].Mask) then
-         if sy<Length(Result[x].Mask[(sx*2)+1]) then
-          Result[x].Mask[(sx*2)+1,sy]:=(t AND $F0)=$00;
-       end;
-       8: //8bpp
-         if sx<Length(Result[x].Mask) then
-           if sy<Length(Result[x].Mask[sx]) then
-            Result[x].Mask[sx,sy]:=data[tp]=$00;
-      end;
-     end;
-     //New style mask
-     if Result[x].TransFormat=2 then
-      if sx<Length(Result[x].Mask) then
+     if Result[x].TransFormat>0 then //Check we have a mask
+      if sx<Length(Result[x].Mask) then //And the x and y are within bounds
        if sy<Length(Result[x].Mask[sx]) then
-        begin
-         //Get the byte
-         tp:=Result[x].Transparency+ptr+
-             ((((((Result[x].WidthWord+1)*4)+7)div 8)+3)div 4)*4*sy+
-             (sx div 8);
-         Result[x].Mask[sx,sy]:=data[tp]and(1<<(sx mod 8))=0;
+       begin
+        //Pointer to mask pixel in sprite
+        tp:=Result[x].Transparency+ptr+
+            (((((Result[x].PixWidth*maskbpp)+7)div 8)+3)div 4)*4*sy+
+            Floor(sx*(maskbpp/8))+
+            (Result[x].LeftBit div 8);
+        //Byte(s) containing the pixel
+        t:=0;
+        for bx:=0 to Ceil(maskbpp/8)-1 do t:=t+data[tp+bx]<<(bx*8);
+        //Take account of the left hand wastage
+        t:=t>>(Result[x].LeftBit mod 8);
+        case maskbpp of
+         1: Result[x].Mask[sx,sy]:=$FF XOR(t and($1<<(sx mod 8)));    //1bpp
+         2: Result[x].Mask[sx,sy]:=$FF XOR(t and($3<<((sx mod 4)*2)));//2bpp
+         4: Result[x].Mask[sx,sy]:=$FF XOR(t AND($F<<((sx mod 2)*4)));//4bpp
+         8,  //8bpp - wide mask, this is an alpha value
+         16, //16bpp
+         24, //24bpp
+         32: Result[x].Mask[sx,sy]:=$FF XOR(t and $FF); //32bpp
         end;
-     //Do we have a 2bpp sprite - bitmaps don't have this format, so we need to upscale
-     if Result[x].BPPOriginal=2 then
-     begin
-      //We will begin to use the new variable, as we have changed this
-      Result[x].BPP:=4;
-      //As 2bpp is getting converted to 4bpp, we need to know the new word width
-      if bx*2<Result[x].PixWidth then
-       amt:=p2+(Cardinal(Ceil((Result[x].PixWidth*4)/32))
-              *(Result[x].ScanLines-sy)*4)+bx
-      else amt:=0;
-      inc(bx,2);
-     end
-     else
-      amt:=p2+((Result[x].WidthWord+1)*(Result[x].ScanLines-sy)*4)+sx;
-     //Read in a byte from the picture data
-     t:=data[p+(Result[x].LeftBit div 8)];
-     t2:=0;
-     //Allow for left hand wastage
+        if Result[x].TransFormat=3 then //Wide mask, so this is the alpha value
+         Result[x].Mask[sx,sy]:=Result[x].Mask[sx,sy] XOR $FF;
+       end;
+     //Pointer to pixel in sprite
+     p:=Result[x].PixelData+ptr+
+            (((((Result[x].PixWidth*Result[x].BPPOriginal)+7)div 8)+3)div 4)*4*sy+
+            Floor(sx*(Result[x].BPPOriginal/8))+
+            (Result[x].LeftBit div 8);
+     //Byte(s) containing the pixel
+     t:=0;
+     for bx:=0 to Ceil(Result[x].BPPOriginal/8)-1 do t:=t+data[p+bx]<<(bx*8);
+     //Take account of the left hand wastage
      t:=t>>(Result[x].LeftBit mod 8);
-     //swap the nibbles with 4bpp
-     if Result[x].BPPOriginal=4 then
-      t:=(t<<4) OR (t>>4);
-     //Expand 2bpp to 4bpp, swapping half nibbles
-     if Result[x].BPPOriginal=2 then
-     begin
-      //Bits 0,1 and 4,5 are used in 2 to 4bpp conversion. Other bits are 0
-      t2:=((t AND $C0)>>6)  //bits 6 & 7 become 0 & 1
-         + (t AND $30);     //bits 4 & 5  stay  4 & 5
-      t :=((t AND $0C)>>2)  //bits 4 & 5 become 0 & 1
-         +((t AND $03)<<4); //bits 0 & 1 become 4 & 5
-     end;
+     //Pointer to pixel in bitmap
+     amt:=p2+((Ceil((Result[x].PixWidth*Result[x].BPP)/32)*4)*(Result[x].ScanLines-sy))
+            +Floor(sx*(Result[x].BPP/8));
      //Put it in the buffer, top down
      if amt>0 then
      begin
-      buffer[amt]:=t;
-      if Result[x].BPPOriginal=2 then
-       buffer[amt+1]:=t2;
-      //And count up the colours used
-      case Result[x].BPPOriginal of
+      case Result[x].BPP of
        1:
        begin
-        inc(Result[x].ColoursUsed[ t AND $01]);
-        inc(Result[x].ColoursUsed[(t AND $02)>>1]);
-        inc(Result[x].ColoursUsed[(t AND $04)>>2]);
-        inc(Result[x].ColoursUsed[(t AND $08)>>3]);
-        inc(Result[x].ColoursUsed[(t AND $10)>>4]);
-        inc(Result[x].ColoursUsed[(t AND $20)>>5]);
-        inc(Result[x].ColoursUsed[(t AND $40)>>6]);
-        inc(Result[x].ColoursUsed[(t AND $80)>>7]);
-       end;
-       2:
-       begin
-        inc(Result[x].ColoursUsed[ t AND $03]);
-        inc(Result[x].ColoursUsed[(t AND $0C)>>2]);
-        inc(Result[x].ColoursUsed[ t2 AND $03]);
-        inc(Result[x].ColoursUsed[(t2 AND $0C)>>2]);
+        buffer[amt]:=buffer[amt]OR(t and($1<<(sx mod 8)));
+        inc(Result[x].ColoursUsed[(t>>(sx mod 8))AND 1]);
        end;
        4:
        begin
-        inc(Result[x].ColoursUsed[ t AND $0F]);
-        inc(Result[x].ColoursUsed[(t AND $F0)>>4]);
+        //Expand 2bpp to 4bpp, swapping half nibbles
+        if Result[x].BPPOriginal=2 then
+        begin
+         t:=(t>>((sx mod 4)*2))AND$3;//Isolate the pixel and shift it right
+         t:=t<<((sx mod 2)*4);//Shift it left to make it 4bpp
+        end;
+        //Swap nibbles round
+        t:=((t AND$F)<<4)OR((t AND$F0)>>4);
+        buffer[amt]:=buffer[amt]OR(t and($F0>>((sx mod 2)*4)));
+        inc(Result[x].ColoursUsed[(t>>((sx mod 2)*4))and$F]);
        end;
-       8: inc(Result[x].ColoursUsed[t]);
+       8:
+       begin
+        buffer[amt]:=t;
+        inc(Result[x].ColoursUsed[t]);
+       end;
+       16:
+       begin
+        if(Result[x].ModeFlag>>6)mod 2=0then
+        begin
+         buffer[amt  ]:=(t and $7C00)>>10//Blue
+                      or(t and $E0);     //Green
+         buffer[amt+1]:=(t and $300)>>8  //Green
+                      or(t and $1F)<<2   //Red
+                      or(t and $8000)>>8;//Alpha
+        end
+        else
+        begin
+         buffer[amt  ]:=(t and $1F)      //Red
+                      or(t and $E0);     //Green
+         buffer[amt+1]:=(t and $300)>>8  //Green
+                      or(t and $7C00)>>8 //Blue
+                      or(t and $8000)>>8;//Alpha
+        end;
+        if Result[x].TransFormat=3 then
+         buffer[amt+1]:=(buffer[amt+1]and$7F)or(Result[x].Mask[sx,sy]and$80); //Alpha
+       end;
+       32:
+       begin
+        if(Result[x].ModeFlag>>6)mod 2=0then
+        begin
+         buffer[amt+2]:=t and $FF;    //Red
+         buffer[amt+1]:=(t>>8)and$FF; //Green
+         buffer[amt+0]:=(t>>16)and$FF;//Blue
+         buffer[amt+3]:=(t>>24)and$FF;//Alpha
+        end
+        else
+        begin
+         buffer[amt+0]:=t and $FF;    //Blue
+         buffer[amt+1]:=(t>>8)and$FF; //Green
+         buffer[amt+2]:=(t>>16)and$FF;//Red
+         buffer[amt+3]:=(t>>24)and$FF;//Alpha
+        end;
+        if Result[x].TransFormat=3 then
+         buffer[amt+3]:=Result[x].Mask[sx,sy]; //Alpha
+       end;
       end;
      end;
     end;
    end;
-   //Change the Red and Blues around - 16 bpp
-   if Result[x].BPP=16 then
-    repeat
-     //Read it in as a 16 bit value
-     t:=buffer[p2]
-      +(buffer[p2+1])<<8;
-     //Shuffle around
-     t2:=((t AND $7C00)>>10)  //Bits 10-14
-        + (t AND $03E0)       //Bits 5-9
-        +((t AND $001F)<<10); //Bits 0-4
-     //Add to palette
-//      AddToPalette((t AND $7C00)shr 10,
-//                   (t AND $03E0)shr 5,
-//                   t AND $001F,x);
-     //Put back
-     buffer[p2]  :=t2 mod $100;
-     buffer[p2+1]:=t2 div $100;
-     //Move onto next 16 bits
-     inc(p2,2);
-     p:=Length(buffer)-1; //Length is an Integer, p2 is a Cardinal
-    until p2>=p;
-   //Change the Red and Blues around - 32 bpp
-   if Result[x].BPP=32 then
-    repeat
-     //Read it in as a 32 bit value
-     t:=buffer[p2]
-      +(buffer[p2+1])<<8
-      +(buffer[p2+2])<<16
-      +(buffer[p2+3])<<24;
-     //Shuffle around
-     t2:=((t AND $00FF0000)>>16)
-        + (t AND $0000FF00)
-        +((t AND $000000FF)<<16);
-     //Add to palette
-//      AddToPalette((t AND $00FF0000)shr 16,
-//                   (t AND $0000FF00)shr 8,
-//                   (t AND $000000FF),x);
-     //Put back
-     buffer[p2]  := t2      mod $100;
-     buffer[p2+1]:=(t2>>8 ) mod $100;
-     buffer[p2+2]:=(t2>>16) mod $100;
-     buffer[p2+3]:=(t2>>24) mod $100;
-     //Move onto next 32 bits
-     inc(p2,4);
-     p:=Length(buffer)-1; //Length is an Integer, p2 is a Cardinal
-    until p2>=p;
    //Count the number of colours used
    if Result[x].BPP<16 then
    begin
@@ -883,7 +609,7 @@ begin
     FDiagnostic.Add('Number of colours used   : '+IntToStr(Result[x].ColourCount));
    end;
    //Apply the mask
-   if Result[x].TransFormat>0 then
+   if(Result[x].TransFormat=1)or(Result[x].TransFormat=2)then
    begin
     ctr:=-1;
     //Change the pixel to the BGColour, depending on the BPP
@@ -907,59 +633,72 @@ begin
      end;
      //If we have any spare colours, add the mask colour to the palette
      if ctr<>-1 then
-     begin
-      buffer[$36+(ctr*4)]  := Result[x].BGColour      mod $100;//R
-      buffer[$36+(ctr*4)+1]:=(Result[x].BGColour>>8)  mod $100;//G
-      buffer[$36+(ctr*4)+2]:=(Result[x].BGColour>>16) mod $100;//B
-      buffer[$36+(ctr*4)+3]:=(Result[x].BGColour>>24) mod $100;//A
+     begin //TColor format is ABGR, whereas BMP is ARGB
+      buffer[$38+(ctr*4)]:= Result[x].BGColour      mod $100;//R
+      buffer[$37+(ctr*4)]:=(Result[x].BGColour>>8)  mod $100;//G
+      buffer[$36+(ctr*4)]:=(Result[x].BGColour>>16) mod $100;//B
+      buffer[$39+(ctr*4)]:=(Result[x].BGColour>>24) mod $100;//A
      end;
     end;
     //Overlay the mask, overwriting whatever pixels are there with BGColour
     if(ctr>=0)or(Result[x].BPP>8)then
-    for sy:=0 to Result[x].ScanLines do
-     for sx:=0 to Result[x].PixWidth-1 do
-     begin
-      //Is pixel transparent?
-      if Result[x].Mask[sx,sy] then
+     for sy:=0 to Result[x].ScanLines do
+      for sx:=0 to Result[x].PixWidth-1 do
       begin
-       //Pointer to pixel data
-       p2:=buffer[$0A]
-         +(buffer[$0B]<<8)
-         +(buffer[$0C]<<16)
-         +(buffer[$0D]<<24);
-       //Pointer to start of row in bitmap
-       p2:=p2+((Ceil((Result[x].PixWidth*Result[x].BPP)/32)*4)*(Result[x].ScanLines-sy));
-       //Put the mask pixel in
-       case Result[x].BPP of
-        4:
-         if ctr>=0 then
+       //Is pixel transparent?
+       if Result[x].Mask[sx,sy]=$FF then
+       begin
+        //Pointer to pixel data
+        p2:=buffer[$0A]
+          +(buffer[$0B]<<8)
+          +(buffer[$0C]<<16)
+          +(buffer[$0D]<<24);
+        //Pointer to start of row in bitmap
+        p2:=p2+((Ceil((Result[x].PixWidth*Result[x].BPP)/32)*4)*(Result[x].ScanLines-sy));
+        //Put the mask pixel in
+        case Result[x].BPP of
+         4:
+          if ctr>=0 then
+          begin
+           if sx mod 2=0 then
+            buffer[p2+(sx div 2)]:=(buffer[p2+(sx div 2)]AND$0F)or(ctr<<4)
+           else
+            buffer[p2+(sx div 2)]:=(buffer[p2+(sx div 2)]AND$F0)or ctr;
+          end;
+         8: if ctr>=0 then buffer[p2+sx]:=ctr;
+         16: //TColor format is ABGR, whereas BMP is ARGB
          begin
-          if sx mod 2=0 then
-           buffer[p2+(sx div 2)]:=(buffer[p2+(sx div 2)]AND$0F)or(ctr<<4)
-          else
-           buffer[p2+(sx div 2)]:=(buffer[p2+(sx div 2)]AND$F0)or ctr;
+          buffer[p2+(sx*2)]  :=((Result[x].BGColour AND$F80000)>>19)   //B
+                              +((Result[x].BGColour AND$3800)>>6);     //G
+          buffer[p2+(sx*2)+1]:=((Result[x].BGColour AND$C000)>>14)     //G
+                              +((Result[x].BGColour AND$F8)>>1)        //R
+                              +((Result[x].BGColour AND$80000000)>>24);//A
          end;
-        8: if ctr>=0 then buffer[p2+sx]:=ctr;
-        16:
-        begin
-         buffer[p2+(sx*2)]  :=(((Result[x].BGColour AND$F8)>>3)
-                             +((Result[x].BGColour AND$F800)>>6))mod$100;
-         buffer[p2+(sx*2)+1]:=(((Result[x].BGColour AND$F800)>>6)
-                             +((Result[x].BGColour AND$F80000)>>9))div$100;
-        end;
-        32:
-        begin
-         buffer[p2+(sx*4)]  := Result[x].BGColour mod $100;
-         buffer[p2+(sx*4)+1]:=(Result[x].BGColour>>8) mod $100;
-         buffer[p2+(sx*4)+2]:=(Result[x].BGColour>>16) mod $100;
-         buffer[p2+(sx*4)+3]:=(Result[x].BGColour>>24) mod $100;
+         32:
+         begin //TColor format is ABGR, whereas BMP is ARGB
+          buffer[p2+(sx*4)+2]:= Result[x].BGColour mod $100;     //Red
+          buffer[p2+(sx*4)+1]:=(Result[x].BGColour>>8) mod $100; //Green
+          buffer[p2+(sx*4)+0]:=(Result[x].BGColour>>16) mod $100;//Blue
+          //Not sure why, but the next line will make the entire image transparent
+ //         buffer[p2+(sx*4)+3]:=(Result[x].BGColour>>24) mod $100;//Alpha
+         end;
         end;
        end;
-      end;
      end;
    end;
    if Result[x].BPP<>Result[x].BPPOriginal then
     FDiagnostic.Add('New bits per pixel       : '+IntToStr(Result[x].BPP));
+   //Set the bitmap to be transparent, if needed
+   if Result[x].TransFormat<>0 then
+   begin
+    Result[x].Image.Transparent:=True;
+    if Result[x].BPP=16 then
+     Result[x].Image.TransparentColor:=Result[x].BGColour and $00FFFFF7
+    else
+     Result[x].Image.TransparentColor:=Result[x].BGColour mod $1000000;
+   end
+   else
+    Result[x].Image.Transparent:=False;
    //Load the buffer into the bitmap
    ms.Position:=0;
    ms.WriteBuffer(buffer[0],Length(buffer));
@@ -972,6 +711,100 @@ begin
  end;
  //Free up the memory stream
  ms.Free;
+end;
+
+function TSpriteFile.ModeFlag(spritenumber: Integer): String;
+begin
+ Result:='';
+ if(spritenumber>=0)and(spritenumber<Length(FSpriteList))then
+  if FSpriteList[spritenumber].OS=2 then
+   Result:=DecodeModeFlags(FSpriteList[spritenumber].ModeFlag);
+end;
+
+function TSpriteFile.SpriteType(spritenumber: Integer): String;
+begin
+ Result:=DecodeSpriteType(FSpriteList[spritenumber].SpriteType);
+end;
+
+function TSpriteFile.MaskFormat(spritenumber: Integer): String;
+begin
+ Result:=DecodeMaskType(FSpriteList[spritenumber].TransFormat);
+end;
+
+function TSpriteFile.OS(spritenumber: Integer): String;
+begin
+ Result:=DecodeOS(FSpriteList[spritenumber].OS);
+end;
+
+function TSpriteFile.DecodeModeFlags(modeflag: Byte): String;
+begin
+ Result:='';
+ if modeflag AND $1=$1 then
+  Result:=Result+' Full res interlace';
+ if modeflag AND $2=$2 then
+  Result:=Result+' Greyscale';
+ case (modeflag>>4)AND$3 of
+  0: //RGB
+   case modeflag>>6 of
+    0: Result:=Result+' RGB - TBGR';
+    1: Result:=Result+' RGB - TRGB';
+    2: Result:=Result+' RGB - ABGR';
+    3: Result:=Result+' RGB - ARGB';
+   end;
+  1: //Misc
+   case modeflag>>6 of
+    0: Result:=Result+' KYMC';
+    1: Result:=Result+' Reserved';
+    2: Result:=Result+' Reserved';
+    3: Result:=Result+' Reserved';
+   end;
+  2:
+   case modeflag>>6 of
+    0: Result:=Result+' YCbCr - ITU-R BT.601 Full';
+    1: Result:=Result+' YCbCr - ITU-R BT.601 Video';
+    2: Result:=Result+' YCbCr - ITU-R BT.709 Full';
+    3: Result:=Result+' YCbCr - ITU-R BT.709 Video';
+   end;
+  3: Result:=Result+' Reserved';
+ end;
+ if Result[1]=' ' then Result:=Copy(Result,2);
+end;
+
+function TSpriteFile.DecodeSpriteType(spritetype: Byte): String;
+const
+ //Sprite type string
+ ModeStr: array[0..18] of String = ('Arthur mode','1bpp','2bpp','4bpp','8bpp',
+                                    '16bpp 1:5:5:5 TBGR','32bpp 8:8:8:8 TBGR',
+                                    '32bpp CMYK','24bpp','JPEG data',
+                                    '16bpp 5:6:5 TBGR','Reserved','Reserved',
+                                    'Reserved','Reserved','RISC OS 5',
+                                    '16bpp 4:4:4:4','4:2:0 YCbCr','4:2:2 YCbCr');
+begin
+ if spritetype<=High(ModeStr) then
+  Result:=ModeStr[spritetype]
+ else
+  Result:='undefined';
+end;
+
+function TSpriteFile.DecodeMaskType(transformat: Byte): String;
+const
+ masktype : array[0..3] of String = ('None','Old','New','Alpha');
+begin
+ if transformat<=High(masktype) then
+  Result:=masktype[transformat]
+ else
+  Result:='undefined';
+end;
+
+function TSpriteFile.DecodeOS(os: Byte): String;
+const
+ //OS Compatibility string
+ OSstr  : array[0..2]  of String = ('Arthur','RISC OS 3.5','RISC OS 5.0');
+begin
+ if os<=High(OSstr) then
+  Result:=OSstr[os]
+ else
+  Result:='undefined';
 end;
 
 function TSpriteFile.bitmapHeader(sizex,sizey,bpp,cols:Integer;var bmp:array of Byte):Integer;
@@ -1132,11 +965,17 @@ begin
    end;
    if bpp=8 then newbmp[NewPX]:=amt;
    if bpp=16 then
-   begin
-    newbmp[NewPX]  :=(newbmp[NewPX]  AND$F0)OR(buffer[$38+amt*4]and$0F);//Blue
-    newbmp[NewPX]  :=(newbmp[NewPX]  AND$0F)OR(buffer[$37+amt*4]and$0F);//Green
-    newbmp[NewPX+1]:=(newbmp[NewPX+1]AND$F0)OR(buffer[$36+amt*4]and$0F);//Red
-    newbmp[NewPX+1]:=(newbmp[NewPX+1]AND$0F)OR(buffer[$39+amt*4]and$0F);//Alpha
+   begin //BMP 16bpp are stored 1:5:5:5
+    newbmp[NewPX]  :=(newbmp[NewPX  ]AND$E0)
+                  OR((buffer[$36+amt*4]AND$F8)>>3);//Blue bits 0-7 to 0-4
+    newbmp[NewPX]  :=(newbmp[NewPX  ]AND$1F)
+                  OR((buffer[$37+amt*4]AND$38)<<2);//Green bits 8-15 to 5-9
+    newbmp[NewPX+1]:=(newbmp[NewPX+1]AND$FC)
+                  OR((buffer[$37+amt*4]AND$E0)>>6);//Green bits 8-15 to 5-9
+    newbmp[NewPX+1]:=(newbmp[NewPX+1]AND$03)
+                  OR((buffer[$38+amt*4]and$F8)>>1);//Red bits 16-23 to 10-14
+    newbmp[NewPX+1]:=(newbmp[NewPX+1]AND$7F)
+                  OR (buffer[$39+amt*4]and$80);    //Alpha bits 24-31 to 15
    end;
   end;
  //Return the resultant bpp

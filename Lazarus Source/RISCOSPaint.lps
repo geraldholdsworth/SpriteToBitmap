@@ -3,12 +3,12 @@
   <ProjectSession>
     <Version Value="11"/>
     <BuildModes Active="Default"/>
-    <Units Count="6">
+    <Units Count="7">
       <Unit0>
         <Filename Value="RISCOSPaint.lpr"/>
         <IsPartOfProject Value="True"/>
-        <CursorPos X="21" Y="8"/>
-        <UsageCount Value="180"/>
+        <CursorPos X="14" Y="11"/>
+        <UsageCount Value="227"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
@@ -17,11 +17,10 @@
         <ComponentName Value="MainForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="144"/>
-        <CursorPos X="2" Y="166"/>
-        <UsageCount Value="180"/>
+        <TopLine Value="143"/>
+        <CursorPos X="68" Y="252"/>
+        <UsageCount Value="227"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -31,71 +30,166 @@
         <ComponentName Value="BigImageForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="3"/>
-        <CursorPos X="50" Y="6"/>
-        <UsageCount Value="180"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="31"/>
+        <CursorPos X="90" Y="63"/>
+        <UsageCount Value="227"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit2>
       <Unit3>
         <Filename Value="SpriteFile.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="2"/>
-        <TopLine Value="483"/>
-        <CursorPos X="32" Y="502"/>
-        <UsageCount Value="71"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="112"/>
+        <CursorPos X="13" Y="134"/>
+        <UsageCount Value="203"/>
         <Loaded Value="True"/>
       </Unit3>
       <Unit4>
+        <Filename Value="AboutUnit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="AboutForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="23"/>
+        <CursorPos X="26" Y="51"/>
+        <UsageCount Value="62"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit4>
+      <Unit5>
         <Filename Value="ShBrowseU.pas"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="31" Y="5"/>
-        <UsageCount Value="87"/>
-      </Unit4>
-      <Unit5>
-        <Filename Value="/Applications/Lazarus/lcl/intfgraphics.pas"/>
-        <UnitName Value="IntfGraphics"/>
-        <EditorIndex Value="-1"/>
-        <UsageCount Value="1"/>
+        <UsageCount Value="64"/>
       </Unit5>
+      <Unit6>
+        <Filename Value="SpriteFilePalettes.pas"/>
+        <EditorIndex Value="4"/>
+        <UsageCount Value="16"/>
+        <Loaded Value="True"/>
+      </Unit6>
     </Units>
-    <JumpHistory Count="9" HistoryIndex="8">
+    <JumpHistory Count="29" HistoryIndex="28">
       <Position1>
         <Filename Value="SpriteFile.pas"/>
-        <Caret Line="333" Column="70" TopLine="301"/>
+        <Caret Line="59" Column="12" TopLine="51"/>
       </Position1>
       <Position2>
         <Filename Value="SpriteFile.pas"/>
-        <Caret Line="485" Column="57" TopLine="316"/>
+        <Caret Line="708" Column="65" TopLine="534"/>
       </Position2>
       <Position3>
         <Filename Value="SpriteFile.pas"/>
-        <Caret Line="36" Column="11" TopLine="10"/>
+        <Caret Line="289" Column="3" TopLine="117"/>
       </Position3>
       <Position4>
         <Filename Value="SpriteFile.pas"/>
-        <Caret Line="322" Column="5" TopLine="316"/>
+        <Caret Line="60" Column="12" TopLine="47"/>
       </Position4>
       <Position5>
         <Filename Value="SpriteFile.pas"/>
-        <Caret Line="496" Column="79" TopLine="471"/>
+        <Caret Line="768" Column="4" TopLine="747"/>
       </Position5>
       <Position6>
         <Filename Value="SpriteFile.pas"/>
-        <Caret Line="459" Column="64" TopLine="448"/>
+        <Caret Line="68" Column="12" TopLine="46"/>
       </Position6>
       <Position7>
         <Filename Value="SpriteFile.pas"/>
-        <Caret Line="34" Column="73" TopLine="13"/>
+        <Caret Line="721" Column="49" TopLine="708"/>
       </Position7>
       <Position8>
         <Filename Value="SpriteFile.pas"/>
-        <Caret Line="502" Column="83" TopLine="477"/>
+        <Caret Line="62" Column="12" TopLine="51"/>
       </Position8>
       <Position9>
-        <Filename Value="MainUnit.pas"/>
-        <Caret Line="155" Column="29" TopLine="142"/>
+        <Filename Value="SpriteFile.pas"/>
+        <Caret Line="769" Column="23" TopLine="754"/>
       </Position9>
+      <Position10>
+        <Filename Value="SpriteFile.pas"/>
+        <Caret Line="61" Column="12" TopLine="61"/>
+      </Position10>
+      <Position11>
+        <Filename Value="SpriteFile.pas"/>
+        <Caret Line="777" Column="31" TopLine="770"/>
+      </Position11>
+      <Position12>
+        <Filename Value="SpriteFile.pas"/>
+        <Caret Line="299" Column="71" TopLine="283"/>
+      </Position12>
+      <Position13>
+        <Filename Value="SpriteFile.pas"/>
+        <Caret Line="777" Column="32" TopLine="761"/>
+      </Position13>
+      <Position14>
+        <Filename Value="SpriteFile.pas"/>
+        <Caret Line="788" Column="20" TopLine="771"/>
+      </Position14>
+      <Position15>
+        <Filename Value="MainUnit.pas"/>
+        <Caret Line="126" Column="46" TopLine="107"/>
+      </Position15>
+      <Position16>
+        <Filename Value="BigImageUnit.pas"/>
+        <Caret Line="60" Column="90" TopLine="30"/>
+      </Position16>
+      <Position17>
+        <Filename Value="MainUnit.pas"/>
+        <Caret Line="124" Column="39" TopLine="113"/>
+      </Position17>
+      <Position18>
+        <Filename Value="SpriteFile.pas"/>
+        <Caret Line="59" Column="12" TopLine="54"/>
+      </Position18>
+      <Position19>
+        <Filename Value="SpriteFile.pas"/>
+        <Caret Line="561" Column="40" TopLine="554"/>
+      </Position19>
+      <Position20>
+        <Filename Value="SpriteFile.pas"/>
+        <Caret Line="42" Column="45" TopLine="27"/>
+      </Position20>
+      <Position21>
+        <Filename Value="SpriteFile.pas"/>
+        <Caret Line="408" Column="33" TopLine="392"/>
+      </Position21>
+      <Position22>
+        <Filename Value="SpriteFile.pas"/>
+        <Caret Line="511" Column="46" TopLine="489"/>
+      </Position22>
+      <Position23>
+        <Filename Value="SpriteFile.pas"/>
+        <Caret Line="592" Column="55" TopLine="574"/>
+      </Position23>
+      <Position24>
+        <Filename Value="SpriteFile.pas"/>
+        <Caret Line="682" Column="15" TopLine="662"/>
+      </Position24>
+      <Position25>
+        <Filename Value="SpriteFile.pas"/>
+        <Caret Line="594" Column="14" TopLine="394"/>
+      </Position25>
+      <Position26>
+        <Filename Value="SpriteFile.pas"/>
+        <Caret Line="599" Column="5" TopLine="574"/>
+      </Position26>
+      <Position27>
+        <Filename Value="SpriteFile.pas"/>
+        <Caret Line="493" Column="94" TopLine="472"/>
+      </Position27>
+      <Position28>
+        <Filename Value="SpriteFile.pas"/>
+        <Caret Line="490" Column="12" TopLine="474"/>
+      </Position28>
+      <Position29>
+        <Filename Value="SpriteFile.pas"/>
+        <Caret Line="8" Column="41"/>
+      </Position29>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>
@@ -103,10 +197,24 @@
     </RunParams>
   </ProjectSession>
   <Debugging>
-    <Watches Count="1">
+    <Watches Count="5">
       <Item1>
-        <Expression Value="SpriteList.SpriteList[0].Image"/>
+        <Expression Value="t"/>
+        <DisplayStyle Value="wdfHex"/>
       </Item1>
+      <Item2>
+        <Expression Value="sx"/>
+      </Item2>
+      <Item3>
+        <Expression Value="p"/>
+        <DisplayStyle Value="wdfHex"/>
+      </Item3>
+      <Item4>
+        <Expression Value="sy"/>
+      </Item4>
+      <Item5>
+        <Expression Value="bx"/>
+      </Item5>
     </Watches>
   </Debugging>
 </CONFIG>

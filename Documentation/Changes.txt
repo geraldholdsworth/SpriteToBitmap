@@ -19,3 +19,14 @@ Changes
 * Progress bar for loading files and displaying them.
 * Added some more sprite types/mode flags.
 * Described the spite type and mode flags in the diagnostic output.
+
+1.00
+* Correctly deals with 16 and 32 bit TRGB and ARGB formats.
+* Fixed a bug dealing with new style transparent masks.
+* The upscaling from 8 to 16 bpp was not working correctly.
+* Transparent masks where not being shown as transparent for 16bpp bitmaps.
+* Fixed an issue with some 32 bit sprites being shown as totally transparent.
+* Can now deal with wide masks - but does not treat them as an Alpha channel, yet.
+* Merged the code for new and old style masks, thereby reading 1bpp and wide masks.
+* Re-wrote the code to get the sprite and mask data, reducing the code, speeding it up and making it less of a mess.
+* Added more sprite details to the expanded sprite view dialogue window.

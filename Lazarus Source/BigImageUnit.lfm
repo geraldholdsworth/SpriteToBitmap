@@ -2,47 +2,41 @@ object BigImageForm: TBigImageForm
   Left = 342
   Height = 306
   Top = 205
-  Width = 338
+  Width = 653
   Caption = 'BigImageForm'
   ClientHeight = 306
-  ClientWidth = 338
+  ClientWidth = 653
   Color = 15527148
   Font.Color = clWindowText
-  Font.Height = -11
   Font.Name = 'Tahoma'
   Position = poMainFormCenter
+  ShowHint = True
   LCLVersion = '2.0.12.0'
   object ZoomedImage: TImage
     Left = 0
-    Height = 265
+    Height = 306
     Top = 0
-    Width = 338
+    Width = 315
     Align = alClient
     Center = True
     Proportional = True
     Stretch = True
   end
-  object Panel1: TPanel
-    Left = 0
-    Height = 41
-    Top = 265
+  object SpriteDetailsPanel: TPanel
+    Left = 315
+    Height = 306
+    Top = 0
     Width = 338
-    Align = alBottom
-    ClientHeight = 41
+    Align = alRight
+    BevelOuter = bvNone
+    ClientHeight = 306
     ClientWidth = 338
     TabOrder = 0
-    object lb_size: TLabel
-      Left = 8
-      Height = 13
-      Top = 6
-      Width = 33
-      Caption = 'lb_size'
-      ParentColor = False
-    end
     object sb_Save: TSpeedButton
       Left = 8
       Height = 22
-      Top = 19
+      Hint = 'Save sprite as Bitmap'
+      Top = 284
       Width = 23
       Flat = True
       Glyph.Data = {
@@ -61,6 +55,357 @@ object BigImageForm: TBigImageForm
       }
       NumGlyphs = 2
       OnClick = sb_SaveClick
+    end
+    object SizePanel: TPanel
+      Left = 0
+      Height = 32
+      Top = 0
+      Width = 338
+      Align = alTop
+      AutoSize = True
+      BevelOuter = bvNone
+      ClientHeight = 32
+      ClientWidth = 338
+      TabOrder = 0
+      object SizeLabel: TLabel
+        Left = 0
+        Height = 16
+        Top = 0
+        Width = 338
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'Size'
+        Font.Color = clBlue
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object lb_size: TLabel
+        Left = 0
+        Height = 16
+        Top = 16
+        Width = 338
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'lb_size'
+        Font.Color = clWindowText
+        Font.Name = 'Tahoma'
+        ParentColor = False
+        ParentFont = False
+      end
+    end
+    object SpriteTypePanel: TPanel
+      Left = 0
+      Height = 32
+      Top = 256
+      Width = 338
+      Align = alTop
+      AutoSize = True
+      BevelOuter = bvNone
+      ClientHeight = 32
+      ClientWidth = 338
+      TabOrder = 1
+      object SpriteTypeLabel: TLabel
+        Left = 0
+        Height = 16
+        Top = 0
+        Width = 338
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'Sprite Type'
+        Font.Color = clBlue
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object lb_spritetype: TLabel
+        Left = 0
+        Height = 16
+        Top = 16
+        Width = 338
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'lb_size'
+        Font.Color = clWindowText
+        Font.Name = 'Tahoma'
+        ParentColor = False
+        ParentFont = False
+      end
+    end
+    object ModeFlagsPanel: TPanel
+      Left = 0
+      Height = 32
+      Top = 224
+      Width = 338
+      Align = alTop
+      AutoSize = True
+      BevelOuter = bvNone
+      ClientHeight = 32
+      ClientWidth = 338
+      TabOrder = 2
+      object ModeFlagsLabel: TLabel
+        Left = 0
+        Height = 16
+        Top = 0
+        Width = 338
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'Mode Flags'
+        Font.Color = clBlue
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object lb_modeflags: TLabel
+        Left = 0
+        Height = 16
+        Top = 16
+        Width = 338
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'lb_size'
+        Font.Color = clWindowText
+        Font.Name = 'Tahoma'
+        ParentColor = False
+        ParentFont = False
+      end
+    end
+    object BPPPanel: TPanel
+      Left = 0
+      Height = 32
+      Top = 192
+      Width = 338
+      Align = alTop
+      AutoSize = True
+      BevelOuter = bvNone
+      ClientHeight = 32
+      ClientWidth = 338
+      TabOrder = 3
+      object BPPLabel: TLabel
+        Left = 0
+        Height = 16
+        Top = 0
+        Width = 338
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'Bits per pixel'
+        Font.Color = clBlue
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object lb_bpp: TLabel
+        Left = 0
+        Height = 16
+        Top = 16
+        Width = 338
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'lb_size'
+        Font.Color = clWindowText
+        Font.Name = 'Tahoma'
+        ParentColor = False
+        ParentFont = False
+      end
+    end
+    object OSPanel: TPanel
+      Left = 0
+      Height = 32
+      Top = 160
+      Width = 338
+      Align = alTop
+      AutoSize = True
+      BevelOuter = bvNone
+      ClientHeight = 32
+      ClientWidth = 338
+      TabOrder = 4
+      object OSLabel: TLabel
+        Left = 0
+        Height = 16
+        Top = 0
+        Width = 338
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'OS Compatibility'
+        Font.Color = clBlue
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object lb_OS: TLabel
+        Left = 0
+        Height = 16
+        Top = 16
+        Width = 338
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'lb_size'
+        Font.Color = clWindowText
+        Font.Name = 'Tahoma'
+        ParentColor = False
+        ParentFont = False
+      end
+    end
+    object PalettePanel: TPanel
+      Left = 0
+      Height = 32
+      Top = 128
+      Width = 338
+      Align = alTop
+      AutoSize = True
+      BevelOuter = bvNone
+      ClientHeight = 32
+      ClientWidth = 338
+      TabOrder = 5
+      object PaletteLabel: TLabel
+        Left = 0
+        Height = 16
+        Top = 0
+        Width = 338
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'Palette'
+        Font.Color = clBlue
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object lb_palette: TLabel
+        Left = 0
+        Height = 16
+        Top = 16
+        Width = 338
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'lb_size'
+        Font.Color = clWindowText
+        Font.Name = 'Tahoma'
+        ParentColor = False
+        ParentFont = False
+      end
+    end
+    object MaskPanel: TPanel
+      Left = 0
+      Height = 32
+      Top = 96
+      Width = 338
+      Align = alTop
+      AutoSize = True
+      BevelOuter = bvNone
+      ClientHeight = 32
+      ClientWidth = 338
+      TabOrder = 6
+      object MaskLabel: TLabel
+        Left = 0
+        Height = 16
+        Top = 0
+        Width = 338
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'Transparency'
+        Font.Color = clBlue
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object lb_mask: TLabel
+        Left = 0
+        Height = 16
+        Top = 16
+        Width = 338
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'lb_size'
+        Font.Color = clWindowText
+        Font.Name = 'Tahoma'
+        ParentColor = False
+        ParentFont = False
+      end
+    end
+    object ColoursPanel: TPanel
+      Left = 0
+      Height = 32
+      Top = 64
+      Width = 338
+      Align = alTop
+      AutoSize = True
+      BevelOuter = bvNone
+      ClientHeight = 32
+      ClientWidth = 338
+      TabOrder = 7
+      object ColoursLabel: TLabel
+        Left = 0
+        Height = 16
+        Top = 0
+        Width = 338
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'Number of colours used'
+        Font.Color = clBlue
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object lb_colours: TLabel
+        Left = 0
+        Height = 16
+        Top = 16
+        Width = 338
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'lb_size'
+        Font.Color = clWindowText
+        Font.Name = 'Tahoma'
+        ParentColor = False
+        ParentFont = False
+      end
+    end
+    object ModePanel: TPanel
+      Left = 0
+      Height = 32
+      Top = 32
+      Width = 338
+      Align = alTop
+      AutoSize = True
+      BevelOuter = bvNone
+      ClientHeight = 32
+      ClientWidth = 338
+      TabOrder = 8
+      object ModeLabel: TLabel
+        Left = 0
+        Height = 16
+        Top = 0
+        Width = 338
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'Mode Data'
+        Font.Color = clBlue
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object lb_mode: TLabel
+        Left = 0
+        Height = 16
+        Top = 16
+        Width = 338
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'lb_size'
+        Font.Color = clWindowText
+        Font.Name = 'Tahoma'
+        ParentColor = False
+        ParentFont = False
+      end
     end
   end
   object SaveDialog1: TSaveDialog

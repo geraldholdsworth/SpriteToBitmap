@@ -1,15 +1,13 @@
-* Convert from BMP or PNG to Sprite.
-* Deal with sprite type 8 (24bpp),9 (JPEG) and 10 (16bpp 5:6:5).
-* Deal with 1 and 2 bpp masks.
-* Remove diagnostic pad. Move to separate window.
-* Add toolbar and make a proper application.
-* Add sprite name under sprite.
-* Fix mask for 16bpp images (ASprites22,ff9).
-* Fix upscaling from 8bpp to 16bpp (ASprites11,ff9 and ASprites22,ff9).
-* Deal with sprite types 9,17 and 18.
-* Correct the colours for 16 and 32 bpp sprites (sprite types 5 and 6), mode flags TBGR and ARGB (TRGB and ABGR are OK).
-* Decode the Mode Flags bits 8-15 for RISC OS 5.
-* Fix sprite type 10.
-* Fix sprite type 16.
+* Convert from BMP or PNG to Sprite, and export images as sprite file.
+* Save to only BMP or only PNG.
+* Save only palette (move save palette to sprite details window).
+* Save individual sprite as PNG, or as both PNG and BMP.
+* Graphic for Save log file.
+* Deal with sprite type 8 (24bpp),9 (JPEG),17 (4:2:0 YCbCr) and 18 (4:2:2 YCbCr).
+* Deal with mode types 'KYMC' and 'YCbCr - ITU-R'.
+* Fix sprite type 10 (16bpp 5:6:6).
+* Fix sprite type 16 (16bpp 4:4:4:4).
+* Deal with 2 and 24 bpp masks.
 * Figure out how to tell RISC OS 5.21 sprites from RISC OS Select (4? 6?) sprites.
 * Add the monochrome palettes.
+* Application hangs when trying to save images to files which are already open in another application.
