@@ -39,9 +39,6 @@ type
     ZoomedImage: TImage;
     SpriteDetailsPanel: TPanel;
     lb_size: TLabel;
-    sb_Save: TSpeedButton;
-    SaveDialog1: TSaveDialog;
-    procedure sb_SaveClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -54,13 +51,5 @@ var
 implementation
 
 {$R *.lfm}
-
-uses MainUnit;
-
-procedure TBigImageForm.sb_SaveClick(Sender: TObject);
-begin
- if SaveDialog1.Execute then
-  MainForm.SpriteList.SpriteList[ZoomedImage.Tag].Image.SaveToFile(SaveDialog1.FileName);
-end;
 
 end.

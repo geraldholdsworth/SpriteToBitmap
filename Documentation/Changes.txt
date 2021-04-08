@@ -30,3 +30,17 @@ Changes
 * Merged the code for new and old style masks, thereby reading 1bpp and wide masks.
 * Re-wrote the code to get the sprite and mask data, reducing the code, speeding it up and making it less of a mess.
 * Added more sprite details to the expanded sprite view dialogue window.
+
+1.01
+* Method to load a sprite file now returns an error code if unsuccessful.
+* The sprite display, on the main window, now gets arranged so no names overlap.
+* The main window is now resizeable, and the sprites get re-arranged as the window resizes.
+* Double clicking on the sprite name has the same effect as double clicking on the sprite.
+* Single clicking on the sprite or the name will select it.
+* Save as BMP and Save as PNG now enabled.
+* Save As BMP and PNG;Save As BMP;and Save As PNG can now save a single sprite (the one selected).
+* Correctly deals with 16bpp sprite types 10 (5:6:5) and 16 (4:4:4:4).
+* The sprite filename and number of sprites is reported in the status bar at the bottom.
+* Correctly deals with 32bpp sprite type 7 (CMYK).
+* Deals with 8bpp partial palettes.
+* Can now save a RISC OS sprite palette file, from the palette in the selected sprite.

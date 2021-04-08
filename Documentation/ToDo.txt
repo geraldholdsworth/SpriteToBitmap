@@ -1,13 +1,7 @@
 * Convert from BMP or PNG to Sprite, and export images as sprite file.
-* Save to only BMP or only PNG.
-* Save only palette (move save palette to sprite details window).
-* Save individual sprite as PNG, or as both PNG and BMP.
-* Graphic for Save log file.
 * Deal with sprite type 8 (24bpp),9 (JPEG),17 (4:2:0 YCbCr) and 18 (4:2:2 YCbCr).
 * Deal with mode types 'KYMC' and 'YCbCr - ITU-R'.
-* Fix sprite type 10 (16bpp 5:6:6).
-* Fix sprite type 16 (16bpp 4:4:4:4).
 * Deal with 2 and 24 bpp masks.
-* Figure out how to tell RISC OS 5.21 sprites from RISC OS Select (4? 6?) sprites.
 * Add the monochrome palettes.
 * Application hangs when trying to save images to files which are already open in another application.
+* There remains an issue with 32bpp bitmaps. When the alpha channel is set to $FF, everything but the mask is made transparent. However, for some reason, this does not effect Alpha sprites which work perfectly.

@@ -4,13 +4,14 @@ object MainForm: TMainForm
   Top = 103
   Width = 921
   AllowDropFiles = True
-  BorderIcons = [biSystemMenu]
-  BorderStyle = bsSingle
   ClientHeight = 632
   ClientWidth = 921
   Color = 15527148
+  Constraints.MinHeight = 100
+  Constraints.MinWidth = 100
   OnCreate = FormCreate
   OnDropFiles = FormDropFiles
+  OnResize = FormResize
   OnShow = FormShow
   ShowHint = True
   LCLVersion = '2.0.12.0'
@@ -72,6 +73,7 @@ object MainForm: TMainForm
       Top = 2
       Enabled = False
       ImageIndex = 2
+      OnClick = sb_SaveClick
       ShowCaption = False
     end
     object btnSaveAsPNG: TToolButton
@@ -80,6 +82,7 @@ object MainForm: TMainForm
       Top = 2
       Enabled = False
       ImageIndex = 3
+      OnClick = sb_SaveClick
       ShowCaption = False
     end
     object btnSaveSprite: TToolButton
@@ -88,6 +91,7 @@ object MainForm: TMainForm
       Top = 2
       Enabled = False
       ImageIndex = 4
+      OnClick = btnSaveSpriteClick
       ShowCaption = False
     end
     object btnSavePalette: TToolButton
@@ -96,17 +100,18 @@ object MainForm: TMainForm
       Top = 2
       Enabled = False
       ImageIndex = 5
+      OnClick = btnSavePaletteClick
       ShowCaption = False
     end
     object ToolButton1: TToolButton
-      Left = 249
+      Left = 253
       Height = 32
       Top = 2
       Caption = 'ToolButton1'
       Style = tbsSeparator
     end
     object btnAbout: TToolButton
-      Left = 257
+      Left = 261
       Hint = 'About'
       Top = 2
       ImageIndex = 6
@@ -127,6 +132,9 @@ object MainForm: TMainForm
     Top = 614
     Width = 921
     Panels = <    
+      item
+        Width = 100
+      end    
       item
         Width = 512
       end>
@@ -4775,11 +4783,25 @@ object MainForm: TMainForm
       BF00CBCBCB00D3D3D300DADADA00
     }
   end
-  object SaveDialog1: TSaveDialog
+  object SaveTextFile: TSaveDialog
     Title = 'Save diagnostics information'
     DefaultExt = '.txt'
     Filter = 'Text file|*.txt'
     Left = 316
+    Top = 224
+  end
+  object SaveSpriteFile: TSaveDialog
+    Title = 'Save Sprite File'
+    DefaultExt = '.sprite'
+    Filter = 'Acorn Sprite File|*.sprite'
+    Left = 408
+    Top = 224
+  end
+  object SavePaletteFile: TSaveDialog
+    Title = 'Save Palette File'
+    DefaultExt = '.pal'
+    Filter = 'Acorn Sprite Palette|*.pal'
+    Left = 484
     Top = 224
   end
 end

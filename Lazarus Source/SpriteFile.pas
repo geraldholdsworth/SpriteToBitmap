@@ -28,6 +28,7 @@ type
    PixWidth,                                 // Width of sprite in pixels (calculated)
    PaletteColours,                           // Number of palette entries (calculated) <16bpp
    BGColour      : Cardinal;                 // Mask colour
+   HasPalette    : Boolean;                  // Does sprite have a palette?
    ColoursUsed   : array of Integer;         // Tally of each colour used (calculated)
    ColourCount   : Integer;                  // Keep track of how many colours are used (calculated)
    ModeFlag,                                 // Mode flag (calculated)
@@ -35,9 +36,9 @@ type
    BPP,                                      // Bits per pixel (calculated)
    BPPOriginal,                              // Original BPP
    OS,                                       // Risc OS compatibility
+   PaletteType,                              // What type of palette? Yes (1), No (0) or Partial (2)
    TransFormat   : Byte;                     // Old (1), New (2) or no (0) mask format (calculated)
    Palette       : array of Byte;            // Palette (if not in file, loaded from resource or built from pixel data)
-   PaletteType   : String;                   // What type of palette? Yes, No or Partial
    Image         : TBitmap;                  // Actual bitmap image
    Mask          : array of array of Byte    // Transparency Mask (converted to true/false)
    //Change the Mask property to a cardinal, so that a full alpha channel value
@@ -47,11 +48,12 @@ type
   //Provides feedback
   TProgressProc = procedure(Fupdate: Integer) of Object;
  private
+  Fdata : array of Byte; //The actual sprite file
   FSpriteList: TSprites;
   FSpriteFile: String;
   FDiagnostic: TStringList;
   FProgress  : TProgressProc;//Used for feedback
-  function ReadSpriteFile(data: array of Byte): TSprites;
+  function ReadSpriteFile(data: array of Byte;var error: Byte): TSprites;
   function bitmapHeader(sizex,sizey,bpp,cols:Integer;var bmp:array of Byte):Integer;
   procedure ExpandBPP(var OldBPP: Byte;var buffer:TDynByteArray);
   procedure AddToPalette(r,g,b: Byte;Sprite: TSprite);
@@ -60,14 +62,18 @@ type
   function DecodeSpriteType(spritetype: Byte): String;
   function DecodeMaskType(transformat: Byte): String;
   function DecodeOS(os: Byte): String;
+  function DecodePaletteType(pal: Byte): String;
   {$INCLUDE 'SpriteFilePalettes.pas'}
  published
   constructor Create;
-  procedure LoadSpriteFile(Afilename: String);
+  function LoadSpriteFile(Afilename: String):Byte;
+  function SaveSpriteFile(Afilename: String):Boolean;
+  function SavePaletteFile(Afilename: String;sprite: Integer):Boolean;
   function ModeFlag(spritenumber: Integer): String;
   function SpriteType(spritenumber: Integer): String;
   function MaskFormat(spritenumber: Integer): String;
   function OS(spritenumber: Integer): String;
+  function PaletteType(spritenumber: Integer): String;
   property SpriteList: TSprites read FSpriteList;
   property SpriteFile: String   read FSpriteFile;
   property LogFile: TStringList read FDiagnostic;
@@ -86,19 +92,74 @@ begin
  FDiagnostic:=TStringList.Create;
 end;
 
-procedure TSpriteFile.LoadSpriteFile(Afilename: String);
+function TSpriteFile.LoadSpriteFile(Afilename: String):Byte;
 var
- F: TFileStream;
- data: array of Byte;
+ F    : TFileStream;
+ error: Byte;
 begin
+ error:=3;
  //Open the file and read the data in
- F:=TFileStream.Create(Afilename,fmOpenRead or fmShareDenyNone);
- F.Position:=0;
- SetLength(data,F.Size+4);
- F.Read(data[$04],F.Size);
- F.Free;
- FSpriteFile:=Afilename;
- FSpriteList:=ReadSpriteFile(data);
+ try
+  F:=TFileStream.Create(Afilename,fmOpenRead or fmShareDenyNone);
+  F.Position:=0;
+  SetLength(Fdata,F.Size+4);
+  F.Read(Fdata[$04],F.Size);
+  F.Free;
+  FSpriteFile:=Afilename;
+  FSpriteList:=ReadSpriteFile(Fdata,error);
+ finally
+  Result:=error;
+ end;
+end;
+
+function TSpriteFile.SaveSpriteFile(Afilename: String):Boolean;
+var
+ F    : TFileStream;
+begin
+ if Length(Fdata)>4 then
+ begin
+  //Create the file and write the data out
+  try
+   F:=TFileStream.Create(Afilename,fmCreate or fmShareDenyNone);
+   F.Write(Fdata[$04],Length(Fdata)-4);
+   F.Free;
+   Result:=True;
+  except
+   Result:=False;
+  end;
+ end;
+end;
+
+function TSpriteFile.SavePaletteFile(Afilename: String;sprite: Integer):Boolean;
+var
+ F     : TFileStream;
+ buffer: array of Byte;
+ x     : Integer;
+begin
+ if sprite<Length(FSpriteList) then
+  if FSpriteList[sprite].HasPalette then
+  begin
+   //Create the data to save - num of colours * 6 bytes
+   SetLength(buffer,(Length(FSpriteList[sprite].Palette)div 4)*6);
+   for x:=0 to (Length(FSpriteList[sprite].Palette)div 4)-1 do
+   begin
+    buffer[x*6+0]:=19; //VDU19,col,16,R,G,B
+    buffer[x*6+1]:=x;
+    buffer[x*6+2]:=16;
+    buffer[x*6+3]:=FSpriteList[sprite].Palette[x*4+2];//Red
+    buffer[x*6+4]:=FSpriteList[sprite].Palette[x*4+1];//Green
+    buffer[x*6+5]:=FSpriteList[sprite].Palette[x*4+0];//Blue
+   end;
+   //Create the file and write the data out
+   try
+    F:=TFileStream.Create(Afilename,fmCreate or fmShareDenyNone);
+    F.Write(buffer[0],Length(buffer));
+    F.Free;
+    Result:=True;
+   except
+    Result:=False;
+   end;
+  end;
 end;
 
 destructor TSpriteFile.Destroy;
@@ -106,10 +167,13 @@ begin
  inherited;
 end;
 
-function TSpriteFile.ReadSpriteFile(data: array of Byte): TSprites;
+function TSpriteFile.ReadSpriteFile(data: array of Byte;var error:Byte): TSprites;
 var
   buffer     : array of Byte;
-  maskbpp    : Byte;
+  maskbpp,
+  r,g,b,a,
+  swap,
+  c,m,y,k    : Byte;
   x,sprites,
   amt,ctr    : Integer;
   ptr,sx,sy,
@@ -117,6 +181,7 @@ var
   t2,tp,size,
   endoffile  : Cardinal;
   ms         : TMemoryStream;
+  mask       : Boolean;
 const
  BGColour = $FFFF00FF;
  //BPP colour depth of the Arthur/RISC OS 2/RISC OS 3.1 modes
@@ -132,6 +197,7 @@ begin
  SetLength(Result,0);
  FDiagnostic.Clear;
  maskbpp:=0;
+ error:=0;
  //Create the memory stream
  ms:=TMemoryStream.Create;
  //Sprite file header ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -164,6 +230,7 @@ begin
   SetLength(Result,0);
   FDiagnostic.Clear;
   FDiagnostic.Add('Invalid Sprite File - pointer to end of file or first sprite is bigger than file size.');
+  error:=1;
   exit;
  end;
  //Set up the structure
@@ -188,6 +255,7 @@ begin
    SetLength(Result,0);
    FDiagnostic.Clear;
    FDiagnostic.Add('Invalid Sprite File - pointer to next sprite is beyond the end of the file.');
+   error:=2;
    exit;
   end;
   //Sprite name
@@ -200,6 +268,11 @@ begin
   end;
   //Still no spritename? Can't save it to disc.
   if Result[x].Name='' then Result[x].Name:='Sprite'+IntToStr(x);
+  //Remove any extraneous spaces from the beginning or end
+  while(Result[x].Name[Length(Result[x].Name)]=' ')and(Length(Result[x].Name)>1)do
+   Result[x].Name:=LeftStr(Result[x].Name,Length(Result[x].Name)-1);
+  while(Result[x].Name[1]=' ')and(Length(Result[x].Name)>1)do
+   Result[x].Name:=RightStr(Result[x].Name,Length(Result[x].Name)-1);
   FDiagnostic.Add('Sprite Name              : '+Result[x].Name);
   //Width of sprite (in words) minus 1
   Result[x].WidthWord :=(data[ptr+$13]<<24)
@@ -290,6 +363,7 @@ begin
   if Result[x].BPP=2 then Result[x].BPP:=4; //Bitmaps don't have 2bpp
   FDiagnostic.Add('Sprite Type              : '+IntToStr(Result[x].SpriteType));
   FDiagnostic.Add('Sprite Type meaning      : '+DecodeSpriteType(Result[x].SpriteType));
+  if Result[x].SpriteType=7 then Result[x].OS:=3;
   //Expand on RISC OS 5 details
   if Result[x].OS=2 then
   begin
@@ -312,17 +386,45 @@ begin
     p:=Result[x].Transparency
    else
     p:=Result[x].PixelData;
-   //If we have, then read it in
-   if (p>$2C) AND (Result[x].BPPOriginal<16) then
+   //By default
+   Result[x].PaletteType:=0;
+   Result[x].HasPalette:=False;
+   if Result[x].BPPOriginal<16 then //sprites with bpp of 16 or more have no palette
    begin
-    //Palette is in the file
-    Result[x].PaletteType:='Yes';
-    //Number of entries in palette
-    Result[x].PaletteColours:=(p-$2C) div 8;
-    SetLength(Result[x].Palette,Result[x].PaletteColours*4);
-    //For bpp less than 8, or 8bpp with full palette
-    if (Result[x].BPPOriginal<8)
-    or((Result[x].BPPOriginal=8) and (Result[x].PaletteColours=256)) then
+    if p>$2C then //Yes, palette is in the file
+    begin
+     Result[x].PaletteType:=1;
+     Result[x].HasPalette:=True;
+     //Number of entries in palette
+     Result[x].PaletteColours:=(p-$2C) div 8;
+     //Partial palette? 8bpp only
+     if(Result[x].BPPOriginal=8)AND(Result[x].PaletteColours<256)then
+      Result[x].PaletteType:=2;
+    end;
+    //Assign enough memory for the palette
+    SetLength(Result[x].Palette,(1<<Result[x].BPPOriginal)*4);
+    //We don't have a palette in file, or it is partial
+    if(not Result[x].HasPalette)or(Result[x].PaletteType=2)then
+    begin
+     //Use standard palette (constants in file SpriteFilePalettes.pas)
+     SetLength(buffer,0);
+     case Result[x].BPPOriginal of
+      1: buffer:=ColourPalette2;    //2 colour palette
+      2: buffer:=ColourPalette4;    //4 colour palette
+      4: buffer:=ColourPalette16;   //16 colour palette
+      8: buffer:=ColourPalette256;  //256 colour palette
+     end;
+     //Extract the palette entries, discarding the VDU19,cn,16
+     for t:=0 to (1<<Result[x].BPPOriginal)-1 do
+     begin
+      Result[x].Palette[ t*4   ]:=buffer[(t*6)+5];//Blue
+      Result[x].Palette[(t*4)+1]:=buffer[(t*6)+4];//Green
+      Result[x].Palette[(t*4)+2]:=buffer[(t*6)+3];//Red
+      Result[x].Palette[(t*4)+3]:=$00;            //Alpha
+     end;
+    end;
+    //We do have a palette in file - if partial, we will overwrite the standard one
+    if Result[x].HasPalette then
     begin
      sx:=0;  //Pointer into our palette
      t:=$2C; //Pointer into the data
@@ -336,37 +438,7 @@ begin
      until sx>=Result[x].PaletteColours*4; //t>=p-1;
     end;
    end;
-   //We don't have a palette in file
-   if (p=$2C) OR ((Result[x].BPPOriginal=8)AND(Result[x].PaletteColours<256))then
-   begin
-    //Use standard palette (constants at top of class definition)
-    if(Result[x].BPPOriginal=8)AND(Result[x].PaletteColours>0)
-                               AND(Result[x].PaletteColours<256)then
-     Result[x].PaletteType:='Partial'
-    else
-     Result[x].PaletteType:='No';
-    if Result[x].BPPOriginal<16 then //BPP of 16,24 and 32 have no palette
-    begin
-     SetLength(buffer,0);
-     case Result[x].BPPOriginal of
-      1: buffer:=ColourPalette2;    //2 colour palette
-      2: buffer:=ColourPalette4;    //4 colour palette
-      4: buffer:=ColourPalette16;   //16 colour palette
-      8: buffer:=ColourPalette256;  //256 colour palette
-     end;
-     //Assign enough memory for the palette
-     SetLength(Result[x].Palette,(1<<Result[x].BPPOriginal)*4);
-     //Extract the palette entries, discarding the VDU19,cn,16
-     for t:=0 to (1<<Result[x].BPPOriginal)-1 do
-     begin
-      Result[x].Palette[ t*4   ]:=buffer[(t*6)+5];//Red
-      Result[x].Palette[(t*4)+1]:=buffer[(t*6)+4];//Green
-      Result[x].Palette[(t*4)+2]:=buffer[(t*6)+3];//Blue
-      Result[x].Palette[(t*4)+3]:=$00;            //Alpha
-     end;
-    end;
-   end;
-   FDiagnostic.Add('Palette                  : '+Result[x].PaletteType);
+   FDiagnostic.Add('Palette                  : '+DecodePaletteType(Result[x].PaletteType));
    FDiagnostic.Add('Number of palette colours: '+IntToStr(Result[x].PaletteColours));
    //Assign the background colour, which will be transparent
    Result[x].BGColour:=BGColour;
@@ -503,17 +575,19 @@ begin
         for bx:=0 to Ceil(maskbpp/8)-1 do t:=t+data[tp+bx]<<(bx*8);
         //Take account of the left hand wastage
         t:=t>>(Result[x].LeftBit mod 8);
+        mask:=False;
         case maskbpp of
-         1: Result[x].Mask[sx,sy]:=$FF XOR(t and($1<<(sx mod 8)));    //1bpp
-         2: Result[x].Mask[sx,sy]:=$FF XOR(t and($3<<((sx mod 4)*2)));//2bpp
-         4: Result[x].Mask[sx,sy]:=$FF XOR(t AND($F<<((sx mod 2)*4)));//4bpp
-         8,  //8bpp - wide mask, this is an alpha value
+         1: mask:=t and($1<<(sx mod 8))=0;//Result[x].Mask[sx,sy]:=$FF XOR(t and($1<<(sx mod 8)));    //1bpp
+         2: mask:=t and($3<<((sx mod 4)*2))=0;//Result[x].Mask[sx,sy]:=$FF XOR(t and($3<<((sx mod 4)*2)));//2bpp
+         4: mask:=t AND($F<<((sx mod 2)*4))=0;//Result[x].Mask[sx,sy]:=$FF XOR(t AND($F<<((sx mod 2)*4)));//4bpp
+         8,  //8bpp
          16, //16bpp
          24, //24bpp
-         32: Result[x].Mask[sx,sy]:=$FF XOR(t and $FF); //32bpp
+         32: mask:=t and $FF=0;//Result[x].Mask[sx,sy]:=$FF XOR(t and $FF); //32bpp
         end;
+        if mask then Result[x].Mask[sx,sy]:=$FF else Result[x].Mask[sx,sy]:=$00;
         if Result[x].TransFormat=3 then //Wide mask, so this is the alpha value
-         Result[x].Mask[sx,sy]:=Result[x].Mask[sx,sy] XOR $FF;
+         Result[x].Mask[sx,sy]:=t and $FF;//Result[x].Mask[sx,sy] XOR $FF;
        end;
      //Pointer to pixel in sprite
      p:=Result[x].PixelData+ptr+
@@ -557,43 +631,85 @@ begin
        end;
        16:
        begin
-        if(Result[x].ModeFlag>>6)mod 2=0then
+        //Default values
+        r:=0;
+        g:=0;
+        b:=0;
+        a:=0;
+        //1:5:5:5 - Sprite Type 5
+        if Result[x].SpriteType=5 then
         begin
-         buffer[amt  ]:=(t and $7C00)>>10//Blue
-                      or(t and $E0);     //Green
-         buffer[amt+1]:=(t and $300)>>8  //Green
-                      or(t and $1F)<<2   //Red
-                      or(t and $8000)>>8;//Alpha
-        end
-        else
-        begin
-         buffer[amt  ]:=(t and $1F)      //Red
-                      or(t and $E0);     //Green
-         buffer[amt+1]:=(t and $300)>>8  //Green
-                      or(t and $7C00)>>8 //Blue
-                      or(t and $8000)>>8;//Alpha
+         b:=(t AND $7C00)>>7;
+         g:=(t AND $3E0)>>2;
+         r:=(t AND $1F)<<3;
+         a:=(t AND $8000)>>8;
         end;
+        //5:6:5 - Sprite Type 10
+        if Result[x].SpriteType=10 then
+        begin
+         b:=(t AND $F800)>>8;
+         g:=(t AND $7E0)>>3;
+         r:=(t AND $1F)<<3;
+         a:=0;
+        end;
+        //4:4:4:4 - Sprite Type 16
+        if Result[x].SpriteType=16 then
+        begin
+         b:=(t AND $F000)>>8;
+         g:=(t AND $F00)>>4;
+         r:= t AND $F0;
+         a:=(t AND $F)<<4;
+        end;
+        // Is it RGB instead of BGR?
+        if(Result[x].ModeFlag>>6)mod 2=1then
+        begin
+         //Swap the blue and red around
+         swap:=b;
+         b:=r;
+         r:=swap;
+        end;
+        //Write to the bitmap
+        buffer[amt  ]:=b>>3 or g<<2;
+        buffer[amt+1]:=g>>6 or r>>1 or a;
+        //Does it have an alpha channel?
         if Result[x].TransFormat=3 then
          buffer[amt+1]:=(buffer[amt+1]and$7F)or(Result[x].Mask[sx,sy]and$80); //Alpha
        end;
        32:
        begin
-        if(Result[x].ModeFlag>>6)mod 2=0then
+        //BGR
+        r:=t and $FF;
+        g:=(t>>8)and$FF;
+        b:=(t>>16)and$FF;
+        a:=(t>>24)and$FF;
+        //Does not take account of ModeFlag 'Misc', being CMYK
+        if(Result[x].ModeFlag>>6)mod 2=1then//RGB
         begin
-         buffer[amt+2]:=t and $FF;    //Red
-         buffer[amt+1]:=(t>>8)and$FF; //Green
-         buffer[amt+0]:=(t>>16)and$FF;//Blue
-         buffer[amt+3]:=(t>>24)and$FF;//Alpha
-        end
-        else
+         swap:=b;
+         b:=r;
+         r:=swap;
+        end;
+        if Result[x].SpriteType=7 then
         begin
-         buffer[amt+0]:=t and $FF;    //Blue
-         buffer[amt+1]:=(t>>8)and$FF; //Green
-         buffer[amt+2]:=(t>>16)and$FF;//Red
-         buffer[amt+3]:=(t>>24)and$FF;//Alpha
+         //CMYK is stored KKYYMMCC, so k is a, y is b, m is g and r is c
+         c:=r;
+         m:=g;
+         y:=b;
+         k:=a;
+         //Convert CMYK to RGB
+         r:=Round(255*(1-c/255)*(1-k/255));
+         g:=Round(255*(1-m/255)*(1-k/255));
+         b:=Round(255*(1-y/255)*(1-k/255));
+         //And blank off the alpha
+         a:=0;
         end;
         if Result[x].TransFormat=3 then
-         buffer[amt+3]:=Result[x].Mask[sx,sy]; //Alpha
+         a:=Result[x].Mask[sx,sy]; //Alpha
+        //Write the values
+        buffer[amt+0]:=b;
+        buffer[amt+1]:=g;
+        buffer[amt+2]:=r;
+        buffer[amt+3]:=a;
        end;
       end;
      end;
@@ -680,7 +796,7 @@ begin
           buffer[p2+(sx*4)+1]:=(Result[x].BGColour>>8) mod $100; //Green
           buffer[p2+(sx*4)+0]:=(Result[x].BGColour>>16) mod $100;//Blue
           //Not sure why, but the next line will make the entire image transparent
- //         buffer[p2+(sx*4)+3]:=(Result[x].BGColour>>24) mod $100;//Alpha
+//          buffer[p2+(sx*4)+3]:=(Result[x].BGColour>>24) mod $100;//Alpha
          end;
         end;
        end;
@@ -689,12 +805,12 @@ begin
    if Result[x].BPP<>Result[x].BPPOriginal then
     FDiagnostic.Add('New bits per pixel       : '+IntToStr(Result[x].BPP));
    //Set the bitmap to be transparent, if needed
-   if Result[x].TransFormat<>0 then
+   if(Result[x].TransFormat<>0){and(Result[x].BPP<>32)}then
    begin
     Result[x].Image.Transparent:=True;
     if Result[x].BPP=16 then
      Result[x].Image.TransparentColor:=Result[x].BGColour and $00FFFFF7
-    else
+    else// if Result[x].BPP<>32 then
      Result[x].Image.TransparentColor:=Result[x].BGColour mod $1000000;
    end
    else
@@ -734,6 +850,11 @@ end;
 function TSpriteFile.OS(spritenumber: Integer): String;
 begin
  Result:=DecodeOS(FSpriteList[spritenumber].OS);
+end;
+
+function TSpriteFile.PaletteType(spritenumber: Integer): String;
+begin
+ Result:=DecodePaletteType(FSpriteList[spritenumber].PaletteType);
 end;
 
 function TSpriteFile.DecodeModeFlags(modeflag: Byte): String;
@@ -799,10 +920,21 @@ end;
 function TSpriteFile.DecodeOS(os: Byte): String;
 const
  //OS Compatibility string
- OSstr  : array[0..2]  of String = ('Arthur','RISC OS 3.5','RISC OS 5.0');
+ OSstr  : array[0..3]  of String = ('Arthur','RISC OS 3.5','RISC OS 5.21','RISC OS SIX');
 begin
  if os<=High(OSstr) then
   Result:=OSstr[os]
+ else
+  Result:='undefined';
+end;
+
+function TSpriteFile.DecodePaletteType(pal: Byte): String;
+const
+ //Palette Types
+ palStr : array[0..2] of String = ('No','Yes','Yes - Partial');
+begin
+ if pal<=High(palStr) then
+  Result:=palStr[pal]
  else
   Result:='undefined';
 end;
