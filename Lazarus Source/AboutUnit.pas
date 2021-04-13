@@ -40,6 +40,7 @@ type
     WrittenByLabel: TLabel;
     lb_Version: TLabel;
     GHWebsiteLabel: TLabel;
+    procedure CreditsPanelPaint(Sender: TObject);
   private
     { Private declarations }
   public
@@ -52,5 +53,17 @@ var
 implementation
 
 {$R *.lfm}
+
+uses MainUnit;
+
+{ TAboutForm }
+
+procedure TAboutForm.CreditsPanelPaint(Sender: TObject);
+begin
+ if Sender is TForm then
+  MainForm.TileCanvas(TForm(Sender).Canvas);
+ if Sender is TPanel then
+  MainForm.TileCanvas(TPanel(Sender).Canvas);
+end;
 
 end.

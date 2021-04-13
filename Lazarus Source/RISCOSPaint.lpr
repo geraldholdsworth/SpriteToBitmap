@@ -8,8 +8,9 @@ uses
   Forms, Interfaces,
   MainUnit in 'MainUnit.pas' {MainForm},
   BigImageUnit in 'BigImageUnit.pas',
-  SpriteFile, {BigImageForm}
-  AboutUnit in 'AboutUnit.pas';
+  SpriteFile, Global, {BigImageForm}
+  AboutUnit in 'AboutUnit.pas',
+  SettingsUnit in 'SettingsUnit.pas';
 
 {$R *.res}
 
@@ -20,6 +21,7 @@ begin
   Application.CreateForm(TMainForm, MainForm);
   Application.CreateForm(TBigImageForm, BigImageForm);
   Application.CreateForm(TAboutForm, AboutForm);
+ Application.CreateForm(TSettingsForm, SettingsForm);
   Application.Run;
 end.
  

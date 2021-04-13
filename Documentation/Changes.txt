@@ -44,3 +44,23 @@ Changes
 * Correctly deals with 32bpp sprite type 7 (CMYK).
 * Deals with 8bpp partial palettes.
 * Can now save a RISC OS sprite palette file, from the palette in the selected sprite.
+
+1.02
+* Changed the method to which the sprites are converted to. A PNG file is now created, as each sprite is read, maintaining the transparency mask. This is then converted to Windows Bitmap at the end of each sprite conversion, complete with Alpha channel. All PNGs/Bitmaps are now created as 32bpp.
+* Removed (or, rather, commented out) all the code to create the bitmaps.
+* Removed the creation of the log file.
+* Removed the class properties of BGColour, ColoursUsed, ColourCount, BPPOriginal and LogFile.
+* Added in properties of SpriteCount, FirstSprite, and LastFreeWord. These are so that a log file can be manually created if it is required.
+* Moved the code to check for RGB/BGR to overall, instead of one in 16bpp and one in 32bpp.
+* Now checks for ModeFlag being 'RGB' when checking if BGR or RGB.
+* Now checks the ModeFlag for 'Misc' and 'CMYK', alongside checking for Sprite Type 7.
+* Correctly deals with 2bpp masks.
+* Tiled the window backgrounds.
+* Fixed a bug where resizing the main window while the sprite file was loading would cause the application to crash.
+* Correctly identifies 'old' and 'new' style masks.
+* Can now import PNG, BMP and JPEG files into a sprite file. Resultant sprite is either Arthur or RISC OS 3.5 compatible, depending on the setting passed and what colour depth has been detected (unless it has an Alpha, in which case it is RISC OS 4.39 compatible).
+* Properly frees up the memory when a sprite file is closed, prior to another being opened.
+* Moved the code to read individual sprites to a separate function so that it can be called after importing an image, as a confidence check.
+* New button to set options.
+* New button to close current sprite file.
+* New button to import images.

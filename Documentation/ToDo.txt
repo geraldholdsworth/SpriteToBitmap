@@ -1,7 +1,15 @@
-* Convert from BMP or PNG to Sprite, and export images as sprite file.
 * Deal with sprite type 8 (24bpp),9 (JPEG),17 (4:2:0 YCbCr) and 18 (4:2:2 YCbCr).
-* Deal with mode types 'KYMC' and 'YCbCr - ITU-R'.
-* Deal with 2 and 24 bpp masks.
+* Deal with mode types 'YCbCr - ITU-R'.
 * Add the monochrome palettes.
 * Application hangs when trying to save images to files which are already open in another application.
-* There remains an issue with 32bpp bitmaps. When the alpha channel is set to $FF, everything but the mask is made transparent. However, for some reason, this does not effect Alpha sprites which work perfectly.
+* Make Application High-DPI aware.
+* Remove commented code.
+* Improve the comments for the existing code.
+* Need a button to close a sprite file.
+* Rename sprite.
+* Delete sprite(s).
+* Multi-select sprites.
+* Add button for importing image(s).
+* Allow multi-image importing in one go.
+* Add a 'IsValidSpriteFile' function to the class.
+* If a sprite file is already open and another is loaded, then merge the two.

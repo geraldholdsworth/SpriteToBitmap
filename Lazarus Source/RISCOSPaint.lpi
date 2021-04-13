@@ -17,7 +17,7 @@
     <VersionInfo>
       <UseVersionInfo Value="True"/>
       <MajorVersionNr Value="1"/>
-      <MinorVersionNr Value="1"/>
+      <MinorVersionNr Value="2"/>
       <Language Value="0809"/>
       <StringTable FileDescription="Sprite Converter"/>
     </VersionInfo>
@@ -187,7 +187,7 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="5">
+    <Units Count="7">
       <Unit0>
         <Filename Value="RISCOSPaint.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -217,6 +217,17 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit4>
+      <Unit5>
+        <Filename Value="Global.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="SettingsUnit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="SettingsForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit6>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
