@@ -64,3 +64,14 @@ Changes
 * New button to set options.
 * New button to close current sprite file.
 * New button to import images.
+
+1.03
+* Completely restructured the class code to tidy it up and make it faster.
+* When a sprite file is now opened, it is appended to any sprite file already open. The sprites loaded are treated as if they are in a sprite pool.
+* If more than one file is dragged into the application, or more than one selected on the open file dialogue box, then all selected files will attempted to be opened, appending to the first.
+* Sprite pool size (and, hence, file size) is now reported in the status bar.
+* Can now rename sprites.
+* Clicking away from a sprite will now de-select it, if selected.
+* Can now delete sprites.
+* Application is now High-DPI Aware.
+* Found that, on Windows, the sprite area was not completely tiled.

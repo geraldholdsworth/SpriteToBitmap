@@ -1,0 +1,4204 @@
+Number of sprites in file: 200
+Pointer to first sprite  : 0x00000010
+Pointer to last free word: 0x00078130
+-------------------------------------
+Memory Pointer           : 00000010
+-------------------------------------
+Sprite                   : 0
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : !alarm
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 13
+-------------------------------------
+Memory Pointer           : 000009CC
+-------------------------------------
+Sprite                   : 1
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : !calc
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 14
+-------------------------------------
+Memory Pointer           : 00001388
+-------------------------------------
+Sprite                   : 2
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : !chars
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 11
+-------------------------------------
+Memory Pointer           : 00001D44
+-------------------------------------
+Sprite                   : 3
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : !configure
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 12
+-------------------------------------
+Memory Pointer           : 00002700
+-------------------------------------
+Sprite                   : 4
+Pointer to next sprite   : 0x00000BBC
+Sprite Name              : !draw
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000022C
+Transparent Data offset  : 0x000006F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : Yes
+Number of palette colours: 64
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 18
+-------------------------------------
+Memory Pointer           : 000032BC
+-------------------------------------
+Sprite                   : 5
+Pointer to next sprite   : 0x00000BBC
+Sprite Name              : !edit
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000022C
+Transparent Data offset  : 0x000006F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : Yes
+Number of palette colours: 64
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 20
+-------------------------------------
+Memory Pointer           : 00003E78
+-------------------------------------
+Sprite                   : 6
+Pointer to next sprite   : 0x000004F4
+Sprite Name              : !help
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000002C
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : No
+Number of colours used   : 19
+-------------------------------------
+Memory Pointer           : 0000436C
+-------------------------------------
+Sprite                   : 7
+Pointer to next sprite   : 0x00000BBC
+Sprite Name              : !paint
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000022C
+Transparent Data offset  : 0x000006F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : Yes
+Number of palette colours: 64
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 21
+-------------------------------------
+Memory Pointer           : 00004F28
+-------------------------------------
+Sprite                   : 8
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : !printers
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 13
+-------------------------------------
+Memory Pointer           : 000058E4
+-------------------------------------
+Sprite                   : 9
+Pointer to next sprite   : 0x0000079C
+Sprite Name              : acddisc
+Width in words           : 7
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000003E4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 28
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 13
+-------------------------------------
+Memory Pointer           : 00006080
+-------------------------------------
+Sprite                   : 10
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : application
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 14
+-------------------------------------
+Memory Pointer           : 00006A3C
+-------------------------------------
+Sprite                   : 11
+Pointer to next sprite   : 0x0000A58C
+Sprite Name              : artaclogo
+Width in words           : 63
+Height in scan lines     : 84
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000052DC
+Mode data                : 0x00000015
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 250
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 67
+-------------------------------------
+Memory Pointer           : 00010FC8
+-------------------------------------
+Sprite                   : 12
+Pointer to next sprite   : 0x0000079C
+Sprite Name              : cddisc
+Width in words           : 7
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000003E4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 28
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 13
+-------------------------------------
+Memory Pointer           : 00011764
+-------------------------------------
+Sprite                   : 13
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : directory
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 8
+-------------------------------------
+Memory Pointer           : 00012120
+-------------------------------------
+Sprite                   : 14
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : directoryo
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 11
+-------------------------------------
+Memory Pointer           : 00012ADC
+-------------------------------------
+Sprite                   : 15
+Pointer to next sprite   : 0x0000080C
+Sprite Name              : discs
+Width in words           : 7
+Height in scan lines     : 36
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000041C
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 28
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 10
+-------------------------------------
+Memory Pointer           : 000132E8
+-------------------------------------
+Sprite                   : 16
+Pointer to next sprite   : 0x000004F4
+Sprite Name              : display
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000002C
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : No
+Number of colours used   : 9
+-------------------------------------
+Memory Pointer           : 000137DC
+-------------------------------------
+Sprite                   : 17
+Pointer to next sprite   : 0x0000017C
+Sprite Name              : divider
+Width in words           : 40
+Height in scan lines     : 2
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000003C
+Transparent Data offset  : 0x0000003C
+Mode data                : 0x00000019
+Calculations:
+Mode Flag                : 1
+Bits per pixel           : 1
+Width in pixels          : 1280
+Palette                  : Yes
+Number of palette colours: 2
+Transparency             : No
+Number of colours used   : 2
+-------------------------------------
+Memory Pointer           : 00013958
+-------------------------------------
+Sprite                   : 18
+Pointer to next sprite   : 0x0000054C
+Sprite Name              : dontcare
+Width in words           : 5
+Height in scan lines     : 20
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000022C
+Transparent Data offset  : 0x000003BC
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 20
+Palette                  : Yes
+Number of palette colours: 64
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 15
+-------------------------------------
+Memory Pointer           : 00013EA4
+-------------------------------------
+Sprite                   : 19
+Pointer to next sprite   : 0x0000012C
+Sprite Name              : down
+Width in words           : 2
+Height in scan lines     : 16
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000000AC
+Mode data                : 0x00000014
+Calculations:
+Mode Flag                : 3
+Bits per pixel           : 4
+Width in pixels          : 16
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 5
+-------------------------------------
+Memory Pointer           : 00013FD0
+-------------------------------------
+Sprite                   : 20
+Pointer to next sprite   : 0x00000DEC
+Sprite Name              : error
+Width in words           : 11
+Height in scan lines     : 40
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000070C
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 41
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 22
+-------------------------------------
+Memory Pointer           : 00014DBC
+-------------------------------------
+Sprite                   : 21
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_695
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 44
+-------------------------------------
+Memory Pointer           : 00015778
+-------------------------------------
+Sprite                   : 22
+Pointer to next sprite   : 0x00000BBC
+Sprite Name              : file_ae7
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000022C
+Transparent Data offset  : 0x000006F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : Yes
+Number of palette colours: 64
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 19
+-------------------------------------
+Memory Pointer           : 00016334
+-------------------------------------
+Sprite                   : 23
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_ae9
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 12
+-------------------------------------
+Memory Pointer           : 00016CF0
+-------------------------------------
+Sprite                   : 24
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_aff
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 26
+-------------------------------------
+Memory Pointer           : 000176AC
+-------------------------------------
+Sprite                   : 25
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_b60
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 44
+-------------------------------------
+Memory Pointer           : 00018068
+-------------------------------------
+Sprite                   : 26
+Pointer to next sprite   : 0x00000BBC
+Sprite Name              : file_b9f
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000022C
+Transparent Data offset  : 0x000006F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : Yes
+Number of palette colours: 64
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 20
+-------------------------------------
+Memory Pointer           : 00018C24
+-------------------------------------
+Sprite                   : 27
+Pointer to next sprite   : 0x0000068C
+Sprite Name              : file_bd9
+Width in words           : 6
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000035C
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 24
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 12
+-------------------------------------
+Memory Pointer           : 000192B0
+-------------------------------------
+Sprite                   : 28
+Pointer to next sprite   : 0x0000068C
+Sprite Name              : file_bda
+Width in words           : 6
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000035C
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 24
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 11
+-------------------------------------
+Memory Pointer           : 0001993C
+-------------------------------------
+Sprite                   : 29
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_be8
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 17
+-------------------------------------
+Memory Pointer           : 0001A2F8
+-------------------------------------
+Sprite                   : 30
+Pointer to next sprite   : 0x00000BBC
+Sprite Name              : file_bf8
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000022C
+Transparent Data offset  : 0x000006F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : Yes
+Number of palette colours: 64
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 21
+-------------------------------------
+Memory Pointer           : 0001AEB4
+-------------------------------------
+Sprite                   : 31
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_c85
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 44
+-------------------------------------
+Memory Pointer           : 0001B870
+-------------------------------------
+Sprite                   : 32
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_dea
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 26
+-------------------------------------
+Memory Pointer           : 0001C22C
+-------------------------------------
+Sprite                   : 33
+Pointer to next sprite   : 0x0000068C
+Sprite Name              : file_f9d
+Width in words           : 6
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000035C
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 24
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 15
+-------------------------------------
+Memory Pointer           : 0001C8B8
+-------------------------------------
+Sprite                   : 34
+Pointer to next sprite   : 0x0000068C
+Sprite Name              : file_f9e
+Width in words           : 6
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000035C
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 24
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 12
+-------------------------------------
+Memory Pointer           : 0001CF44
+-------------------------------------
+Sprite                   : 35
+Pointer to next sprite   : 0x0000068C
+Sprite Name              : file_f9f
+Width in words           : 6
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000035C
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 24
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 11
+-------------------------------------
+Memory Pointer           : 0001D5D0
+-------------------------------------
+Sprite                   : 36
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_fae
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 9
+-------------------------------------
+Memory Pointer           : 0001DF8C
+-------------------------------------
+Sprite                   : 37
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_faf
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 42
+-------------------------------------
+Memory Pointer           : 0001E948
+-------------------------------------
+Sprite                   : 38
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_fb1
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 18
+-------------------------------------
+Memory Pointer           : 0001F304
+-------------------------------------
+Sprite                   : 39
+Pointer to next sprite   : 0x00000BBC
+Sprite Name              : file_fb2
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000022C
+Transparent Data offset  : 0x000006F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : Yes
+Number of palette colours: 64
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 19
+-------------------------------------
+Memory Pointer           : 0001FEC0
+-------------------------------------
+Sprite                   : 40
+Pointer to next sprite   : 0x0000068C
+Sprite Name              : file_fb4
+Width in words           : 6
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000035C
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 24
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 19
+-------------------------------------
+Memory Pointer           : 0002054C
+-------------------------------------
+Sprite                   : 41
+Pointer to next sprite   : 0x00000034
+Sprite Name              : file_fb5
+Width in words           : 1
+Height in scan lines     : 1
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000030
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 1
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 2
+-------------------------------------
+Memory Pointer           : 00020580
+-------------------------------------
+Sprite                   : 42
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_fc2
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 19
+-------------------------------------
+Memory Pointer           : 00020F3C
+-------------------------------------
+Sprite                   : 43
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_fc6
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 20
+-------------------------------------
+Memory Pointer           : 000218F8
+-------------------------------------
+Sprite                   : 44
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_fc8
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 11
+-------------------------------------
+Memory Pointer           : 000222B4
+-------------------------------------
+Sprite                   : 45
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_fca
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 14
+-------------------------------------
+Memory Pointer           : 00022C70
+-------------------------------------
+Sprite                   : 46
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_fcc
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 11
+-------------------------------------
+Memory Pointer           : 0002362C
+-------------------------------------
+Sprite                   : 47
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_fd6
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 47
+-------------------------------------
+Memory Pointer           : 00023FE8
+-------------------------------------
+Sprite                   : 48
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_fd7
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 46
+-------------------------------------
+Memory Pointer           : 000249A4
+-------------------------------------
+Sprite                   : 49
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_fe4
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 10
+-------------------------------------
+Memory Pointer           : 00025360
+-------------------------------------
+Sprite                   : 50
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_fea
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 12
+-------------------------------------
+Memory Pointer           : 00025D1C
+-------------------------------------
+Sprite                   : 51
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_feb
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 45
+-------------------------------------
+Memory Pointer           : 000266D8
+-------------------------------------
+Sprite                   : 52
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_fec
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 8
+-------------------------------------
+Memory Pointer           : 00027094
+-------------------------------------
+Sprite                   : 53
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_fed
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 33
+-------------------------------------
+Memory Pointer           : 00027A50
+-------------------------------------
+Sprite                   : 54
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_ff0
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 43
+-------------------------------------
+Memory Pointer           : 0002840C
+-------------------------------------
+Sprite                   : 55
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_ff2
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 48
+-------------------------------------
+Memory Pointer           : 00028DC8
+-------------------------------------
+Sprite                   : 56
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_ff4
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 12
+-------------------------------------
+Memory Pointer           : 00029784
+-------------------------------------
+Sprite                   : 57
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_ff5
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 12
+-------------------------------------
+Memory Pointer           : 0002A140
+-------------------------------------
+Sprite                   : 58
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_ff6
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 12
+-------------------------------------
+Memory Pointer           : 0002AAFC
+-------------------------------------
+Sprite                   : 59
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_ff7
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 6
+-------------------------------------
+Memory Pointer           : 0002B4B8
+-------------------------------------
+Sprite                   : 60
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_ff8
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 47
+-------------------------------------
+Memory Pointer           : 0002BE74
+-------------------------------------
+Sprite                   : 61
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_ff9
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 24
+-------------------------------------
+Memory Pointer           : 0002C830
+-------------------------------------
+Sprite                   : 62
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_ffa
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 46
+-------------------------------------
+Memory Pointer           : 0002D1EC
+-------------------------------------
+Sprite                   : 63
+Pointer to next sprite   : 0x0000057C
+Sprite Name              : file_ffb
+Width in words           : 5
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000002D4
+Mode data                : 0x00000014
+Calculations:
+Mode Flag                : 3
+Bits per pixel           : 4
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 5
+-------------------------------------
+Memory Pointer           : 0002D768
+-------------------------------------
+Sprite                   : 64
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_ffc
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 46
+-------------------------------------
+Memory Pointer           : 0002E124
+-------------------------------------
+Sprite                   : 65
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_ffd
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 46
+-------------------------------------
+Memory Pointer           : 0002EAE0
+-------------------------------------
+Sprite                   : 66
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_ffe
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 46
+-------------------------------------
+Memory Pointer           : 0002F49C
+-------------------------------------
+Sprite                   : 67
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_fff
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 17
+-------------------------------------
+Memory Pointer           : 0002FE58
+-------------------------------------
+Sprite                   : 68
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_lxa
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 6
+-------------------------------------
+Memory Pointer           : 00030814
+-------------------------------------
+Sprite                   : 69
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_unf
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 4
+-------------------------------------
+Memory Pointer           : 000311D0
+-------------------------------------
+Sprite                   : 70
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : file_xxx
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 15
+-------------------------------------
+Memory Pointer           : 00031B8C
+-------------------------------------
+Sprite                   : 71
+Pointer to next sprite   : 0x000008AC
+Sprite Name              : fileserver
+Width in words           : 8
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x00000017
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000046C
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 31
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 7
+-------------------------------------
+Memory Pointer           : 00032438
+-------------------------------------
+Sprite                   : 72
+Pointer to next sprite   : 0x0000068C
+Sprite Name              : floppydisc
+Width in words           : 6
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000035C
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 24
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 9
+-------------------------------------
+Memory Pointer           : 00032AC4
+-------------------------------------
+Sprite                   : 73
+Pointer to next sprite   : 0x00000134
+Sprite Name              : gright
+Width in words           : 3
+Height in scan lines     : 22
+Left bit                 : 0x00000000
+Right bit                : 0x00000017
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000002C
+Mode data                : 0x00000014
+Calculations:
+Mode Flag                : 3
+Bits per pixel           : 4
+Width in pixels          : 22
+Palette                  : No
+Transparency             : No
+Number of colours used   : 6
+-------------------------------------
+Memory Pointer           : 00032BF8
+-------------------------------------
+Sprite                   : 74
+Pointer to next sprite   : 0x0000068C
+Sprite Name              : harddisc
+Width in words           : 6
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000035C
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 24
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 10
+-------------------------------------
+Memory Pointer           : 00033284
+-------------------------------------
+Sprite                   : 75
+Pointer to next sprite   : 0x00000C0C
+Sprite Name              : ic_?
+Width in words           : 10
+Height in scan lines     : 38
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000061C
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 40
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 19
+-------------------------------------
+Memory Pointer           : 00033E90
+-------------------------------------
+Sprite                   : 76
+Pointer to next sprite   : 0x00000C0C
+Sprite Name              : ic_alarm
+Width in words           : 10
+Height in scan lines     : 38
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000061C
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 40
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 18
+-------------------------------------
+Memory Pointer           : 00034A9C
+-------------------------------------
+Sprite                   : 77
+Pointer to next sprite   : 0x00000C0C
+Sprite Name              : ic_chars
+Width in words           : 10
+Height in scan lines     : 38
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000061C
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 40
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 14
+-------------------------------------
+Memory Pointer           : 000356A8
+-------------------------------------
+Sprite                   : 78
+Pointer to next sprite   : 0x00000C0C
+Sprite Name              : ic_configure
+Width in words           : 10
+Height in scan lines     : 38
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000061C
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 40
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 15
+-------------------------------------
+Memory Pointer           : 000362B4
+-------------------------------------
+Sprite                   : 79
+Pointer to next sprite   : 0x00000C0C
+Sprite Name              : ic_draw
+Width in words           : 10
+Height in scan lines     : 38
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000061C
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 40
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 22
+-------------------------------------
+Memory Pointer           : 00036EC0
+-------------------------------------
+Sprite                   : 80
+Pointer to next sprite   : 0x00000C0C
+Sprite Name              : ic_edit
+Width in words           : 10
+Height in scan lines     : 38
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000061C
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 40
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 21
+-------------------------------------
+Memory Pointer           : 00037ACC
+-------------------------------------
+Sprite                   : 81
+Pointer to next sprite   : 0x00000C0C
+Sprite Name              : ic_filer
+Width in words           : 10
+Height in scan lines     : 38
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000061C
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 40
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 16
+-------------------------------------
+Memory Pointer           : 000386D8
+-------------------------------------
+Sprite                   : 82
+Pointer to next sprite   : 0x00000C0C
+Sprite Name              : ic_paint
+Width in words           : 10
+Height in scan lines     : 38
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000061C
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 40
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 21
+-------------------------------------
+Memory Pointer           : 000392E4
+-------------------------------------
+Sprite                   : 83
+Pointer to next sprite   : 0x00000E44
+Sprite Name              : information
+Width in words           : 11
+Height in scan lines     : 41
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000738
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 41
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 21
+-------------------------------------
+Memory Pointer           : 0003A128
+-------------------------------------
+Sprite                   : 84
+Pointer to next sprite   : 0x0000012C
+Sprite Name              : left
+Width in words           : 2
+Height in scan lines     : 16
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000000AC
+Mode data                : 0x00000014
+Calculations:
+Mode Flag                : 3
+Bits per pixel           : 4
+Width in pixels          : 16
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 5
+-------------------------------------
+Memory Pointer           : 0003A254
+-------------------------------------
+Sprite                   : 85
+Pointer to next sprite   : 0x000006F4
+Sprite Name              : lo!help
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000022C
+Transparent Data offset  : 0x0000022C
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : Yes
+Number of palette colours: 64
+Palette                  : No
+Transparency             : No
+Number of colours used   : 8
+-------------------------------------
+Memory Pointer           : 0003A948
+-------------------------------------
+Sprite                   : 86
+Pointer to next sprite   : 0x000008AC
+Sprite Name              : network
+Width in words           : 8
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x00000017
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000046C
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 31
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 17
+-------------------------------------
+Memory Pointer           : 0003B1F4
+-------------------------------------
+Sprite                   : 87
+Pointer to next sprite   : 0x000003BC
+Sprite Name              : no
+Width in words           : 5
+Height in scan lines     : 20
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000022C
+Transparent Data offset  : 0x0000022C
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 20
+Palette                  : Yes
+Number of palette colours: 64
+Palette                  : No
+Transparency             : No
+Number of colours used   : 11
+-------------------------------------
+Memory Pointer           : 0003B5B0
+-------------------------------------
+Sprite                   : 88
+Pointer to next sprite   : 0x0000068C
+Sprite Name              : nodisc
+Width in words           : 6
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000035C
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 24
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 9
+-------------------------------------
+Memory Pointer           : 0003BC3C
+-------------------------------------
+Sprite                   : 89
+Pointer to next sprite   : 0x00000134
+Sprite Name              : optoff
+Width in words           : 3
+Height in scan lines     : 22
+Left bit                 : 0x00000000
+Right bit                : 0x00000017
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000002C
+Mode data                : 0x00000014
+Calculations:
+Mode Flag                : 3
+Bits per pixel           : 4
+Width in pixels          : 22
+Palette                  : No
+Transparency             : No
+Number of colours used   : 5
+-------------------------------------
+Memory Pointer           : 0003BD70
+-------------------------------------
+Sprite                   : 90
+Pointer to next sprite   : 0x00000134
+Sprite Name              : opton
+Width in words           : 3
+Height in scan lines     : 22
+Left bit                 : 0x00000000
+Right bit                : 0x00000017
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000002C
+Mode data                : 0x00000014
+Calculations:
+Mode Flag                : 3
+Bits per pixel           : 4
+Width in pixels          : 22
+Palette                  : No
+Transparency             : No
+Number of colours used   : 8
+-------------------------------------
+Memory Pointer           : 0003BEA4
+-------------------------------------
+Sprite                   : 91
+Pointer to next sprite   : 0x0000057C
+Sprite Name              : package
+Width in words           : 5
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000002D4
+Mode data                : 0x0000001B
+Calculations:
+Mode Flag                : 3
+Bits per pixel           : 4
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 6
+-------------------------------------
+Memory Pointer           : 0003C420
+-------------------------------------
+Sprite                   : 92
+Pointer to next sprite   : 0x000009BC
+Sprite Name              : palette
+Width in words           : 9
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000004F4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 32
+-------------------------------------
+Memory Pointer           : 0003CDDC
+-------------------------------------
+Sprite                   : 93
+Pointer to next sprite   : 0x0000079C
+Sprite Name              : pcddisc
+Width in words           : 7
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000003E4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 28
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 20
+-------------------------------------
+Memory Pointer           : 0003D578
+-------------------------------------
+Sprite                   : 94
+Pointer to next sprite   : 0x0000012C
+Sprite Name              : pdown
+Width in words           : 2
+Height in scan lines     : 16
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000000AC
+Mode data                : 0x00000014
+Calculations:
+Mode Flag                : 3
+Bits per pixel           : 4
+Width in pixels          : 16
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 4
+-------------------------------------
+Memory Pointer           : 0003D6A4
+-------------------------------------
+Sprite                   : 95
+Pointer to next sprite   : 0x00000134
+Sprite Name              : pgright
+Width in words           : 3
+Height in scan lines     : 22
+Left bit                 : 0x00000000
+Right bit                : 0x00000017
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000002C
+Mode data                : 0x00000014
+Calculations:
+Mode Flag                : 3
+Bits per pixel           : 4
+Width in pixels          : 22
+Palette                  : No
+Transparency             : No
+Number of colours used   : 7
+-------------------------------------
+Memory Pointer           : 0003D7D8
+-------------------------------------
+Sprite                   : 96
+Pointer to next sprite   : 0x0000012C
+Sprite Name              : pleft
+Width in words           : 2
+Height in scan lines     : 16
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000000AC
+Mode data                : 0x00000014
+Calculations:
+Mode Flag                : 3
+Bits per pixel           : 4
+Width in pixels          : 16
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 6
+-------------------------------------
+Memory Pointer           : 0003D904
+-------------------------------------
+Sprite                   : 97
+Pointer to next sprite   : 0x0000012C
+Sprite Name              : pright
+Width in words           : 2
+Height in scan lines     : 16
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000000AC
+Mode data                : 0x00000014
+Calculations:
+Mode Flag                : 3
+Bits per pixel           : 4
+Width in pixels          : 16
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 6
+-------------------------------------
+Memory Pointer           : 0003DA30
+-------------------------------------
+Sprite                   : 98
+Pointer to next sprite   : 0x00000E44
+Sprite Name              : program
+Width in words           : 11
+Height in scan lines     : 41
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000738
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 42
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 10
+-------------------------------------
+Memory Pointer           : 0003E874
+-------------------------------------
+Sprite                   : 99
+Pointer to next sprite   : 0x00000124
+Sprite Name              : ptr_autoscr
+Width in words           : 2
+Height in scan lines     : 31
+Left bit                 : 0x00000000
+Right bit                : 0x0000001D
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000002C
+Mode data                : 0x00000013
+Calculations:
+Mode Flag                : 2
+Bits per pixel           : 2
+Width in pixels          : 31
+Palette                  : No
+Transparency             : No
+Number of colours used   : 3
+-------------------------------------
+Memory Pointer           : 0003E998
+-------------------------------------
+Sprite                   : 100
+Pointer to next sprite   : 0x00000074
+Sprite Name              : ptr_autoscrh
+Width in words           : 2
+Height in scan lines     : 9
+Left bit                 : 0x00000000
+Right bit                : 0x0000001D
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000002C
+Mode data                : 0x00000013
+Calculations:
+Mode Flag                : 2
+Bits per pixel           : 2
+Width in pixels          : 31
+Palette                  : No
+Transparency             : No
+Number of colours used   : 3
+-------------------------------------
+Memory Pointer           : 0003EA0C
+-------------------------------------
+Sprite                   : 101
+Pointer to next sprite   : 0x000000A8
+Sprite Name              : ptr_autoscrv
+Width in words           : 1
+Height in scan lines     : 31
+Left bit                 : 0x00000000
+Right bit                : 0x00000011
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000002C
+Mode data                : 0x00000013
+Calculations:
+Mode Flag                : 2
+Bits per pixel           : 2
+Width in pixels          : 9
+Palette                  : No
+Transparency             : No
+Number of colours used   : 3
+-------------------------------------
+Memory Pointer           : 0003EAB4
+-------------------------------------
+Sprite                   : 102
+Pointer to next sprite   : 0x00000114
+Sprite Name              : ptr_confirm
+Width in words           : 2
+Height in scan lines     : 25
+Left bit                 : 0x00000000
+Right bit                : 0x00000013
+Pixel Data offset        : 0x0000004C
+Transparent Data offset  : 0x0000004C
+Mode data                : 0x00000008
+Calculations:
+Mode Flag                : 2
+Bits per pixel           : 2
+Width in pixels          : 26
+Palette                  : Yes
+Number of palette colours: 4
+Transparency             : No
+Number of colours used   : 3
+-------------------------------------
+Memory Pointer           : 0003EBC8
+-------------------------------------
+Sprite                   : 103
+Pointer to next sprite   : 0x00000084
+Sprite Name              : ptr_default
+Width in words           : 1
+Height in scan lines     : 22
+Left bit                 : 0x00000000
+Right bit                : 0x00000015
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000002C
+Mode data                : 0x00000013
+Calculations:
+Mode Flag                : 2
+Bits per pixel           : 2
+Width in pixels          : 11
+Palette                  : No
+Transparency             : No
+Number of colours used   : 3
+-------------------------------------
+Memory Pointer           : 0003EC4C
+-------------------------------------
+Sprite                   : 104
+Pointer to next sprite   : 0x00000084
+Sprite Name              : ptr_double
+Width in words           : 1
+Height in scan lines     : 22
+Left bit                 : 0x00000000
+Right bit                : 0x00000015
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000002C
+Mode data                : 0x00000013
+Calculations:
+Mode Flag                : 2
+Bits per pixel           : 2
+Width in pixels          : 11
+Palette                  : No
+Transparency             : No
+Number of colours used   : 3
+-------------------------------------
+Memory Pointer           : 0003ECD0
+-------------------------------------
+Sprite                   : 105
+Pointer to next sprite   : 0x000000EC
+Sprite Name              : ptr_drop
+Width in words           : 2
+Height in scan lines     : 16
+Left bit                 : 0x00000000
+Right bit                : 0x00000011
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000000AC
+Mode data                : 0x101680B5
+Calculations:
+Mode Flag                : 2
+Bits per pixel           : 2
+Width in pixels          : 25
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : New
+Number of colours used   : 3
+-------------------------------------
+Memory Pointer           : 0003EDBC
+-------------------------------------
+Sprite                   : 106
+Pointer to next sprite   : 0x0000012C
+Sprite Name              : ptr_hand
+Width in words           : 2
+Height in scan lines     : 32
+Left bit                 : 0x00000000
+Right bit                : 0x00000001
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000002C
+Mode data                : 0x00000013
+Calculations:
+Mode Flag                : 2
+Bits per pixel           : 2
+Width in pixels          : 17
+Palette                  : No
+Transparency             : No
+Number of colours used   : 3
+-------------------------------------
+Memory Pointer           : 0003EEE8
+-------------------------------------
+Sprite                   : 107
+Pointer to next sprite   : 0x000000F4
+Sprite Name              : ptr_menu
+Width in words           : 2
+Height in scan lines     : 25
+Left bit                 : 0x00000000
+Right bit                : 0x00000013
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000002C
+Mode data                : 0x00000013
+Calculations:
+Mode Flag                : 2
+Bits per pixel           : 2
+Width in pixels          : 26
+Palette                  : No
+Transparency             : No
+Number of colours used   : 3
+-------------------------------------
+Memory Pointer           : 0003EFDC
+-------------------------------------
+Sprite                   : 108
+Pointer to next sprite   : 0x000000D4
+Sprite Name              : ptr_write
+Width in words           : 1
+Height in scan lines     : 21
+Left bit                 : 0x00000000
+Right bit                : 0x00000011
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000080
+Mode data                : 0x00000013
+Calculations:
+Mode Flag                : 2
+Bits per pixel           : 2
+Width in pixels          : 9
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 3
+-------------------------------------
+Memory Pointer           : 0003F0B0
+-------------------------------------
+Sprite                   : 109
+Pointer to next sprite   : 0x0000012C
+Sprite Name              : pup
+Width in words           : 2
+Height in scan lines     : 16
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000000AC
+Mode data                : 0x00000014
+Calculations:
+Mode Flag                : 3
+Bits per pixel           : 4
+Width in pixels          : 16
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 4
+-------------------------------------
+Memory Pointer           : 0003F1DC
+-------------------------------------
+Sprite                   : 110
+Pointer to next sprite   : 0x00000DEC
+Sprite Name              : question
+Width in words           : 11
+Height in scan lines     : 40
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000070C
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 41
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 22
+-------------------------------------
+Memory Pointer           : 0003FFC8
+-------------------------------------
+Sprite                   : 111
+Pointer to next sprite   : 0x0000023C
+Sprite Name              : radiooff
+Width in words           : 3
+Height in scan lines     : 22
+Left bit                 : 0x00000000
+Right bit                : 0x00000017
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000134
+Mode data                : 0x00000014
+Calculations:
+Mode Flag                : 3
+Bits per pixel           : 4
+Width in pixels          : 22
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 9
+-------------------------------------
+Memory Pointer           : 00040204
+-------------------------------------
+Sprite                   : 112
+Pointer to next sprite   : 0x0000023C
+Sprite Name              : radioon
+Width in words           : 3
+Height in scan lines     : 22
+Left bit                 : 0x00000000
+Right bit                : 0x00000017
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000134
+Mode data                : 0x00000014
+Calculations:
+Mode Flag                : 3
+Bits per pixel           : 4
+Width in pixels          : 22
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 10
+-------------------------------------
+Memory Pointer           : 00040440
+-------------------------------------
+Sprite                   : 113
+Pointer to next sprite   : 0x000005FC
+Sprite Name              : ramfs
+Width in words           : 6
+Height in scan lines     : 31
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000314
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 24
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 11
+-------------------------------------
+Memory Pointer           : 00040A3C
+-------------------------------------
+Sprite                   : 114
+Pointer to next sprite   : 0x0000012C
+Sprite Name              : right
+Width in words           : 2
+Height in scan lines     : 16
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000000AC
+Mode data                : 0x00000014
+Calculations:
+Mode Flag                : 3
+Bits per pixel           : 4
+Width in pixels          : 16
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 4
+-------------------------------------
+Memory Pointer           : 00040B68
+-------------------------------------
+Sprite                   : 115
+Pointer to next sprite   : 0x000007C4
+Sprite Name              : romapps
+Width in words           : 9
+Height in scan lines     : 27
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000003F8
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 23
+-------------------------------------
+Memory Pointer           : 0004132C
+-------------------------------------
+Sprite                   : 116
+Pointer to next sprite   : 0x00000ACC
+Sprite Name              : s!printers
+Width in words           : 10
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000057C
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 40
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 8
+-------------------------------------
+Memory Pointer           : 00041DF8
+-------------------------------------
+Sprite                   : 117
+Pointer to next sprite   : 0x000002FC
+Sprite Name              : sm!alarm
+Width in words           : 5
+Height in scan lines     : 18
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000194
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 9
+-------------------------------------
+Memory Pointer           : 000420F4
+-------------------------------------
+Sprite                   : 118
+Pointer to next sprite   : 0x000002FC
+Sprite Name              : sm!calc
+Width in words           : 5
+Height in scan lines     : 18
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000194
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 18
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 10
+-------------------------------------
+Memory Pointer           : 000423F0
+-------------------------------------
+Sprite                   : 119
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : sm!chars
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 9
+-------------------------------------
+Memory Pointer           : 000426C4
+-------------------------------------
+Sprite                   : 120
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : sm!configure
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 9
+-------------------------------------
+Memory Pointer           : 00042998
+-------------------------------------
+Sprite                   : 121
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : sm!draw
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 14
+-------------------------------------
+Memory Pointer           : 00042C6C
+-------------------------------------
+Sprite                   : 122
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : sm!edit
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 16
+-------------------------------------
+Memory Pointer           : 00042F40
+-------------------------------------
+Sprite                   : 123
+Pointer to next sprite   : 0x00000180
+Sprite Name              : sm!help
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000002C
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : No
+Number of colours used   : 20
+-------------------------------------
+Memory Pointer           : 000430C0
+-------------------------------------
+Sprite                   : 124
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : sm!paint
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 21
+-------------------------------------
+Memory Pointer           : 00043394
+-------------------------------------
+Sprite                   : 125
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : sm!printers
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 11
+-------------------------------------
+Memory Pointer           : 00043668
+-------------------------------------
+Sprite                   : 126
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_695
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 29
+-------------------------------------
+Memory Pointer           : 0004393C
+-------------------------------------
+Sprite                   : 127
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_ae7
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 22
+-------------------------------------
+Memory Pointer           : 00043C10
+-------------------------------------
+Sprite                   : 128
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_ae9
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 22
+-------------------------------------
+Memory Pointer           : 00043EE4
+-------------------------------------
+Sprite                   : 129
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_aff
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 43
+-------------------------------------
+Memory Pointer           : 000441B8
+-------------------------------------
+Sprite                   : 130
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_app
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 11
+-------------------------------------
+Memory Pointer           : 0004448C
+-------------------------------------
+Sprite                   : 131
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_b60
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 30
+-------------------------------------
+Memory Pointer           : 00044760
+-------------------------------------
+Sprite                   : 132
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_b9f
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 21
+-------------------------------------
+Memory Pointer           : 00044A34
+-------------------------------------
+Sprite                   : 133
+Pointer to next sprite   : 0x0000035C
+Sprite Name              : small_bd9
+Width in words           : 6
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000017
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000001C4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 23
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 11
+-------------------------------------
+Memory Pointer           : 00044D90
+-------------------------------------
+Sprite                   : 134
+Pointer to next sprite   : 0x0000035C
+Sprite Name              : small_bda
+Width in words           : 6
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000017
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000001C4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 23
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 9
+-------------------------------------
+Memory Pointer           : 000450EC
+-------------------------------------
+Sprite                   : 135
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_be8
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 32
+-------------------------------------
+Memory Pointer           : 000453C0
+-------------------------------------
+Sprite                   : 136
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_bf8
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 32
+-------------------------------------
+Memory Pointer           : 00045694
+-------------------------------------
+Sprite                   : 137
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_c85
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 32
+-------------------------------------
+Memory Pointer           : 00045968
+-------------------------------------
+Sprite                   : 138
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_dea
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 31
+-------------------------------------
+Memory Pointer           : 00045C3C
+-------------------------------------
+Sprite                   : 139
+Pointer to next sprite   : 0x000002FC
+Sprite Name              : small_dir
+Width in words           : 5
+Height in scan lines     : 18
+Left bit                 : 0x00000000
+Right bit                : 0x00000017
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000194
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 19
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 9
+-------------------------------------
+Memory Pointer           : 00045F38
+-------------------------------------
+Sprite                   : 140
+Pointer to next sprite   : 0x000002FC
+Sprite Name              : small_diro
+Width in words           : 5
+Height in scan lines     : 18
+Left bit                 : 0x00000000
+Right bit                : 0x00000017
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000194
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 19
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 8
+-------------------------------------
+Memory Pointer           : 00046234
+-------------------------------------
+Sprite                   : 141
+Pointer to next sprite   : 0x0000035C
+Sprite Name              : small_f9d
+Width in words           : 6
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000017
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000001C4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 23
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 22
+-------------------------------------
+Memory Pointer           : 00046590
+-------------------------------------
+Sprite                   : 142
+Pointer to next sprite   : 0x0000035C
+Sprite Name              : small_f9e
+Width in words           : 6
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000017
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000001C4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 23
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 11
+-------------------------------------
+Memory Pointer           : 000468EC
+-------------------------------------
+Sprite                   : 143
+Pointer to next sprite   : 0x0000035C
+Sprite Name              : small_f9f
+Width in words           : 6
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000017
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000001C4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 23
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 9
+-------------------------------------
+Memory Pointer           : 00046C48
+-------------------------------------
+Sprite                   : 144
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_fae
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 6
+-------------------------------------
+Memory Pointer           : 00046F1C
+-------------------------------------
+Sprite                   : 145
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_faf
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 33
+-------------------------------------
+Memory Pointer           : 000471F0
+-------------------------------------
+Sprite                   : 146
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_fb1
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 18
+-------------------------------------
+Memory Pointer           : 000474C4
+-------------------------------------
+Sprite                   : 147
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_fb2
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 21
+-------------------------------------
+Memory Pointer           : 00047798
+-------------------------------------
+Sprite                   : 148
+Pointer to next sprite   : 0x0000035C
+Sprite Name              : small_fb4
+Width in words           : 6
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000017
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000001C4
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 23
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 27
+-------------------------------------
+Memory Pointer           : 00047AF4
+-------------------------------------
+Sprite                   : 149
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_fc2
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 17
+-------------------------------------
+Memory Pointer           : 00047DC8
+-------------------------------------
+Sprite                   : 150
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_fc6
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 20
+-------------------------------------
+Memory Pointer           : 0004809C
+-------------------------------------
+Sprite                   : 151
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_fc8
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 11
+-------------------------------------
+Memory Pointer           : 00048370
+-------------------------------------
+Sprite                   : 152
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_fca
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 24
+-------------------------------------
+Memory Pointer           : 00048644
+-------------------------------------
+Sprite                   : 153
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_fcc
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 10
+-------------------------------------
+Memory Pointer           : 00048918
+-------------------------------------
+Sprite                   : 154
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_fd6
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 36
+-------------------------------------
+Memory Pointer           : 00048BEC
+-------------------------------------
+Sprite                   : 155
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_fd7
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 36
+-------------------------------------
+Memory Pointer           : 00048EC0
+-------------------------------------
+Sprite                   : 156
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_fe4
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 4
+-------------------------------------
+Memory Pointer           : 00049194
+-------------------------------------
+Sprite                   : 157
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_fea
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 8
+-------------------------------------
+Memory Pointer           : 00049468
+-------------------------------------
+Sprite                   : 158
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_feb
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 36
+-------------------------------------
+Memory Pointer           : 0004973C
+-------------------------------------
+Sprite                   : 159
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_fec
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 11
+-------------------------------------
+Memory Pointer           : 00049A10
+-------------------------------------
+Sprite                   : 160
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_fed
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 32
+-------------------------------------
+Memory Pointer           : 00049CE4
+-------------------------------------
+Sprite                   : 161
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_ff0
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 29
+-------------------------------------
+Memory Pointer           : 00049FB8
+-------------------------------------
+Sprite                   : 162
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_ff2
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 37
+-------------------------------------
+Memory Pointer           : 0004A28C
+-------------------------------------
+Sprite                   : 163
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_ff4
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 9
+-------------------------------------
+Memory Pointer           : 0004A560
+-------------------------------------
+Sprite                   : 164
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_ff5
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 7
+-------------------------------------
+Memory Pointer           : 0004A834
+-------------------------------------
+Sprite                   : 165
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_ff6
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 15
+-------------------------------------
+Memory Pointer           : 0004AB08
+-------------------------------------
+Sprite                   : 166
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_ff7
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 7
+-------------------------------------
+Memory Pointer           : 0004ADDC
+-------------------------------------
+Sprite                   : 167
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_ff8
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 37
+-------------------------------------
+Memory Pointer           : 0004B0B0
+-------------------------------------
+Sprite                   : 168
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_ff9
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 42
+-------------------------------------
+Memory Pointer           : 0004B384
+-------------------------------------
+Sprite                   : 169
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_ffa
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 37
+-------------------------------------
+Memory Pointer           : 0004B658
+-------------------------------------
+Sprite                   : 170
+Pointer to next sprite   : 0x000001C4
+Sprite Name              : small_ffb
+Width in words           : 3
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000003
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000000F8
+Mode data                : 0x00000014
+Calculations:
+Mode Flag                : 3
+Bits per pixel           : 4
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 4
+-------------------------------------
+Memory Pointer           : 0004B81C
+-------------------------------------
+Sprite                   : 171
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_ffc
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 37
+-------------------------------------
+Memory Pointer           : 0004BAF0
+-------------------------------------
+Sprite                   : 172
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_ffd
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 36
+-------------------------------------
+Memory Pointer           : 0004BDC4
+-------------------------------------
+Sprite                   : 173
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_ffe
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 37
+-------------------------------------
+Memory Pointer           : 0004C098
+-------------------------------------
+Sprite                   : 174
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_fff
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 19
+-------------------------------------
+Memory Pointer           : 0004C36C
+-------------------------------------
+Sprite                   : 175
+Pointer to next sprite   : 0x0000068C
+Sprite Name              : small_fs
+Width in words           : 7
+Height in scan lines     : 20
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000022C
+Transparent Data offset  : 0x0000045C
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 28
+Palette                  : Yes
+Number of palette colours: 64
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 8
+-------------------------------------
+Memory Pointer           : 0004C9F8
+-------------------------------------
+Sprite                   : 176
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_lxa
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 3
+-------------------------------------
+Memory Pointer           : 0004CCCC
+-------------------------------------
+Sprite                   : 177
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_unf
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 4
+-------------------------------------
+Memory Pointer           : 0004CFA0
+-------------------------------------
+Sprite                   : 178
+Pointer to next sprite   : 0x000002D4
+Sprite Name              : small_xxx
+Width in words           : 5
+Height in scan lines     : 17
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000180
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 17
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 9
+-------------------------------------
+Memory Pointer           : 0004D274
+-------------------------------------
+Sprite                   : 179
+Pointer to next sprite   : 0x00000ACC
+Sprite Name              : su!printers
+Width in words           : 10
+Height in scan lines     : 34
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000057C
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 40
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 14
+-------------------------------------
+Memory Pointer           : 0004DD40
+-------------------------------------
+Sprite                   : 180
+Pointer to next sprite   : 0x00000CD4
+Sprite Name              : switcher
+Width in words           : 9
+Height in scan lines     : 45
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000680
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 59
+-------------------------------------
+Memory Pointer           : 0004EA14
+-------------------------------------
+Sprite                   : 181
+Pointer to next sprite   : 0x00000CD4
+Sprite Name              : taskmanager
+Width in words           : 9
+Height in scan lines     : 45
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000680
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 34
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 59
+-------------------------------------
+Memory Pointer           : 0004F6E8
+-------------------------------------
+Sprite                   : 182
+Pointer to next sprite   : 0x0000045C
+Sprite Name              : tick
+Width in words           : 5
+Height in scan lines     : 14
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000022C
+Transparent Data offset  : 0x00000344
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 18
+Palette                  : Yes
+Number of palette colours: 64
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 10
+-------------------------------------
+Memory Pointer           : 0004FB44
+-------------------------------------
+Sprite                   : 183
+Pointer to next sprite   : 0x0000402C
+Sprite Name              : tile_1
+Width in words           : 32
+Height in scan lines     : 128
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000002C
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 128
+Palette                  : No
+Transparency             : No
+Number of colours used   : 10
+-------------------------------------
+Memory Pointer           : 00053B70
+-------------------------------------
+Sprite                   : 184
+Pointer to next sprite   : 0x0000802C
+Sprite Name              : tile_1-16
+Width in words           : 64
+Height in scan lines     : 128
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000002C
+Mode data                : 0x281680B5
+Calculations:
+Mode Flag                : 5
+Bits per pixel           : 16
+Width in pixels          : 128
+Palette                  : No
+Transparency             : No
+-------------------------------------
+Memory Pointer           : 0005BB9C
+-------------------------------------
+Sprite                   : 185
+Pointer to next sprite   : 0x000020AC
+Sprite Name              : tile_1-4
+Width in words           : 16
+Height in scan lines     : 128
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x000000AC
+Transparent Data offset  : 0x000000AC
+Mode data                : 0x0000001B
+Calculations:
+Mode Flag                : 3
+Bits per pixel           : 4
+Width in pixels          : 128
+Palette                  : Yes
+Number of palette colours: 16
+Transparency             : No
+Number of colours used   : 5
+-------------------------------------
+Memory Pointer           : 0005DC48
+-------------------------------------
+Sprite                   : 186
+Pointer to next sprite   : 0x0000402C
+Sprite Name              : tile_1-8
+Width in words           : 32
+Height in scan lines     : 128
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000002C
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 128
+Palette                  : No
+Transparency             : No
+Number of colours used   : 10
+-------------------------------------
+Memory Pointer           : 00061C74
+-------------------------------------
+Sprite                   : 187
+Pointer to next sprite   : 0x0000402C
+Sprite Name              : tile_m
+Width in words           : 32
+Height in scan lines     : 128
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000002C
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 128
+Palette                  : No
+Transparency             : No
+Number of colours used   : 8
+-------------------------------------
+Memory Pointer           : 00065CA0
+-------------------------------------
+Sprite                   : 188
+Pointer to next sprite   : 0x0000802C
+Sprite Name              : tile_m-16
+Width in words           : 64
+Height in scan lines     : 128
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000002C
+Mode data                : 0x281680B5
+Calculations:
+Mode Flag                : 5
+Bits per pixel           : 16
+Width in pixels          : 128
+Palette                  : No
+Transparency             : No
+-------------------------------------
+Memory Pointer           : 0006DCCC
+-------------------------------------
+Sprite                   : 189
+Pointer to next sprite   : 0x000020AC
+Sprite Name              : tile_m-4
+Width in words           : 16
+Height in scan lines     : 128
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x000000AC
+Transparent Data offset  : 0x000000AC
+Mode data                : 0x0000001B
+Calculations:
+Mode Flag                : 3
+Bits per pixel           : 4
+Width in pixels          : 128
+Palette                  : Yes
+Number of palette colours: 16
+Transparency             : No
+Number of colours used   : 3
+-------------------------------------
+Memory Pointer           : 0006FD78
+-------------------------------------
+Sprite                   : 190
+Pointer to next sprite   : 0x0000402C
+Sprite Name              : tile_m-8
+Width in words           : 32
+Height in scan lines     : 128
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000002C
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 128
+Palette                  : No
+Transparency             : No
+Number of colours used   : 8
+-------------------------------------
+Memory Pointer           : 00073DA4
+-------------------------------------
+Sprite                   : 191
+Pointer to next sprite   : 0x0000012C
+Sprite Name              : up
+Width in words           : 2
+Height in scan lines     : 16
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x000000AC
+Mode data                : 0x00000014
+Calculations:
+Mode Flag                : 3
+Bits per pixel           : 4
+Width in pixels          : 16
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 5
+-------------------------------------
+Memory Pointer           : 00073ED0
+-------------------------------------
+Sprite                   : 192
+Pointer to next sprite   : 0x00000CFC
+Sprite Name              : user1
+Width in words           : 10
+Height in scan lines     : 41
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000694
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 40
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 40
+-------------------------------------
+Memory Pointer           : 00074BCC
+-------------------------------------
+Sprite                   : 193
+Pointer to next sprite   : 0x00000CFC
+Sprite Name              : user2
+Width in words           : 10
+Height in scan lines     : 41
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x00000694
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 40
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 40
+-------------------------------------
+Memory Pointer           : 000758C8
+-------------------------------------
+Sprite                   : 194
+Pointer to next sprite   : 0x0000143C
+Sprite Name              : vdivider
+Width in words           : 1
+Height in scan lines     : 1280
+Left bit                 : 0x00000000
+Right bit                : 0x00000001
+Pixel Data offset        : 0x0000003C
+Transparent Data offset  : 0x0000003C
+Mode data                : 0x080B405B
+Calculations:
+Mode Flag                : 1
+Bits per pixel           : 1
+Width in pixels          : 2
+Palette                  : Yes
+Number of palette colours: 2
+Transparency             : No
+Number of colours used   : 2
+-------------------------------------
+Memory Pointer           : 00076D04
+-------------------------------------
+Sprite                   : 195
+Pointer to next sprite   : 0x00000DEC
+Sprite Name              : warning
+Width in words           : 11
+Height in scan lines     : 40
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000070C
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 41
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 22
+-------------------------------------
+Memory Pointer           : 00077AF0
+-------------------------------------
+Sprite                   : 196
+Pointer to next sprite   : 0x000003BC
+Sprite Name              : yes
+Width in words           : 5
+Height in scan lines     : 20
+Left bit                 : 0x00000000
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000022C
+Transparent Data offset  : 0x0000022C
+Mode data                : 0x0000001C
+Calculations:
+Mode Flag                : 4
+Bits per pixel           : 8
+Width in pixels          : 20
+Palette                  : Yes
+Number of palette colours: 64
+Palette                  : No
+Transparency             : No
+Number of colours used   : 11
+-------------------------------------
+Memory Pointer           : 00077EAC
+-------------------------------------
+Sprite                   : 197
+Pointer to next sprite   : 0x000000EC
+Sprite Name              : 
+Width in words           : 2
+Height in scan lines     : 12
+Left bit                 : 0x00000000
+Right bit                : 0x0000000F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000008C
+Mode data                : 0x00000014
+Calculations:
+Mode Flag                : 3
+Bits per pixel           : 4
+Width in pixels          : 12
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 8
+-------------------------------------
+Memory Pointer           : 00077F98
+-------------------------------------
+Sprite                   : 198
+Pointer to next sprite   : 0x000000CC
+Sprite Name              : 
+Width in words           : 2
+Height in scan lines     : 10
+Left bit                 : 0x00000018
+Right bit                : 0x0000001F
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000007C
+Mode data                : 0x00000014
+Calculations:
+Mode Flag                : 3
+Bits per pixel           : 4
+Width in pixels          : 10
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 1
+-------------------------------------
+Memory Pointer           : 00078064
+-------------------------------------
+Sprite                   : 199
+Pointer to next sprite   : 0x000000CC
+Sprite Name              : 
+Width in words           : 2
+Height in scan lines     : 10
+Left bit                 : 0x00000000
+Right bit                : 0x00000007
+Pixel Data offset        : 0x0000002C
+Transparent Data offset  : 0x0000007C
+Mode data                : 0x00000014
+Calculations:
+Mode Flag                : 3
+Bits per pixel           : 4
+Width in pixels          : 10
+Palette                  : No
+Transparency             : Yes
+Format of Transparency   : Old
+Number of colours used   : 6

@@ -29,82 +29,96 @@ interface
 
 uses
   Controls,SysUtils,ExtCtrls,StdCtrls,Forms,Buttons,LCLType,Dialogs,
-  Classes,Graphics,FPImage,IntfGraphics,ComCtrls, ExtDlgs,SpriteFile,Global;
+  Classes,Graphics,FPImage,IntfGraphics,ComCtrls,SpriteFile,Global;
 
 type
 
   { TMainForm }
 
   TMainForm = class(TForm)
-   OpenImageDialog: TOpenPictureDialog;
+   edRenameSprite: TEdit;
+   MainSpritePanel: TPanel;
    StatusBarImages: TImageList;
    Texture: TImage;
    MainToolBarImages: TImageList;
-    OpenDialog: TOpenDialog;
-    ProgressInd: TProgressBar;
-    SavePaletteFile: TSaveDialog;
-    SaveSpriteFile: TSaveDialog;
-    SaveTextFile: TSaveDialog;
-    MainSpriteArea: TScrollBox;
-    SelectDirectoryDialog1: TSelectDirectoryDialog;
-    MainToolBar: TToolBar;
-    btnOpenSprite: TToolButton;
-    btnSaveAsBMPPNG: TToolButton;
-    btnSaveAsBMP: TToolButton;
-    btnSaveAsPNG: TToolButton;
-    btnSaveSprite: TToolButton;
-    btnSavePalette: TToolButton;
-    MainStatusBar: TStatusBar;
-    ToolButton1: TToolButton;
-    btnAbout: TToolButton;
-    btnSaveText: TToolButton;
-    btnOptions: TToolButton;
-    btnCloseFile: TToolButton;
-    btnImportImage: TToolButton;
-    ToolButton3: TToolButton;
-    procedure btnAboutClick(Sender: TObject);
-    procedure btnCloseFileClick(Sender: TObject);
-    procedure btnImportImageClick(Sender: TObject);
-    procedure btnOptionsClick(Sender: TObject);
-    procedure btnSavePaletteClick(Sender: TObject);
-    procedure btnSaveSpriteClick(Sender: TObject);
-    procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
-//    procedure btnSaveTextClick(Sender: TObject);
-    procedure FormDropFiles(Sender: TObject; const FileNames: array of String);
-    procedure FormResize(Sender: TObject);
-    procedure FormShow(Sender: TObject);
-    procedure Image1Click(Sender: TObject);
-    procedure MainStatusBarDrawPanel(StatusBar: TStatusBar;
-     Panel: TStatusPanel; const Rect: TRect);
-    procedure sb_OpenFileClick(Sender: TObject);
-    procedure CloseSpriteFile;
-    procedure LoadAFile(filename: String);
-    procedure ArrangeSprites;
-    procedure FormCreate(Sender: TObject);
-    procedure MainSpriteAreaPaint(Sender: TObject);
-    function validateFilename(f: String): String;
-    procedure Image1DblClick(Sender: TObject);
-    procedure sb_SaveClick(Sender: TObject);
-//    procedure SaveAsPng(screen:TBitmap;AFileName:String;Mask:Boolean;BGColour:Cardinal);
-    procedure CreateSpriteControl(sprite,x,y: Integer);
-    procedure UpdateProgress(p: Integer);
-    procedure TileCanvas(c: TCanvas);
-    procedure TileCanvas(c: TCanvas;rc: TRect); overload;
-    function QueryUnsaved: Boolean;
-  private
-   image     : array of TImage;
-   spritename: array of TLabel;
-   select,
-   wide,
-   high      : Integer;
-   sprload,
-   arthuros,
-   HasChanged: Boolean;
-  public
-   SpriteList: TSpriteFile;
+   OpenDialog: TOpenDialog;
+   ProgressInd: TProgressBar;
+   SavePaletteFile: TSaveDialog;
+   SaveSpriteFile: TSaveDialog;
+   SaveTextFile: TSaveDialog;
+   MainSpriteArea: TScrollBox;
+   SelectDirectoryDialog1: TSelectDirectoryDialog;
+   MainToolBar: TToolBar;
+   btnOpenSprite: TToolButton;
+   btnSaveAsBMPPNG: TToolButton;
+   btnSaveAsBMP: TToolButton;
+   btnSaveAsPNG: TToolButton;
+   btnSaveSprite: TToolButton;
+   btnSavePalette: TToolButton;
+   MainStatusBar: TStatusBar;
+   ToolButton1: TToolButton;
+   btnAbout: TToolButton;
+   btnOptions: TToolButton;
+   btnCloseFile: TToolButton;
+   btnImportImage: TToolButton;
+   ToolButton2: TToolButton;
+   ToolButton3: TToolButton;
+   btnRenameSprite: TToolButton;
+   btnDeleteSprite: TToolButton;
+   procedure btnAboutClick(Sender: TObject);
+   procedure btnCloseFileClick(Sender: TObject);
+   procedure btnDeleteSpriteClick(Sender: TObject);
+   procedure btnImportImageClick(Sender: TObject);
+   procedure btnOptionsClick(Sender: TObject);
+   procedure btnRenameSpriteClick(Sender: TObject);
+   procedure btnSavePaletteClick(Sender: TObject);
+   procedure btnSaveSpriteClick(Sender: TObject);
+   procedure edRenameSpriteEditingDone(Sender: TObject);
+   procedure edRenameSpriteKeyUp(Sender: TObject; var Key: Word;
+    Shift: TShiftState);
+   procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
+   procedure FormDropFiles(Sender: TObject; const FileNames: array of String);
+   procedure DisableButtons;
+   procedure FormResize(Sender: TObject);
+   procedure FormShow(Sender: TObject);
+   procedure Image1Click(Sender: TObject);
+   procedure MainStatusBarDrawPanel(StatusBar: TStatusBar;
+    Panel: TStatusPanel; const Rect: TRect);
+   procedure sb_OpenFileClick(Sender: TObject);
+   procedure CloseSpriteFile;
+   procedure LoadAFile(filename: String);
+   procedure UpdateStatusBar;
+   procedure ArrangeSprites;
+   procedure FormCreate(Sender: TObject);
+   procedure MainSpriteAreaPaint(Sender: TObject);
+   function validateFilename(f: String): String;
+   procedure Image1DblClick(Sender: TObject);
+   procedure sb_SaveClick(Sender: TObject);
+   procedure CreateSpriteControl(sprite,x,y: Integer);
+   procedure UpdateProgress(p: Integer);
+   procedure TileCanvas(c: TCanvas);
+   procedure TileCanvas(c: TCanvas;rc: TRect); overload;
+   function QueryUnsaved: Boolean;
+   function ConvertToKMG(size: Int64): String;
+   private
+    image     : array of TImage; //Containers for the images shown
+    spritename: array of TLabel; //Containers for the name underneath
+    spritepal : array of Boolean;//Whether it has a palette or not
+    select,                      //Currently selected sprite
+    editing,                     //Sprite currently being edited
+    thumbnailwidth,              //Sprite thumbnail width
+    thumbnailheight,             //Sprite thumbnail height
+    wide,                        //Widest and
+    tall      : Integer;         //Tallest sprite+name
+    sprload,                     //Prevents re-arrangement of the sprites
+    arthuros,                    //Arthur OS Compatible?
+    HasChanged: Boolean;         //Has Changed flag
+   public
+    SpriteList: TSpriteFile;     //The container for the sprites
    const
     AppTitle = 'Sprite Converter';
-    AppVersion = '1.02';
+    AppVersion = '1.03';
+   procedure AfterConstruction; override;
   end;
 
 var
@@ -116,22 +130,60 @@ implementation
 
 uses BigImageUnit,AboutUnit,SettingsUnit;
 
+{------------------------------------------------------------------------------}
+//Rescale the form
+{------------------------------------------------------------------------------}
+procedure TMainForm.AfterConstruction;
+var
+ i: Integer;
+begin
+{
+See: http://zarko-gajic.iz.hr/delphi-high-dpi-road-ensuring-your-ui-looks-correctly/
+and https://wiki.lazarus.freepascal.org/High_DPI
+}
+ inherited;
+ if Screen.PixelsPerInch<>96 then //as I’m designing at 96 DPI
+ begin
+  //Status Bar
+  MainStatusBar.Height:=Round(MainStatusBar.Height*Screen.PixelsPerInch/96);
+  MainStatusBar.Panels[0].Width:=MainStatusBar.Height;
+  for i:=0 to -1+MainStatusBar.Panels.Count do
+   MainStatusBar.Panels[i].Width:=Round(MainStatusBar.Panels[i].Width*Screen.PixelsPerInch/96);
+  MainToolBar.ImagesWidth:=Round(MainToolBar.ImagesWidth*Screen.PixelsPerInch/96);
+  //Can use TMonitor.PixelsPerInch to scale to a big monitor
+ end;
+end;
+
+{------------------------------------------------------------------------------}
+//Create the form
+{------------------------------------------------------------------------------}
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
  Application.Title:=AppTitle;
 end;
 
+{------------------------------------------------------------------------------}
+//Tile various areas
+{------------------------------------------------------------------------------}
 procedure TMainForm.MainSpriteAreaPaint(Sender: TObject);
 begin
 if Sender is TScrollBox then
  TileCanvas(TScrollBox(Sender).Canvas);
+if Sender is TPanel then
+ TileCanvas(TPanel(Sender).Canvas);
 end;
 
+{------------------------------------------------------------------------------}
+//Respond to a sprite image being double clicked
+{------------------------------------------------------------------------------}
 procedure TMainForm.Image1DblClick(Sender: TObject);
 var
  x: Integer;
  t: String;
+ sprite: TSprite;
 begin
+ x:=0;
+ //Make sure it is a component we can deal with
  if(Sender is TImage)or(Sender is TLabel)then
  begin
   //Set up the image
@@ -139,25 +191,28 @@ begin
    x:=TImage(Sender).Tag;
   if Sender is TLabel then
    x:=TLabel(Sender).Tag;
+  //Read the sprite
+  sprite:=SpriteList.ReadSprite(x);
+  //Now we can populate the big image in the dialogue
   BigImageForm.ZoomedImage.Picture.Clear;
   BigImageForm.ZoomedImage.Align:=alNone;
-  BigImageForm.ZoomedImage.Width:=SpriteList.SpriteList[x].Image.Width;
-  BigImageForm.ZoomedImage.Height:=SpriteList.SpriteList[x].Image.Height;
+  BigImageForm.ZoomedImage.Width:=sprite.Image.Width;
+  BigImageForm.ZoomedImage.Height:=sprite.Image.Height;
   BigImageForm.ZoomedImage.Canvas.AntialiasingMode:=amOff;
   BigImageForm.ZoomedImage.Stretch:=True;
   BigImageForm.ZoomedImage.Proportional:=True;
-  BigImageForm.ZoomedImage.Picture.Bitmap.Assign(SpriteList.SpriteList[x].PNG);
+  BigImageForm.ZoomedImage.Picture.Bitmap.Assign(sprite.PNG);
   BigImageForm.ZoomedImage.Align:=alClient;
   BigImageForm.ZoomedImage.Tag:=x;
   //Sprite name in the dialogue's title bar
-  BigImageForm.Caption:=SpriteList.SpriteList[x].Name;
+  BigImageForm.Caption:=sprite.Name;
   //Sprite information
   //Size
-  BigImageForm.lb_size.Caption:=IntToStr(SpriteList.SpriteList[x].PixWidth)+'x'
-                               +IntToStr(SpriteList.SpriteList[x].ScanLines+1);
+  BigImageForm.lb_size.Caption:=IntToStr(sprite.PixWidth)+'x'
+                               +IntToStr(sprite.ScanLines+1);
   BigImageForm.SizePanel.Top:=0;
   //BPP
-  BigImageForm.lb_bpp.Caption:=IntToStr(SpriteList.SpriteList[x].BPP)+'bpp';
+  BigImageForm.lb_bpp.Caption:=IntToStr(sprite.BPP)+'bpp';
   BigImageForm.BPPPanel.Top:=BigImageForm.SizePanel.Top+BigImageForm.SizePanel.Height;
   //Mask
   BigImageForm.lb_mask.Caption:=SpriteList.MaskFormat(x);
@@ -166,10 +221,10 @@ begin
   BigImageForm.lb_palette.Caption:=SpriteList.PaletteType(x);
   BigImageForm.PalettePanel.Top:=BigImageForm.MaskPanel.Top+BigImageForm.MaskPanel.Height;
   //Colours
-  if SpriteList.SpriteList[x].PaletteColours>0 then
+  if sprite.PaletteColours>0 then
   begin
    BigImageForm.ColoursPanel.Visible:=True;
-   BigImageForm.lb_colours.Caption:=IntToStr(SpriteList.SpriteList[x].PaletteColours);
+   BigImageForm.lb_colours.Caption:=IntToStr(sprite.PaletteColours);
    BigImageForm.ColoursPanel.Top:=BigImageForm.ColoursPanel.Top+BigImageForm.BPPPanel.Height;
   end
   else BigImageForm.ColoursPanel.Visible:=False;
@@ -177,10 +232,10 @@ begin
   BigImageForm.lb_spritetype.Caption:=SpriteList.SpriteType(x);
   BigImageForm.SpriteTypePanel.Top:=BigImageForm.ColoursPanel.Top+BigImageForm.ColoursPanel.Height;
   //Mode Data
-  if SpriteList.SpriteList[x].ModeData>54 then
-   BigImageForm.lb_mode.Caption:='0x'+IntToHex(SpriteList.SpriteList[x].ModeData,8)
+  if sprite.ModeData>54 then
+   BigImageForm.lb_mode.Caption:='0x'+IntToHex(sprite.ModeData,8)
   else
-   BigImageForm.lb_mode.Caption:=IntToStr(SpriteList.SpriteList[x].ModeData);
+   BigImageForm.lb_mode.Caption:=IntToStr(sprite.ModeData);
   BigImageForm.ModePanel.Top:=BigImageForm.SpriteTypePanel.Top+BigImageForm.SpriteTypePanel.Height;
   //Mode Flags
   t:=SpriteList.ModeFlag(x);
@@ -201,125 +256,176 @@ begin
  end;
 end;
 
+{------------------------------------------------------------------------------}
+//Open a new file, closing the old one first
+{------------------------------------------------------------------------------}
 procedure TMainForm.sb_OpenFileClick(Sender: TObject);
 begin
- if OpenDialog.Execute then
-  LoadAFile(OpenDialog.Filename);
+ if QueryUnsaved then
+ begin
+  //Set the options - not multiselect
+  OpenDialog.Options := [ofEnableSizing,ofViewDetail];
+  if OpenDialog.Execute then
+  begin
+   //We're not appending to the current one, so close it
+   CloseSpriteFile;
+   LoadAFile(OpenDialog.Filename);
+  end;
+ end;
 end;
 
+{------------------------------------------------------------------------------}
+//Close a sprite file and reset everything
+{------------------------------------------------------------------------------}
 procedure TMainForm.CloseSpriteFile;
 var
  x: Integer;
 begin
  //Disable the controls
- btnSaveAsBMPPNG.Enabled:=False;
- btnSaveAsBMP.Enabled   :=False;
- btnSaveAsPNG.Enabled   :=False;
- btnSaveSprite.Enabled  :=False;
- btnSavePalette.Enabled :=False;
- btnSaveText.Enabled    :=False;
- //First, we'll destroy any images that have been opened before
+ DisableButtons;
+ //Destroy any images that have been opened before
  if Length(image)>0 then
   for x:=0 to Length(image)-1 do
   begin
    image[x].Free;
    spritename[x].Free;
   end;
+ //Empty the arrays
  SetLength(image,0);
  SetLength(spritename,0);
  SpriteList.CloseCurrentFile;
+ //Reset Has Changed
  HasChanged:=False;
+ //Clear the status bar
+ MainStatusBar.Panels[1].Text:='';
+ MainStatusBar.Panels[2].Text:='';
+ MainStatusBar.Panels[3].Text:='';
+ MainStatusBar.Repaint;
+ //Reset the selectors
+ select:=-1;
+ editing:=-1;
 end;
 
+{------------------------------------------------------------------------------}
+//Load a file in
+{------------------------------------------------------------------------------}
 procedure TMainForm.LoadAFile(filename: String);
 var
-  x  : Integer;
-  ix : Cardinal;
-  txt: String;
+  x,
+  oldCount: Integer;
+  ix      : Cardinal;
 begin
+ //If the window is re-sized while sprites are being imported, it can crash
  sprload:=True;
+ //Reset the selected sprite to nothing
  select:=-1;
+ editing:=-1;
  //Disable the controls
- btnSaveAsBMPPNG.Enabled:=False;
- btnSaveAsBMP.Enabled   :=False;
- btnSaveAsPNG.Enabled   :=False;
- btnSaveSprite.Enabled  :=False;
- btnSavePalette.Enabled :=False;
- btnSaveText.Enabled    :=False;
+ DisableButtons;
+ //Try and import it, if it is a 'foreign' image
  if SpriteList.ImportImage(filename,arthuros) then
  begin
   //Set up the arrays for the sprites
   SetLength(image,SpriteList.SpriteCount);
   SetLength(spritename,SpriteList.SpriteCount);
-  if SpriteList.SpriteList[SpriteList.SpriteCount-1].Image<>nil then
-   CreateSpriteControl(SpriteList.SpriteCount-1,4,4);
+  SetLength(spritepal,SpriteList.SpriteCount);
+  //Create the controls to display
+  CreateSpriteControl(SpriteList.SpriteCount-1,4,4);
+  //Arrange the sprites
   ArrangeSprites;
+  //And mark as changed
   HasChanged:=True;
  end
- else
-  if QueryUnsaved then
+ else //Not a 'foreign' image, so try for a sprite file
+ begin
+  //Make the progress bar show
+  ProgressInd.Visible:=True;
+  //And tell the class where to find it
+  SpriteList.ProgressIndicator:=@UpdateProgress;
+  //So we can keep track if anything has been added
+  oldCount:=SpriteList.SpriteCount;
+  //Now try and open a sprite file
+  if SpriteList.LoadSpriteFile(filename)=0 then
   begin
-   CloseSpriteFile;
-   ProgressInd.Visible:=True;
-   SpriteList.ProgressIndicator:=@UpdateProgress;
-   if SpriteList.LoadSpriteFile(filename)=0 then
+   //If this is bigger than before, then something has been imported
+   if SpriteList.SpriteCount>oldCount then
    begin
-    if SpriteList.SpriteCount>0 then
+    //Set up or increase the arrays for the sprites
+    SetLength(image,SpriteList.SpriteCount);
+    SetLength(spritename,SpriteList.SpriteCount);
+    SetLength(spritepal,SpriteList.SpriteCount);
+    //Initial image position on the form - this will change
+    ix:=4;
+    wide:=0; //We need to work out the widest sprite
+    tall:=0; //And the tallest
+    for x:=oldCount to SpriteList.SpriteCount-1 do
     begin
-     //Set up the arrays for the sprites
-     SetLength(image,SpriteList.SpriteCount);
-     SetLength(spritename,SpriteList.SpriteCount);
-     //Initial image position on the form
-     ix:=4;
-     wide:=0; //We need to work out the widest sprite
-     high:=0; //And the tallest
-     for x:=0 to SpriteList.SpriteCount-1 do
-     begin
-      //Display it
-      if SpriteList.SpriteList[x].Image<>nil then
-      begin
-       CreateSpriteControl(x,ix,4);
-       inc(ix,4);
-      end;
-      //Update the window
-      ProgressInd.Position:=100+Round((x/SpriteList.SpriteCount)*100);
-      if Round((x/SpriteList.SpriteCount)*100)mod 10=0 then
-       Application.ProcessMessages;
-     end;
+     //Display it
+     CreateSpriteControl(x,ix,4);
+     inc(ix,4);
+     //Update the window
+     ProgressInd.Position:=100+Round((x/SpriteList.SpriteCount)*100);
+     //We need to process the messages for this to show, but this also slows
+     //down the progress, so we'll only do it every 10%
+     if Round((x/SpriteList.SpriteCount)*100)mod 10=0 then
+      Application.ProcessMessages;
     end;
-   end
-   else
-    ShowMessage('Invalid Sprite File: "'+filename+'"');
-   Application.ProcessMessages;
-   ProgressInd.Position:=ProgressInd.Max;
-   ProgressInd.Visible:=False;
-   Application.ProcessMessages;
-   ArrangeSprites;
-  end;
+    //If we have added some more sprites to an already open file, mark as changed
+    if oldCount<>0 then HasChanged:=True;
+   end;
+  end
+  else //We can't recognise the file, so report an error
+   ShowMessage('Invalid Sprite File: "'+filename+'"');
+  //Update the windows
+  Application.ProcessMessages;
+  ProgressInd.Position:=ProgressInd.Max;
+  ProgressInd.Visible:=False;
+  Application.ProcessMessages;
+  //Now arrange the sprites so they look nice, and spaced out
+  ArrangeSprites;
+ end;
+ //If something has been opened, then update the status bar and enable the toolbar buttons
  if SpriteList.SpriteCount>0 then
  begin
-  //Display the filename
-  txt:=IntToStr(SpriteList.SpriteCount)+' sprite';
-  if SpriteList.SpriteCount>1 then
-   txt:=txt+'s';
   //Enable the controls
-  btnSaveText.Enabled    :=True;
   btnSaveAsBMPPNG.Enabled:=True;
   btnSaveAsBMP.Enabled   :=True;
   btnSaveAsPNG.Enabled   :=True;
   btnSaveSprite.Enabled  :=True;
-  MainStatusBar.Panels[1].Text:=txt;
-  MainStatusBar.Panels[2].Text:=SpriteList.SpriteFile;
+  //Update the status bar
+  UpdateStatusBar;
+  //Allow re-arranging
   sprload:=False;
  end;
 end;
 
+{------------------------------------------------------------------------------}
+//Update the status bar
+{------------------------------------------------------------------------------}
+procedure TMainForm.UpdateStatusBar;
+var
+ txt: String;
+begin
+ txt:=IntToStr(SpriteList.SpriteCount)+' sprite';
+ //Plurise if necessary
+ if SpriteList.SpriteCount>1 then
+  txt:=txt+'s';
+ MainStatusBar.Panels[1].Text:=txt;
+ MainStatusBar.Panels[2].Text:=ConvertToKMG(SpriteList.LastFreeWord);
+ MainStatusBar.Panels[3].Text:=SpriteList.SpriteFile;
+ MainStatusBar.Repaint;
+end;
+
+{------------------------------------------------------------------------------}
+//Arrange the sprites so they are evenly spaced out
+{------------------------------------------------------------------------------}
 procedure TMainForm.ArrangeSprites;
 var
  s,
  x,y,
  max : Integer;
 begin
+ //Only if there is something to arrange
  if Length(image)>0 then
  begin
   //The maximum width
@@ -327,8 +433,10 @@ begin
   //Now we can arrange them nicely in columns and rows
   x:=12;
   y:=12;
+  s:=Length(image);
   for s:=0 to Length(image)-1 do
   begin
+   //We need to make the components visible so that they show up dimensions
    image[s].Visible:=True;
    spritename[s].Visible:=True;
    //Ensure we don't go too far to the right
@@ -336,7 +444,7 @@ begin
    begin
     //So, next row
     x:=12;
-    inc(y,high+20);
+    inc(y,tall+20);
    end;
    //Position the image, top and centre
    image[s].Top:=y;
@@ -347,20 +455,38 @@ begin
    //Next column
    inc(x,wide+12);
   end;
+  MainSpritePanel.Height:=y+tall+20;
  end;
 end;
 
+{------------------------------------------------------------------------------}
+//Accept files dropped onto the form
+{------------------------------------------------------------------------------}
 procedure TMainForm.FormDropFiles(Sender: TObject;
  const FileNames: array of String);
+var
+ f: Integer;
 begin
- LoadAFile(FileNames[0]);
+ for f:=0 to Length(FileNames)-1 do
+  LoadAFile(FileNames[f]);
 end;
 
+{------------------------------------------------------------------------------}
+//Resize the form
+{------------------------------------------------------------------------------}
 procedure TMainForm.FormResize(Sender: TObject);
 begin
+ MainSpritePanel.Top:=0;
+ MainSpritePanel.Left:=0;
+ MainSpritePanel.Width:=MainSpriteArea.ClientWidth;
+ MainSpritePanel.Height:=MainSpriteArea.ClientHeight;
+ //Only if the flag is not set
  if not sprload then ArrangeSprites;
 end;
 
+{------------------------------------------------------------------------------}
+//Display the About dialogue
+{------------------------------------------------------------------------------}
 procedure TMainForm.btnAboutClick(Sender: TObject);
 var
  platform: String;
@@ -391,22 +517,93 @@ begin
  AboutForm.ShowModal;
 end;
 
+{------------------------------------------------------------------------------}
+//User is closing application, so check if the file is unsaved
+{------------------------------------------------------------------------------}
 procedure TMainForm.btnCloseFileClick(Sender: TObject);
 begin
  If QueryUnSaved then CloseSpriteFile;
 end;
 
-procedure TMainForm.btnImportImageClick(Sender: TObject);
+{------------------------------------------------------------------------------}
+//Delete a sprite
+{------------------------------------------------------------------------------}
+procedure TMainForm.btnDeleteSpriteClick(Sender: TObject);
+var
+ x: Integer;
 begin
- If OpenImageDialog.Execute then
-  LoadAFile(OpenImageDialog.Filename);
+ if select>=0 then
+  if MessageDlg('Delete sprite'
+               ,'Are you sure you want to delete sprite "'+spritename[select].Caption+'"?'
+               ,mtConfirmation
+               ,[mbYes,mbNo],0)=mrYes then
+   if SpriteList.DeleteSprite(select) then
+   begin
+    //Delete the control
+    if Length(image)>1 then //If more than one, otherwise we can just close the file
+    begin
+     //Is it not the last one?
+     if select<Length(image)-2 then
+     begin
+      for x:=select to Length(image)-2 do
+      begin
+       image[x].Picture.Assign(image[x+1].Picture);
+       spritename[x].Caption:=spritename[x+1].Caption;
+       spritepal[x]:=spritepal[x+1];
+      end;
+     end;
+     //Free up the contols
+     image[Length(image)-1].Free;
+     spritename[Length(spritename)-1].Free;
+     //Reduce the array lengths
+     SetLength(image,Length(image)-1);
+     SetLength(spritename,Length(spritename)-1);
+     SetLength(spritepal,Length(spritepal)-1);
+     //Mark as changed
+     HasChanged:=True;
+     //Re-arrange the controls
+     ArrangeSprites;
+     //Update the status bar
+     UpdateStatusBar;
+     //Deselect the deleted sprite
+     if select<Length(spritename) then
+     begin
+      spritename[select].Color:=clNone;
+      spritename[select].Font.Color:=clDefault;
+     end;
+     select:=-1;
+     editing:=-1;
+    end
+    else CloseSpriteFile;
+   end;
 end;
 
+{------------------------------------------------------------------------------}
+//Load/import files to append to the current open one
+{------------------------------------------------------------------------------}
+procedure TMainForm.btnImportImageClick(Sender: TObject);
+var
+ x: Integer;
+begin
+ //Set the dialogue options
+ OpenDialog.Options := [ofEnableSizing,ofViewDetail,ofAllowMultiSelect];
+ //If user has clicked OK, open all selected
+ If OpenDialog.Execute then
+  for x:=0 to OpenDialog.Files.Count-1 do
+   LoadAFile(OpenDialog.Files[x]);
+end;
+
+{------------------------------------------------------------------------------}
+//Options dialogue box is being opened
+{------------------------------------------------------------------------------}
 procedure TMainForm.btnOptionsClick(Sender: TObject);
 begin
+ //Set the settings on the control
  SettingsForm.ArthurOption.Checked:=arthuros;
  SettingsForm.RO35Option.Checked:=Not arthuros;
+ //Show it
  SettingsForm.ShowModal;
+ //Now respond to any change, if OK is clicked
  if SettingsForm.ModalResult=mrOK then
  begin
   arthuros:=SettingsForm.ArthurOption.Checked;
@@ -414,8 +611,37 @@ begin
  end;
 end;
 
+{------------------------------------------------------------------------------}
+//Rename a sprite - show the edit control
+{------------------------------------------------------------------------------}
+procedure TMainForm.btnRenameSpriteClick(Sender: TObject);
+begin
+ if(select>=0)and(select<SpriteList.SpriteCount)then
+ begin
+  editing:=select;
+  //Make the edit box visible
+  edRenameSprite.Visible:=True;
+  //Position so it takes up the whole width
+  edRenameSprite.Left:=(spritename[select].Left
+                      +(spritename[select].Width div 2))-(wide div 2);
+  edRenameSprite.Width:=wide;
+  //And is the same place as the label
+  edRenameSprite.Top :=spritename[select].Top;
+  //Put the label's text into the edit box
+  edRenameSprite.Text:=spritename[select].Caption;
+  //Hide the label
+  spritename[select].Visible:=False;
+  //And give the edit box focus
+  edRenameSprite.SetFocus;
+ end;
+end;
+
+{------------------------------------------------------------------------------}
+//Save the palette of the current selected sprite
+{------------------------------------------------------------------------------}
 procedure TMainForm.btnSavePaletteClick(Sender: TObject);
 begin
+ //Only if something is selected and is within bounds
  if(select>=0)and(select<SpriteList.SpriteCount)then
  begin
   SavePaletteFile.Filename:=SpriteList.SpriteFile+'.pal';
@@ -424,6 +650,9 @@ begin
  end;
 end;
 
+{------------------------------------------------------------------------------}
+//Save the current sprite pool as a sprite file
+{------------------------------------------------------------------------------}
 procedure TMainForm.btnSaveSpriteClick(Sender: TObject);
 begin
  SaveSpriteFile.Filename:=SpriteList.SpriteFile;
@@ -431,69 +660,143 @@ begin
  begin
   SpriteList.SaveSpriteFile(SaveSpriteFile.Filename);
   HasChanged:=False;
+  MainStatusBar.Repaint;
  end;
 end;
 
+{------------------------------------------------------------------------------}
+//User has done editing the sprite
+{------------------------------------------------------------------------------}
+procedure TMainForm.edRenameSpriteEditingDone(Sender: TObject);
+begin
+ if editing>=0 then
+ begin
+  edRenameSprite.Visible:=False;
+  spritename[editing].Visible:=True;
+  editing:=-1;
+ end;
+end;
+
+{------------------------------------------------------------------------------}
+//Query if we can close the form
+{------------------------------------------------------------------------------}
+procedure TMainForm.edRenameSpriteKeyUp(Sender: TObject; var Key: Word;
+ Shift: TShiftState);
+begin
+ if editing>=0 then
+ begin
+  //Check for enter being pressed
+  if Key=13 then
+  begin
+   edRenameSpriteEditingDone(Sender);
+   if SpriteList.RenameSprite(spritename[editing].Caption,edRenameSprite.Text) then
+   begin
+    spritename[editing].Caption:=edRenameSprite.Text;
+    HasChanged:=True;
+    ArrangeSprites;
+    editing:=-1;
+   end;
+  end;
+ end;
+end;
+
+{------------------------------------------------------------------------------}
+//Query if we can close the form
+{------------------------------------------------------------------------------}
 procedure TMainForm.FormCloseQuery(Sender: TObject; var CanClose: boolean);
 begin
  CanClose:=QueryUnsaved;
 end;
 
-{procedure TMainForm.btnSaveTextClick(Sender: TObject);
+{------------------------------------------------------------------------------}
+//Disable the toolbar buttons
+{------------------------------------------------------------------------------}
+procedure TMainForm.DisableButtons;
 begin
- SaveTextFile.Filename:=SpriteList.SpriteFile+'.txt';
- if SaveTextFile.Execute then
-  SpriteList.LogFile.SaveToFile(SaveTextFile.Filename);
-end;}
-
-procedure TMainForm.FormShow(Sender: TObject);
-begin
- Caption:=AppTitle+' '+AppVersion+' by Gerald J Holdsworth';
- SpriteList:=TSpriteFile.Create;
- //Disable the controls
  btnSaveAsBMPPNG.Enabled:=False;
  btnSaveAsBMP.Enabled   :=False;
  btnSaveAsPNG.Enabled   :=False;
  btnSaveSprite.Enabled  :=False;
  btnSavePalette.Enabled :=False;
- btnSaveText.Enabled    :=False;
+ btnRenameSprite.Enabled:=False;
+ btnDeleteSprite.Enabled:=False;
+end;
+
+{------------------------------------------------------------------------------}
+//Show the form - and set up the application
+{------------------------------------------------------------------------------}
+procedure TMainForm.FormShow(Sender: TObject);
+begin
+ Caption:=AppTitle+' '+AppVersion+' by Gerald J Holdsworth';
+ SpriteList:=TSpriteFile.Create;
+ //Disable the controls
+ DisableButtons;
  //Loading sprites flag
  sprload:=False;
  //Has Changed flag
  HasChanged:=False;
  //Get the user options
  arthuros:=GetRegValB('ArthurCompatible',False);
+ //Set the selector to nothing
+ select:=-1;
+ editing:=-1;
+ //Sprite thumbnails
+ thumbnailwidth :=Round(32*Screen.PixelsPerInch/96);
+ thumbnailheight:=Round(32*Screen.PixelsPerInch/96);
 end;
 
+{------------------------------------------------------------------------------}
+//Single click on a sprite
+{------------------------------------------------------------------------------}
 procedure TMainForm.Image1Click(Sender: TObject);
 var
  x: Integer;
+ edit: Boolean;
 begin
+ x:=-1;
+ edit:=False;
+ //Make sure it is an image or label
  if(Sender is TImage)or(Sender is TLabel)then
  begin
+  //Get the sprite number
   if Sender is TImage then x:=TImage(Sender).Tag;
-  if Sender is TLabel then x:=TLabel(Sender).Tag;
-  if select>=0 then
+  if Sender is TLabel then
   begin
-   spritename[select].Color:=clNone;
-   spritename[select].Font.Color:=clDefault;
+   x:=TLabel(Sender).Tag;
+   edit:=True;
   end;
-  if x<>select then
-  begin
-   spritename[x].Color:=clBlue;
-   spritename[x].Font.Color:=clWhite;
-   select:=x;
-  end
-  else select:=-1;
-  if select=-1 then btnSavePalette.Enabled:=False;
-  if select>=0 then
-   if SpriteList.SpriteList[select].HasPalette then
-    btnSavePalette.Enabled:=True
-   else
-    btnSavePalette.Enabled:=False;
  end;
+ //Just to be sure
+ if(select>=0)and(not edit)then
+ begin
+  //Clear the current selected label
+  spritename[select].Color:=clNone;
+  spritename[select].Font.Color:=clDefault;
+ end;
+ //Now colour the background of the new one (unless it is the scroll box has been clicked).
+ if(x<>select)and(x>=0)then
+ begin
+  spritename[x].Color:=clBlue;
+  spritename[x].Font.Color:=clWhite;
+  select:=x;
+  btnSavePalette.Enabled:=spritepal[select];
+  btnRenameSprite.Enabled:=True;
+  btnDeleteSprite.Enabled:=True;
+ end
+ else
+  if(x=select)and(x>=0)and(edit)then btnRenameSpriteClick(Sender)
+  else
+  begin
+   select:=-1; //Or mark as deselected
+   btnSavePalette.Enabled:=False;
+   btnRenameSprite.Enabled:=False;
+   btnDeleteSprite.Enabled:=False;
+  end;
 end;
 
+{------------------------------------------------------------------------------}
+//Redraw the status bar - currently only the Has Changed part
+{------------------------------------------------------------------------------}
 procedure TMainForm.MainStatusBarDrawPanel(StatusBar: TStatusBar;
  Panel: TStatusPanel; const Rect: TRect);
 var
@@ -509,6 +812,9 @@ begin
   StatusBarImages.StretchDraw(StatusBar.Canvas,0,imgRect);
 end;
 
+{------------------------------------------------------------------------------}
+//Save the current selection, or all, as bitmap or PNG
+{------------------------------------------------------------------------------}
 procedure TMainForm.sb_SaveClick(Sender: TObject);
 var
  Dir   : String;
@@ -517,6 +823,7 @@ var
  svend : Integer;
  png,
  bmp   : Boolean;
+ sprite: TSprite;
 begin
  //Set as default
  png:=False;
@@ -552,19 +859,17 @@ begin
    end;
    for x:=svsrt to svend do
    begin
+    sprite:=SpriteList.ReadSprite(x);
     //PNG
     if png then
-     {SaveAsPng(SpriteList.SpriteList[x].Image,Dir+PathDelim
-                        +validateFilename(SpriteList.SpriteList[x].Name)+'.png',
-                        SpriteList.SpriteList[x].TransFormat>0,
-                        SpriteList.SpriteList[x].BGColour);}
-     SpriteList.SpriteList[x].PNG.SaveToFile(Dir+PathDelim
-                       +validateFilename(SpriteList.SpriteList[x].Name)+'.png');
+     try
+      sprite.PNG.SaveToFile(Dir+PathDelim+validateFilename(sprite.Name)+'.png');
+     finally
+     end;
     //Save BMP
     if bmp then
      try
-      SpriteList.SpriteList[x].Image.SaveToFile(Dir+PathDelim
-                       +validateFilename(SpriteList.SpriteList[x].Name)+'.bmp');
+      sprite.Image.SaveToFile(Dir+PathDelim+validateFilename(sprite.Name)+'.bmp');
      finally
      end;
    end;
@@ -572,90 +877,57 @@ begin
  end;
 end;
 
-{procedure TMainForm.SaveAsPng(screen:TBitmap;AFileName:String;Mask:Boolean;
-                                                             BGColour:Cardinal);
-var
- png: TPortableNetworkGraphic;
- img: TLazIntfImage;
- cnv: TLazCanvas;
- col: TFPColor;
- x,y: Integer;
-begin
- col.Alpha:=(BGColour and $FF000000)>>24;
- col.Red  :=BGColour and $FF;
- col.Green:=(BGColour and $FF00)>>8;
- col.Blue :=(BGColour and $FF0000)>>16;
- col.Alpha:=col.Alpha or col.Alpha<<8;
- col.Red  :=col.Red or col.Red<<8;
- col.Green:=col.Green or col.Green<<8;
- col.Blue :=col.Blue or col.Blue<<8;
- png:=TPortableNetworkGraphic.Create;
- png.PixelFormat:=pf32Bit;  // 32 bit --> with alpha channel
- png.SetSize(screen.Width,screen.Height);
- if Mask then png.Transparent:=True;
- img:=png.CreateIntfImage;
- cnv:=TLazCanvas.Create(img);
- cnv.Draw(0,0,screen.CreateIntfImage);
- if Mask then
-  for y:=0 to img.Height-1 do
-   for x:=0 to img.Width-1 do
-    if cnv.Colors[x,y]=col then
-     cnv.Colors[x,y]:=colTransparent;
- png.LoadFromIntfImage(img);
- try
-  png.SaveToFile(AFileName);
- finally
- end;
- cnv.Free;
- img.Free;
- png.Free;
-end;}
-
+{------------------------------------------------------------------------------}
+//Create the image and label controls for the specified sprite
+{------------------------------------------------------------------------------}
 procedure TMainForm.CreateSpriteControl(sprite,x,y: Integer);
-const
-  imgsizex = 32;
-  imgsizey = 32;
+var
+  spritedata: TSprite;
 begin
- spritename[sprite]:=TLabel.Create(MainSpriteArea as TComponent);
- spritename[sprite].Parent:=MainSpriteArea as TWinControl;
- spritename[sprite].Top:=y+imgsizey;
+ //Read the specified sprite in
+ spritedata:=SpriteList.ReadSprite(sprite);
+ //We'll take note of whether it has a palette, to speed up access later on
+ spritepal[sprite]:=spritedata.HasPalette;
+ //Create and populate the sprite name label
+ spritename[sprite]:=TLabel.Create(MainSpritePanel as TComponent);
+ spritename[sprite].Parent:=MainSpritePanel as TWinControl;
+ spritename[sprite].Top:=y+thumbnailheight;
  spritename[sprite].Left:=x;
  spritename[sprite].Visible:=True;
- spritename[sprite].Caption:=SpriteList.SpriteList[sprite].Name;
- spritename[sprite].Left:=x+(((imgsizex*2)-spritename[sprite].Width)div 2);
+ spritename[sprite].Caption:=spritedata.Name;
+ spritename[sprite].Left:=x+(((thumbnailwidth*2)-spritename[sprite].Width)div 2);
  spritename[sprite].OnDblClick:=@Image1DblClick;
  spritename[sprite].OnClick:=@Image1Click;
- spritename[sprite].Tag:=sprite;
- image[sprite]:=TImage.Create(MainSpriteArea as TComponent);
- image[sprite].Parent:=MainSpriteArea as TWinControl;
- //image[sprite].Width:=SpriteList.SpriteList[sprite].PNG.Width;
- //image[sprite].Height:=SpriteList.SpriteList[sprite].PNG.Height;
+ spritename[sprite].Tag:=sprite; //For reference later
+ //Create and populate the sprite image control
+ image[sprite]:=TImage.Create(MainSpritePanel as TComponent);
+ image[sprite].Parent:=MainSpritePanel as TWinControl;
  image[sprite].OnDblClick:=@Image1DblClick;
  image[sprite].OnClick:=@Image1Click;
  image[sprite].Tag:=sprite;
  image[sprite].Visible:=True;
- //image[sprite].Canvas.AntialiasingMode:=amOff;
  image[sprite].Stretch:=True;
  image[sprite].Proportional:=True;
  image[sprite].Top:=y;
- image[sprite].Left:=x+(imgsizex div 2);
- {image[sprite].Canvas.Pen.Color:=MainForm.Color;
- image[sprite].Canvas.Brush.Color:=MainForm.Color;
- image[sprite].Canvas.Rectangle(0,0,image[sprite].Width,image[sprite].Height);}
- image[sprite].Picture.Bitmap.Assign(SpriteList.SpriteList[sprite].PNG);
- //image[sprite].Canvas.Draw(0,0,SpriteList.SpriteList[sprite].Image);
- image[sprite].Width:=imgsizex;
- image[sprite].Height:=imgsizey;
- image[sprite].Hint:=SpriteList.SpriteList[sprite].Name;
+ image[sprite].Left:=x+(thumbnailwidth div 2);
+ image[sprite].Picture.Bitmap.Assign(spritedata.PNG);
+ image[sprite].Width:=thumbnailwidth;
+ image[sprite].Height:=thumbnailheight;
+ image[sprite].Hint:=spritedata.Name;
+ //Take note if it is the widest so far seen
  if spritename[sprite].Width>wide then wide:=spritename[sprite].Width;
  if image[sprite].Width>wide then wide:=image[sprite].Width;
  //They're all the same height
- if high=0 then
-  high:=((spritename[sprite].Top+spritename[sprite].Height)-image[sprite].Top);
+ if tall=0 then
+  tall:=((spritename[sprite].Top+spritename[sprite].Height)-image[sprite].Top);
+ //Hide them, until later
  spritename[sprite].Visible:=False;
  image[sprite].Visible:=False;
 end;
 
+{------------------------------------------------------------------------------}
+//Validate a filename
+{------------------------------------------------------------------------------}
 function TMainForm.validateFilename(f: String): String;
 var
  i: Integer;
@@ -674,12 +946,18 @@ begin
  Result:=f;
 end;
 
+{------------------------------------------------------------------------------}
+//Update the progress bar
+{------------------------------------------------------------------------------}
 procedure TMainForm.UpdateProgress(p: Integer);
 begin
  ProgressInd.Position:=p;
  Application.ProcessMessages;
 end;
 
+{------------------------------------------------------------------------------}
+//Tile the window and controls with the texture
+{------------------------------------------------------------------------------}
 procedure TMainForm.TileCanvas(c: TCanvas);
 var
  rc: TRect;
@@ -707,6 +985,56 @@ begin
  if HasChanged then
   Result:=MessageDlg('You have unsaved changes. Do you wish to continue?',
                 mtInformation,[mbYes,mbNo],0)=mrYes;
+end;
+
+{------------------------------------------------------------------------------}
+//Converts a number into a string with trailing 'Bytes', 'KB', etc.
+{------------------------------------------------------------------------------}
+function TMainForm.ConvertToKMG(size: Int64): String;
+var
+ new_size_int : Int64; //Int64 will allow for huge sizes
+ new_size_dec,
+ level,
+ multiplier   : Integer;
+const
+ sizes: array[1..6] of String = ('Bytes','KB','MB','GB','TB','EB');
+begin
+ //Default is in bytes
+ Result:=IntToStr(size)+' '+sizes[1];
+ //How far through the array
+ level:=0;
+ //Current multiplier - KB is 1024 bytes, but MB is 1000 KB...odd, I know!
+ multiplier:=1024;
+ //We just do this as the first thing we do is divide
+ new_size_int:=size*multiplier;
+ repeat //we could use a While Do loop and avoid the pre-multiplying above
+  inc(level); //Next level, or entry into the array
+  //There are 1000KB per MB, 1000MB per GB, etc. but 1024 bytes per KB, etc.
+  if level>2 then multiplier:=1000;
+  //Work out the remainder, as a decimal to three decimal places
+  new_size_dec:=Round(((new_size_int mod multiplier)/multiplier)*1000);
+  //Reduce the size to the next smaller multiple
+  new_size_int:=new_size_int div multiplier;
+  //and repeat until we are smaller than the current multiple, or out of choices
+ until (new_size_int<multiplier) or (level=High(sizes));
+ //If level is valid
+ if level<=High(sizes) then
+ begin
+  //First the major, whole number, portion
+  Result:=IntToStr(new_size_int);
+  //Then the decimal portion, but only if there is one
+  if new_size_dec>0 then
+  begin
+   //Add an extra zero, which will be removed
+   Result:=Result+'.'+IntToStr(new_size_dec)+'0';
+   //Now remove all the surplus zeros
+   repeat
+    Result:=Copy(Result,1,Length(Result)-1);
+   until Result[Length(Result)]<>'0';
+  end;
+  //And finally return the result, with the unit
+  Result:=Result+' '+sizes[level];
+ end;
 end;
 
 end.

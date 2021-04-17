@@ -1,15 +1,7 @@
-* Deal with sprite type 8 (24bpp),9 (JPEG),17 (4:2:0 YCbCr) and 18 (4:2:2 YCbCr).
-* Deal with mode types 'YCbCr - ITU-R'.
-* Add the monochrome palettes.
+* Deal with sprite type 8 (24bpp),9 (JPEG),17 (4:2:0 YCbCr) and 18 (4:2:2 YCbCr). According to the online PRMs on the ROOL website, these are only placeholders and have yet to be implemented.
+* Deal with mode types 'YCbCr - ITU-R'. As above.
 * Application hangs when trying to save images to files which are already open in another application.
-* Make Application High-DPI aware.
-* Remove commented code.
-* Improve the comments for the existing code.
-* Need a button to close a sprite file.
-* Rename sprite.
-* Delete sprite(s).
-* Multi-select sprites.
-* Add button for importing image(s).
-* Allow multi-image importing in one go.
-* Add a 'IsValidSpriteFile' function to the class.
-* If a sprite file is already open and another is loaded, then merge the two.
+* Import a palette for an existing palettised sprite.
+* Edit the palette of a palettised sprite.
+* 'Flatten' an Alpha mask to make it pre-RISC OS 4.39 compatible.
+* Convert 16bpp and 32bpp imported images to 8bpp to make them Arthur compatible.
