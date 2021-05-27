@@ -29,7 +29,7 @@ interface
 
 uses
   Controls,SysUtils,ExtCtrls,StdCtrls,Forms,Buttons,LCLType,Dialogs,
-  Classes,Graphics,FPImage,IntfGraphics,ComCtrls,SpriteFile,Global;
+  Classes,Graphics,FPImage,IntfGraphics,ComCtrls, Menus,SpriteFile,Global, Types;
 
 type
 
@@ -37,7 +37,33 @@ type
 
   TMainForm = class(TForm)
    edRenameSprite: TEdit;
+   AppMenu: TMainMenu;
    MainSpritePanel: TPanel;
+   FileMenu: TMenuItem;
+   menuClosePool: TMenuItem;
+   menuImportImage: TMenuItem;
+   menuDeleteSprite: TMenuItem;
+   MenuItem1: TMenuItem;
+   menuAbout: TMenuItem;
+   contRenameSprite: TMenuItem;
+   contDeleteSprite: TMenuItem;
+   contSavePalette: TMenuItem;
+   MenuItem3: TMenuItem;
+   contConvertSprite: TMenuItem;
+   menuConvertSprite: TMenuItem;
+   menuOptions: TMenuItem;
+   ContextMenu: TPopupMenu;
+   btnConvertSprite: TToolButton;
+   ToolMenu: TMenuItem;
+   menuSavePalette: TMenuItem;
+   menuSaveSprite: TMenuItem;
+   menuSaveAsPNG: TMenuItem;
+   menuSaveAsBMP: TMenuItem;
+   menuSaveAsBMPPNG: TMenuItem;
+   MenuItem2: TMenuItem;
+   menuRenameSprite: TMenuItem;
+   SpriteMenu: TMenuItem;
+   menuOpenFile: TMenuItem;
    StatusBarImages: TImageList;
    Texture: TImage;
    MainToolBarImages: TImageList;
@@ -67,6 +93,7 @@ type
    btnDeleteSprite: TToolButton;
    procedure btnAboutClick(Sender: TObject);
    procedure btnCloseFileClick(Sender: TObject);
+   procedure btnConvertSpriteClick(Sender: TObject);
    procedure btnDeleteSpriteClick(Sender: TObject);
    procedure btnImportImageClick(Sender: TObject);
    procedure btnOptionsClick(Sender: TObject);
@@ -87,6 +114,7 @@ type
    procedure sb_OpenFileClick(Sender: TObject);
    procedure CloseSpriteFile;
    procedure LoadAFile(filename: String);
+   procedure ContextPopup(Sender: TObject; MousePos: TPoint;var Handled: Boolean);
    procedure UpdateStatusBar;
    procedure ArrangeSprites;
    procedure FormCreate(Sender: TObject);
@@ -117,7 +145,7 @@ type
     SpriteList: TSpriteFile;     //The container for the sprites
    const
     AppTitle = 'Sprite Converter';
-    AppVersion = '1.03';
+    AppVersion = '1.04';
    procedure AfterConstruction; override;
   end;
 
@@ -191,6 +219,8 @@ begin
    x:=TImage(Sender).Tag;
   if Sender is TLabel then
    x:=TLabel(Sender).Tag;
+  //Deselect any that are selected
+  if select=x then Image1Click(image[x]);
   //Read the sprite
   sprite:=SpriteList.ReadSprite(x);
   //Now we can populate the big image in the dialogue
@@ -356,8 +386,8 @@ begin
     SetLength(spritepal,SpriteList.SpriteCount);
     //Initial image position on the form - this will change
     ix:=4;
-    wide:=0; //We need to work out the widest sprite
-    tall:=0; //And the tallest
+//    wide:=0; //We need to work out the widest sprite
+//    tall:=0; //And the tallest
     for x:=oldCount to SpriteList.SpriteCount-1 do
     begin
      //Display it
@@ -388,15 +418,28 @@ begin
  if SpriteList.SpriteCount>0 then
  begin
   //Enable the controls
-  btnSaveAsBMPPNG.Enabled:=True;
-  btnSaveAsBMP.Enabled   :=True;
-  btnSaveAsPNG.Enabled   :=True;
-  btnSaveSprite.Enabled  :=True;
+  btnSaveAsBMPPNG.Enabled :=True;
+  menuSaveAsBMPPNG.Enabled:=True;
+  btnSaveAsBMP.Enabled    :=True;
+  menuSaveAsBMP.Enabled   :=True;
+  btnSaveAsPNG.Enabled    :=True;
+  menuSaveAsPNG.Enabled   :=True;
+  btnSaveSprite.Enabled   :=True;
+  menuSaveSprite.Enabled  :=True;
   //Update the status bar
   UpdateStatusBar;
   //Allow re-arranging
   sprload:=False;
  end;
+end;
+
+{------------------------------------------------------------------------------}
+//Middle button (two finger on mac touchpad) has been clicked
+{------------------------------------------------------------------------------}
+procedure TMainForm.ContextPopup(Sender: TObject; MousePos: TPoint;
+ var Handled: Boolean);
+begin
+ Image1Click(Sender);
 end;
 
 {------------------------------------------------------------------------------}
@@ -523,6 +566,14 @@ end;
 procedure TMainForm.btnCloseFileClick(Sender: TObject);
 begin
  If QueryUnSaved then CloseSpriteFile;
+end;
+
+{------------------------------------------------------------------------------}
+//Convert a sprite
+{------------------------------------------------------------------------------}
+procedure TMainForm.btnConvertSpriteClick(Sender: TObject);
+begin
+ //Convert a sprite: colour depth; OS compatibility; mask type; mode data
 end;
 
 {------------------------------------------------------------------------------}
@@ -720,6 +771,16 @@ begin
  btnSavePalette.Enabled :=False;
  btnRenameSprite.Enabled:=False;
  btnDeleteSprite.Enabled:=False;
+ menuSaveAsBMPPNG.Enabled:=False;
+ menuSaveAsBMP.Enabled   :=False;
+ menuSaveAsPNG.Enabled   :=False;
+ menuSaveSprite.Enabled  :=False;
+ menuSavePalette.Enabled :=False;
+ menuRenameSprite.Enabled:=False;
+ menuDeleteSprite.Enabled:=False;
+ contSavePalette.Enabled :=False;
+ contRenameSprite.Enabled:=False;
+ contDeleteSprite.Enabled:=False;
 end;
 
 {------------------------------------------------------------------------------}
@@ -743,6 +804,9 @@ begin
  //Sprite thumbnails
  thumbnailwidth :=Round(32*Screen.PixelsPerInch/96);
  thumbnailheight:=Round(32*Screen.PixelsPerInch/96);
+ //widest and tallest
+ wide:=Round(thumbnailwidth*2.5);
+ tall:=Round(thumbnailheight*2);
 end;
 
 {------------------------------------------------------------------------------}
@@ -779,18 +843,30 @@ begin
   spritename[x].Color:=clBlue;
   spritename[x].Font.Color:=clWhite;
   select:=x;
-  btnSavePalette.Enabled:=spritepal[select];
-  btnRenameSprite.Enabled:=True;
-  btnDeleteSprite.Enabled:=True;
+  btnSavePalette.Enabled  :=spritepal[select];
+  menuSavePalette.Enabled :=spritepal[select];
+  contSavePalette.Enabled :=spritepal[select];
+  btnRenameSprite.Enabled :=True;
+  btnDeleteSprite.Enabled :=True;
+  menuRenameSprite.Enabled:=True;
+  menuDeleteSprite.Enabled:=True;
+  contRenameSprite.Enabled:=True;
+  contDeleteSprite.Enabled:=True;
  end
  else
   if(x=select)and(x>=0)and(edit)then btnRenameSpriteClick(Sender)
   else
   begin
    select:=-1; //Or mark as deselected
-   btnSavePalette.Enabled:=False;
-   btnRenameSprite.Enabled:=False;
-   btnDeleteSprite.Enabled:=False;
+   btnSavePalette.Enabled  :=False;
+   btnRenameSprite.Enabled :=False;
+   btnDeleteSprite.Enabled :=False;
+   menuSavePalette.Enabled :=False;
+   menuRenameSprite.Enabled:=False;
+   menuDeleteSprite.Enabled:=False;
+   contSavePalette.Enabled :=False;
+   contRenameSprite.Enabled:=False;
+   contDeleteSprite.Enabled:=False;
   end;
 end;
 
@@ -838,6 +914,16 @@ begin
   end;
   if TToolButton(Sender).Name='btnSaveAsBMP' then bmp:=True;
   if TToolButton(Sender).Name='btnSaveAsPNG' then png:=True;
+ end;
+ if Sender is TMenuItem then
+ begin
+  if TMenuItem(Sender).Name='menuSaveAsBMPPNG' then
+  begin
+   png:=True;
+   bmp:=True;
+  end;
+  if TMenuItem(Sender).Name='menuSaveAsBMP' then bmp:=True;
+  if TMenuItem(Sender).Name='menuSaveAsPNG' then png:=True;
  end;
  //Are there actually any sprites?
  if SpriteList.SpriteCount>0 then
@@ -898,12 +984,16 @@ begin
  spritename[sprite].Left:=x+(((thumbnailwidth*2)-spritename[sprite].Width)div 2);
  spritename[sprite].OnDblClick:=@Image1DblClick;
  spritename[sprite].OnClick:=@Image1Click;
+ spritename[sprite].OnContextPopup:=@ContextPopup;
+ spritename[sprite].PopupMenu:=ContextMenu;
  spritename[sprite].Tag:=sprite; //For reference later
  //Create and populate the sprite image control
  image[sprite]:=TImage.Create(MainSpritePanel as TComponent);
  image[sprite].Parent:=MainSpritePanel as TWinControl;
  image[sprite].OnDblClick:=@Image1DblClick;
  image[sprite].OnClick:=@Image1Click;
+ image[sprite].OnContextPopup:=@ContextPopup;
+ image[sprite].PopupMenu:=ContextMenu;
  image[sprite].Tag:=sprite;
  image[sprite].Visible:=True;
  image[sprite].Stretch:=True;
@@ -915,11 +1005,11 @@ begin
  image[sprite].Height:=thumbnailheight;
  image[sprite].Hint:=spritedata.Name;
  //Take note if it is the widest so far seen
- if spritename[sprite].Width>wide then wide:=spritename[sprite].Width;
- if image[sprite].Width>wide then wide:=image[sprite].Width;
+{ if spritename[sprite].Width>wide then wide:=spritename[sprite].Width;
+ if image[sprite].Width>wide then wide:=image[sprite].Width;}
  //They're all the same height
- if tall=0 then
-  tall:=((spritename[sprite].Top+spritename[sprite].Height)-image[sprite].Top);
+{ if tall=0 then
+  tall:=((spritename[sprite].Top+spritename[sprite].Height)-image[sprite].Top);}
  //Hide them, until later
  spritename[sprite].Visible:=False;
  image[sprite].Visible:=False;

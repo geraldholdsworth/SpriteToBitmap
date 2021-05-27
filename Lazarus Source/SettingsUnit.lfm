@@ -1,26 +1,26 @@
 object SettingsForm: TSettingsForm
   Left = 525
-  Height = 114
+  Height = 160
   Top = 286
-  Width = 291
+  Width = 470
   AutoSize = True
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
   Caption = 'Options'
-  ClientHeight = 114
-  ClientWidth = 291
+  ClientHeight = 160
+  ClientWidth = 470
   Color = 15527148
   Position = poMainFormCenter
   LCLVersion = '2.0.12.0'
   object OSGroupBox: TGroupBox
     Left = 0
-    Height = 84
+    Height = 85
     Top = 0
-    Width = 288
+    Width = 470
     AutoSize = True
     Caption = 'OS Compatibility'
     ClientHeight = 66
-    ClientWidth = 280
+    ClientWidth = 460
     Color = 15527148
     ParentColor = False
     TabOrder = 0
@@ -46,8 +46,8 @@ object SettingsForm: TSettingsForm
       Left = 0
       Height = 18
       Top = 48
-      Width = 265
-      Caption = 'RISC OS 3.50+ (16 and 32bpp, 1bpp mask)'
+      Width = 460
+      Caption = 'RISC OS 3.50+ (16 and 32bpp, 1bpp mask; Alpha masks from RISC OS 4.39+)'
       Checked = True
       Color = clNone
       ParentColor = False
@@ -58,7 +58,7 @@ object SettingsForm: TSettingsForm
   object SaveButton: TSpeedButton
     Left = 8
     Height = 21
-    Top = 88
+    Top = 96
     Width = 54
     AutoSize = True
     Caption = 'Save'
@@ -71,7 +71,7 @@ object SettingsForm: TSettingsForm
   object CancelButton: TSpeedButton
     Left = 112
     Height = 21
-    Top = 88
+    Top = 96
     Width = 67
     AutoSize = True
     Caption = 'Cancel'

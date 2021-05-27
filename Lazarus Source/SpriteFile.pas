@@ -1,7 +1,7 @@
 unit SpriteFile;
 
 {
-TSpriteFile class V1.03 written by Gerald Holdsworth
+TSpriteFile class V1.04 written by Gerald Holdsworth
 Class to load and convert RISC OS sprites into Windows Bitmap and PNG.
 
 Copyright (C) 2018-2021 Gerald Holdsworth gerald@hollypops.co.uk
@@ -33,6 +33,7 @@ uses
 
 type
  TDynByteArray = array of Byte;
+ TProgressProc = procedure(Fupdate: Integer) of Object;
  TSprite = record
   Name          : String;                   // Name of the sprite
   Offset,                                   // Offset of this sprite
@@ -59,10 +60,10 @@ type
   Mask          : array of TDynByteArray;   // Transparency Mask
  end;
  TSpriteFile = class
- private
+{ private
  type
   //Provides feedback
-  TProgressProc = procedure(Fupdate: Integer) of Object;
+  TProgressProc = procedure(Fupdate: Integer) of Object;}
  private
   FSpritePool  : TDynByteArray;//The actual sprite file data
   FSpriteFile  : String;       //Filename of the sprite file
@@ -89,6 +90,7 @@ type
   //Methods
   constructor Create;
   function LoadSpriteFile(Afilename: String):Byte;
+  function LoadSpriteFileFromStream(f: TStream): Byte;
   function SaveSpriteFile(Afilename: String):Boolean;
   function ReadSprite(sprite: Integer;headeronly: Boolean=False): TSprite;
   function ReadSprite(spritename: String;headeronly: Boolean=False): TSprite; overload;
@@ -702,7 +704,8 @@ Update any progress indicators
 procedure TSpriteFile.UpdateProgress(Fupdate: Integer);
 begin
  //If the main program has defined a procedure then call it
- if Assigned(FProgress) then FProgress(Fupdate);
+ if Assigned(FProgress) then
+  FProgress(Fupdate);
 end;
 
 {-------------------------------------------------------------------------------
@@ -926,6 +929,26 @@ end;
 
 {-------------------------------------------------------------------------------
 Loads a new sprite file and calls the ReadSpriteFile function
+-------------------------------------------------------------------------------}
+function TSpriteFile.LoadSpriteFileFromStream(F: TStream): Byte;
+var
+ error: Byte;
+ data : TDynByteArray;
+begin
+ //Default error - unable to read
+ error:=3;
+ F.Position:=0;
+ //We'll just read the data in
+ SetLength(data,F.Size);
+ F.Read(data[0],F.Size);
+ //Read, and add to the sprite pool, the newly opened file
+ error:=ReadSpriteFile(data);
+ //And exit, hopefully with no errors
+ Result:=error;
+end;
+
+{-------------------------------------------------------------------------------
+Loads a new sprite file, from a memory stream, & calls the ReadSpriteFile function
 -------------------------------------------------------------------------------}
 function TSpriteFile.LoadSpriteFile(Afilename: String):Byte;
 var
@@ -1244,7 +1267,9 @@ var
  colours    : array of String;
  mask,
  BPP,
- maskBPP    : Byte;
+ oBPP,
+ maskBPP,
+ r,g,b,a    : Byte;
  colsrc,
  newname    : String;
  pixsize,
@@ -1254,27 +1279,42 @@ var
 begin
  Result:=False;
  colours:=nil;
+ oBPP:=0;
+ //First, is it a valid image file that we can deal with?
  if IsValidImageFile(filename) then
  begin
+  //Number of colours used
   numcols:=0;
+  //List of colours - if we go over 256, we won't bother counting the colours
   SetLength(colours,257);
+  //Create the container
   img:=TLazIntfImage.Create(0,0,[riqfRGB, riqfAlpha]);
+  //And load the image into it
   img.LoadFromFile(filename);
+  //Setup the receiving byte array
   SetLength(buffer,img.Height*img.Width*4);
   mask:=0;//No mask
+  //Go through each pixel and get it's colour and mask
   for y:=0 to img.Height-1 do
    for x:=0 to img.Width-1 do
    begin
+    //Colour
     col:=img.Colors[x,y];
+    //Store the mask
     buffer[(y*img.Width*4)+(x*4)+3]:=col.Alpha>>8;
+    //Work out what sort of mask
     if(col.Alpha>>8=$00)and(mask=0)then mask:=1;// Binary mask
     if(col.Alpha>>8>$00)and(col.Alpha>>8<$FF)then mask:=2; //Alpha mask
+    //Store the RGB
     buffer[(y*img.Width*4)+(x*4)+2]:=col.Red  >>8;
     buffer[(y*img.Width*4)+(x*4)+1]:=col.Green>>8;
     buffer[(y*img.Width*4)+(x*4)+0]:=col.Blue >>8;
+    //If we are still 8bpp, then add the next colour
     if numcols<257 then
     begin
+     //First we find out if it is already stored
      colsrc:=IntToHex(col.Blue>>8,2)+IntToHex(col.Green>>8,2)+IntToHex(col.Red>>8,2);
+     //If not, then add it to our list
      if AnsiIndexStr(colsrc,colours)=-1 then
      begin
       colours[numcols]:=colsrc;
@@ -1282,10 +1322,12 @@ begin
      end;
     end;
    end;
+  //Work out the bpp
   BPP:=0;
   repeat
    if BPP=0 then inc(BPP) else BPP:=BPP*2;
   until numcols<1<<BPP;
+  //We'll skip 16 and go straight to 32...it's easier and quicker
   if BPP=16 then BPP:=32;
   //We will create a new sprite file, then call the method to add to the pool
   LLastWord:=$0C;
@@ -1294,11 +1336,25 @@ begin
   colsrc:=LeftStr(colsrc,12);
   x:=0;
   newname:=colsrc;
+  //Adjust the sprite's name
   while not IsValidSpriteName(newname) do
   begin
    inc(x);
    newname:=RightStr(colsrc+IntToStr(x),12);
   end;
+  //Downconverting for Arthur - reset the BPP but remember the old
+  if(BPP>=16)and(arthur)then
+  begin
+   oBPP:=BPP;
+   BPP:=8;
+   //Load in the default palette
+   for x:=0 to 255 do
+    colours[x]:=IntToHex(ColourPalette256[x*6+3],2) //Blue
+               +IntToHex(ColourPalette256[x*6+4],2) //Green
+               +IntToHex(ColourPalette256[x*6+5],2);//Red
+   numcols:=256;
+  end;
+  //Setup the sprite header
   spritedata.Name:=newname;
   spritedata.BPP:=BPP;
   spritedata.PixWidth:=img.Width;
@@ -1307,7 +1363,8 @@ begin
   spritedata.WidthWord:=Ceil((img.Width*BPP)/32)-1;
   spritedata.RightBit:=(img.Width*BPP)-(spritedata.WidthWord*32)-1;
   pixsize:=((spritedata.WidthWord+1)*4)*img.Height;
-  if BPP<16 then //Point to pixel data, after the palette
+  //Point to pixel data, after the palette
+  if BPP<16 then
   begin
    spritedata.PixelData:=$2C+8*(1<<BPP); //Two copies of each colour
    spritedata.HasPalette:=True;
@@ -1315,7 +1372,7 @@ begin
    spritedata.PaletteType:=1;
   end
   else
-  begin
+  begin //Unless it is 32bpp, in which case no palette
    spritedata.PixelData:=$2C;
    spritedata.HasPalette:=False;
    spritedata.PaletteColours:=0;
@@ -1323,9 +1380,11 @@ begin
    //Arthur did not have 16 or 32 bpp sprites
    arthur:=False;
   end;
+  //Add the mask
   if mask>0 then
   begin
    spritedata.Transparency:=spritedata.PixelData+pixsize;
+   //Set the mask BPP
    if mask=1 then
     maskBPP:=1
    else
@@ -1333,6 +1392,7 @@ begin
    //Old masks are same BPP as main sprite
    if arthur then maskBPP:=BPP;
    pixsize:=Ceil((img.Width*maskBPP)/32)*4*img.Height;
+   //Store the mask
    SetLength(spritedata.Mask,img.Width,img.Height);
    for y:=0 to img.Height-1 do
     for x:=0 to img.Width-1 do
@@ -1340,16 +1400,16 @@ begin
      //Mask is stored $00 for transparent up to $FF for full pixel
      spritedata.Mask[x,y]:=buffer[y*img.Width*4+(x*4)+3];
      //Arthur masks are binary, either $00 for transparent or $FF for pixel
-     if arthur then
-      if spritedata.Mask[x,y]>0 then
-       spritedata.Mask[x,y]:=$FF;
+     if arthur then if spritedata.Mask[x,y]>0 then spritedata.Mask[x,y]:=$FF;
     end;
   end
   else
   begin
+   //No mask, then set the data accordingly
    spritedata.Transparency:=spritedata.PixelData;
    maskBPP:=0;
   end;
+  //Set the other values in the header
   spritedata.Next:=spritedata.Transparency+pixsize;
   ptr:=LLastWord;
   inc(LLastWord,spritedata.Next);
@@ -1358,6 +1418,7 @@ begin
   else
    spritedata.TransFormat:=0;
   spritedata.ModeFlag:=0;
+  //Prepare the mode data/sprite type
   case BPP of
    1 : spritedata.SpriteType:=1;
    2 : spritedata.SpriteType:=2;
@@ -1386,6 +1447,7 @@ begin
                               OR(180<<1)                            //H DPI
                               OR 1;                                 //Set
   end;
+  //Store the palette, if bpp is lower than 16bpp
   if BPP<16 then
   begin
    SetLength(spritedata.Palette,(1<<BPP)*4);
@@ -1400,7 +1462,9 @@ begin
     spritedata.Palette[x*4+3]:=$00;
    end;
   end;
+  //Free up the container
   img.Free;
+  //Now can add to our local sprite pool
   SetLength(LSpritePool,LLastWord);
   for x:=0 to LLastWord-1 do LSpritePool[x]:=0;
   //What we pass to the read sprite routine does not include the first word
@@ -1473,29 +1537,51 @@ begin
    begin
     p:=spritedata.PixelData+ptr+
        (((((spritedata.PixWidth*BPP)+7)div 8)+3)div 4)*4*y+Floor(x*(BPP/8));
-    colsrc:=IntToHex(buffer[(y*spritedata.PixWidth+x)*4+0],2)
-           +IntToHex(buffer[(y*spritedata.PixWidth+x)*4+1],2)
-           +IntToHex(buffer[(y*spritedata.PixWidth+x)*4+2],2);
-    case BPP of
-     1 : LSpritePool[p]:=LSpritePool[p]OR(AnsiIndexStr(colsrc,colours)AND$1)<<(x mod 8);
-     2 : LSpritePool[p]:=LSpritePool[p]OR(AnsiIndexStr(colsrc,colours)AND$3)<<((x mod 4)*2);
-     4 : LSpritePool[p]:=LSpritePool[p]OR(AnsiIndexStr(colsrc,colours)AND$7)<<((x mod 2)*4);
-     8 : LSpritePool[p]:=AnsiIndexStr(colsrc,colours);
-     16:
-      begin
-       LSpritePool[p+0]:=(buffer[(y*spritedata.PixWidth+x)*4+0]AND$F8)>>1
-                 OR(buffer[(y*spritedata.PixWidth+x)*4+1]AND$C0)>>6;
-       LSpritePool[p+1]:=(buffer[(y*spritedata.PixWidth+x)*4+1]AND$38)<<2
-                 OR(buffer[(y*spritedata.PixWidth+x)*4+2]AND$F8)>>3;
-      end;
-     32:
-      begin
-       LSpritePool[p+0]:=buffer[(y*spritedata.PixWidth+x)*4+0];
-       LSpritePool[p+1]:=buffer[(y*spritedata.PixWidth+x)*4+1];
-       LSpritePool[p+2]:=buffer[(y*spritedata.PixWidth+x)*4+2];
-       LSpritePool[p+3]:=buffer[(y*spritedata.PixWidth+x)*4+3];
-      end;
-    end;
+    b:=buffer[(y*spritedata.PixWidth+x)*4+0];
+    g:=buffer[(y*spritedata.PixWidth+x)*4+1];
+    r:=buffer[(y*spritedata.PixWidth+x)*4+2];
+    a:=buffer[(y*spritedata.PixWidth+x)*4+3];
+    if oBPP=0 then //We aren't downconverting the BPP
+    begin
+     colsrc:=IntToHex(b,2)+IntToHex(g,2)+IntToHex(r,2);
+     case BPP of
+      1 : LSpritePool[p]:=LSpritePool[p]OR(AnsiIndexStr(colsrc,colours)AND$1)<<(x mod 8);
+      2 : LSpritePool[p]:=LSpritePool[p]OR(AnsiIndexStr(colsrc,colours)AND$3)<<((x mod 4)*2);
+      4 : LSpritePool[p]:=LSpritePool[p]OR(AnsiIndexStr(colsrc,colours)AND$7)<<((x mod 2)*4);
+      8 : LSpritePool[p]:=AnsiIndexStr(colsrc,colours);
+      16:
+       begin
+        LSpritePool[p+0]:=(r AND$F8)>>1
+                        OR(g AND$C0)>>6;
+        LSpritePool[p+1]:=(g AND$38)<<2
+                        OR(b AND$F8)>>3;
+       end;
+      32:
+       begin
+        LSpritePool[p+0]:=r;
+        LSpritePool[p+1]:=g;
+        LSpritePool[p+2]:=b;
+        LSpritePool[p+3]:=a;
+       end;
+     end;
+    end //Downconvert, so extract specific bits to point into the palette
+    else
+     if BPP=8 then
+     begin
+      a:=r;
+      //Swap the r and b around while moving down a nibble
+      r:=b>>4;
+      g:=g>>4;
+      b:=a>>4;
+      LSpritePool[p]:=((b AND $8)<<4)
+                    OR((g AND $C)<<3)
+                    OR((r AND $8)<<1)
+                    OR((b AND $4)<<1)
+                    OR (r AND $4)
+                    OR (r AND $3)
+                    OR (g AND $3)
+                    OR (b AND $3);
+     end;
     if mask>0 then
     begin
      t:=spritedata.Transparency+ptr+
