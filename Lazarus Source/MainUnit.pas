@@ -145,7 +145,7 @@ type
     SpriteList: TSpriteFile;     //The container for the sprites
    const
     AppTitle = 'Sprite Converter';
-    AppVersion = '1.04';
+    AppVersion = '1.04a';
    procedure AfterConstruction; override;
   end;
 
@@ -532,31 +532,22 @@ end;
 {------------------------------------------------------------------------------}
 procedure TMainForm.btnAboutClick(Sender: TObject);
 var
- platform: String;
+ TargetOS,
+ TargetCPU : String;
 begin
- //Determine the current platform (compile time directive)
- platform:='';
- {$IFDEF Darwin}
- platform:=' macOS';            //Apple Mac OS X
- {$ENDIF}
- {$IFDEF Windows}
- platform:=' Windows';          //Microsoft Windows
- {$ENDIF}
- {$IFDEF Linux}
- platform:=' Linux';            //Linux
- {$ENDIF}
- {$IFDEF CPU32}
- platform:=platform+' 32 bit';  //32 bit CPU
- {$ENDIF}
- {$IFDEF CPU64}
- platform:=platform+' 64 bit';  //64 bit CPU
- {$ENDIF}
- {$IFDEF CPUARM}
- platform:=platform+' ARM';     //ARM CPU
- {$ENDIF}
+ //Determine the current platform (compile time directives)
+ TargetOS:=LowerCase({$I %FPCTARGETOS%});
+ if TargetOS='darwin'        then TargetOS:='macOS';
+ if TargetOS='linux'         then TargetOS:='Linux';
+ if Copy(TargetOS,1,3)='win' then TargetOS:='Windows';
+ TargetCPU:=LowerCase({$I %FPCTARGETCPU%});
+ if(TargetCPU='arm')
+ or(TargetCPU='aarch64')then TargetCPU:='ARM';
+ if TargetCPU='i386'    then TargetCPU:='32 bit';
+ if TargetCPU='x86_64'  then TargetCPU:='64 bit';
  AboutForm.IconImage.Visible:=True;
  AboutForm.lb_Title.Caption:=AppTitle;
- AboutForm.lb_Version.Caption:='Version '+AppVersion+platform;
+ AboutForm.lb_Version.Caption:='Version '+AppVersion+' '+TargetOS+' '+TargetCPU;
  AboutForm.ShowModal;
 end;
 
@@ -585,7 +576,8 @@ var
 begin
  if select>=0 then
   if MessageDlg('Delete sprite'
-               ,'Are you sure you want to delete sprite "'+spritename[select].Caption+'"?'
+               ,'Are you sure you want to delete sprite "'
+                +spritename[select].Caption+'"?'
                ,mtConfirmation
                ,[mbYes,mbNo],0)=mrYes then
    if SpriteList.DeleteSprite(select) then

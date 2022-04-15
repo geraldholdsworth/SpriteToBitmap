@@ -76,3 +76,10 @@ Changes
 * Can now delete sprites.
 * Application is now High-DPI Aware.
 * Found that, on Windows, the sprite area was not completely tiled.
+
+1.04
+* Some spritenames were overshooting either side, overwriting the previous and next ones. Each sprite is now a fixed width and fixed height.
+* Double clicking on a sprite would leave it selected, but not marked internally as selected. Double clicking now selects then de-selects the sprite.
+* Application main menu added.
+* Context menu added for sprites.
+* PNG, Bitmap and JPEG images imported will get downconverted to 8bpp if Arthur OS compatibility is selected.

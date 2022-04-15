@@ -3,5 +3,4 @@
 * Application hangs when trying to save images to files which are already open in another application.
 * Import a palette for an existing palettised sprite.
 * Edit the palette of a palettised sprite.
-* 'Flatten' an Alpha mask to make it pre-RISC OS 4.39 compatible.
-* Convert 16bpp and 32bpp imported images to 8bpp to make them Arthur compatible.
+* Ability to change the OS compatability and BPP of a loaded sprite.
